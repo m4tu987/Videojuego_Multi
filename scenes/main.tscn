@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_edewf"]
-[ext_resource type="PackedScene" uid="uid://bb3yyl4dr2qey" path="res://scenes/character/character.tscn" id="2_fnyg6"]
+[ext_resource type="PackedScene" uid="uid://bb3yyl4dr2qey" path="res://scenes/player/player.tscn" id="3_mwc6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7711h"]
 size = Vector2(64, 64)
@@ -22,5 +22,5 @@ texture = ExtResource("2_edewf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_7711h")
 
-[node name="Character" parent="." instance=ExtResource("2_fnyg6")]
-position = Vector2(163, 127)
+[node name="player" parent="." instance=ExtResource("3_mwc6d")]
+position = Vector2(170, 108)

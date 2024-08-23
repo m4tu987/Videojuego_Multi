@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://bb3yyl4dr2qey"]
 
-[ext_resource type="Script" path="res://scenes/character/character_body_2d.gd" id="1_2unso"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_ul3gb"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kvsm2"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_t3ujj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv036"]
 size = Vector2(125, 126)
 
-[node name="Character" type="Node2D"]
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_kvsm2")
 metadata/_edit_horizontal_guides_ = [0.0]
+metadata/_edit_group_ = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_2unso")
-
-[node name="Godito" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_ul3gb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(1.5, -1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_bv036")
+
+[node name="Godito" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_t3ujj")
