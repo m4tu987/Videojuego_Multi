@@ -1,18 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://bb3yyl4dr2qey"]
 
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_t3ujj"]
+[ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv036"]
-size = Vector2(125, 126)
+size = Vector2(14, 24)
 
 [node name="player" type="CharacterBody2D"]
 metadata/_edit_horizontal_guides_ = [0.0]
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(0, -1)
+scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_bv036")
 
-[node name="Godito" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
-texture = ExtResource("2_t3ujj")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(4, 4)
+texture = ExtResource("1_6kjun")
+region_enabled = true
+region_rect = Rect2(31.5, 99, 16, 26)
