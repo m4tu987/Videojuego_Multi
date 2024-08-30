@@ -1,22 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=4 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv036"]
 size = Vector2(14, 24)
 
 [node name="player" type="CharacterBody2D"]
+script = ExtResource("1_40kih")
 metadata/_edit_horizontal_guides_ = [0.0]
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_bv036")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("1_6kjun")
 region_enabled = true
 region_rect = Rect2(31.5, 99, 16, 26)
+
+[node name="Nombre_personaje" type="Label" parent="."]
+offset_left = -28.0
+offset_top = 37.0
+offset_right = 34.0
+offset_bottom = 60.0
+text = "Player 1"
