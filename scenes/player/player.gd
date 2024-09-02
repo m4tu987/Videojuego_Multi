@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 
-var speed = 400.0
-var acceleration = 300
-var dash_speed = 300
+var speed = 600.0
+var acceleration = 100
+var dash_speed = 100
 var gravity = 400
-
+var dash_cooldown = 3.0  
+var last_dash_time = -dash_cooldown  
 @onready var nombre_personaje = $Nombre_personaje
 
 var player 
@@ -21,7 +22,11 @@ func _physics_process(delta):
 		var move_input2 = Input.get_axis("move_up","move_down")
 		velocity.y = move_toward(velocity.y, speed * move_input2, acceleration * delta)
 		if Input.is_action_just_pressed("dash"):
-			velocity.x = (dash_speed * velocity.x)/100
+			var current_time = Time.get_ticks_msec() / 1000.0
+			if current_time - last_dash_time >= dash_cooldown:
+				velocity.x = (dash_speed * velocity.x)/50
+				velocity.y = (dash_speed * velocity.y)/50
+				last_dash_time = current_time
 	move_and_slide()
 	send_position.rpc(position)
 	
