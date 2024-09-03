@@ -14,6 +14,7 @@ var _menu_stack: Array[Control] = []
 @onready var confirm_join: Button = %ConfirmJoin
 @onready var role_a: Button = %RoleA
 @onready var role_b: Button = %RoleB
+@onready var role_c: Button = %RoleC
 @onready var back_ready: Button = %BackReady
 @onready var ready_toggle: Button = %Ready
 @onready var menus: MarginContainer = %Menus
@@ -50,6 +51,7 @@ func _ready():
 	
 	role_a.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_A))
 	role_b.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_B))
+	role_c.pressed.connect(func(): Game.set_current_player_role(Statics.Role.ROLE_C))
 	
 	ready_toggle.pressed.connect(_on_ready_toggled)
 	
@@ -217,6 +219,7 @@ func set_player_ready(id: int, value: bool):
 func starting_game(value: bool):
 	role_a.disabled = value
 	role_b.disabled = value
+	role_c.disabled = value
 	back_ready.disabled = value
 	time_container.visible = value
 	if value:
