@@ -8,3 +8,12 @@ script = ExtResource("1_ysfbh")
 player_scene = ExtResource("3_mwc6d")
 
 [node name="Players" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+position = Vector2(0, 3)
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(141, 309)
+
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(912, 323)
