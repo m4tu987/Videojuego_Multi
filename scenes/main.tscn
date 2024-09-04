@@ -5,6 +5,6 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ysfbh")
+player_scene = ExtResource("3_mwc6d")
 
-[node name="player" parent="." instance=ExtResource("3_mwc6d")]
-position = Vector2(221, 151)
+[node name="Players" type="Node2D" parent="."]
