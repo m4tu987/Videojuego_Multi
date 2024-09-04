@@ -23,9 +23,13 @@ texture = ExtResource("1_6kjun")
 region_enabled = true
 region_rect = Rect2(31.5, 99, 16, 26)
 
-[node name="Nombre_personaje" type="Label" parent="."]
+[node name="Player_Tag" type="Label" parent="."]
 offset_left = -28.0
 offset_top = 37.0
 offset_right = 34.0
 offset_bottom = 60.0
-text = "Player 1"
+
+[node name="Dash_Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
