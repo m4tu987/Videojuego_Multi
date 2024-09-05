@@ -9,11 +9,8 @@ var dash_direction = Vector2()
 var can_dash = true
 
 @onready var player_tag = $Player_Tag
-@onready var animation_player = $Sprite2D/AnimationPlayer
-@onready var animation_tree = $AnimationTree
 
 var player 
-
 
 func _input(event):
 	if is_multiplayer_authority():
@@ -22,22 +19,14 @@ func _input(event):
 func _physics_process(delta):
 	if is_multiplayer_authority():
 		var direction = Input.get_vector("left", "right", "up", "down")
-		var normalized_d = direction.normalized()
-		velocity.x = move_toward(velocity.x, speed * normalized_d.x, accel)
-		velocity.y = move_toward(velocity.y, speed * normalized_d.y, accel)
+		velocity.x = move_toward(velocity.x, speed * direction.x, accel)
+		velocity.y = move_toward(velocity.y, speed * direction.y, accel)
 		if Input.is_action_just_pressed("dash") and can_dash:
 			can_dash = false
-			dash_direction = normalized_d
+			dash_direction = direction.normalized()
 			velocity = dash_direction * dash_speed
 			$Dash_Cooldown.start()
-		if direction == Vector2.ZERO:
-			animation_tree["parameters/conditions/Idle"] = true
-			animation_tree["parameters/conditions/is_walking"] = false
-		else:
-			animation_tree["parameters/conditions/Idle"] = false
-			animation_tree["parameters/conditions/is_walking"] = true
-			animation_tree.set("parameters/Idle/blend_position", normalized_d)
-			animation_tree.set("parameters/Walk/blend_position", normalized_d)
+			
 	move_and_slide()
 	send_position.rpc(position)
 	
