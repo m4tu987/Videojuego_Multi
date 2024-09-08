@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=33 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
@@ -349,6 +349,11 @@ properties/1/path = NodePath(".:dir")
 properties/1/spawn = true
 properties/1/replication_mode = 2
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vf5it"]
+properties/0/path = NodePath(".:id")
+properties/0/spawn = true
+properties/0/replication_mode = 0
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(1, -1)
 motion_mode = 1
@@ -368,6 +373,9 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_6kjun")
 hframes = 16
 vframes = 6
+
+[node name="Gun" parent="." instance=ExtResource("4_r66d2")]
+position = Vector2(-1, -17)
 
 [node name="Player_Tag" type="Label" parent="."]
 offset_left = -28.0
@@ -395,7 +403,7 @@ parameters/Walk/blend_position = Vector2(-0.299652, -0.122302)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_e1lm7")
 
-[node name="Gun" parent="." instance=ExtResource("4_r66d2")]
-position = Vector2(-1, -17)
+[node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vf5it")
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]

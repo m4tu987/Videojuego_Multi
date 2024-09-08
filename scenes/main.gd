@@ -11,4 +11,5 @@ func _ready() -> void:
 		Players.add_child(player_inst)
 		player_inst.setup(player_data)
 		player_inst.global_position = markers.get_child(i).global_position
-		
+		player_inst.id = player_data.id
+		add_child(player_inst)

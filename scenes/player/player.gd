@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var id := 1
 @export var walking = false
 @export var dir = Vector2.ZERO
 var speed = 200
@@ -15,7 +16,11 @@ var can_dash = true
 
 var player 
 
-func _physics_process(delta):
+func _enter_tree() -> void:
+	$Gun.id = id
+
+
+func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
 		var direction = Input.get_vector("left", "right", "up", "down")
 		dir = direction.normalized()
@@ -35,9 +40,8 @@ func _physics_process(delta):
 	animation_tree["parameters/conditions/is_walking"] = walking
 
 	move_and_slide()
-	
-	
-	
+
+
 func setup(player_data):
 	name = str(player_data.id)
 	set_multiplayer_authority(player_data.id)

@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyi7np8o56xxk"]
+[gd_scene load_steps=6 format=3 uid="uid://dyi7np8o56xxk"]
 
 [ext_resource type="Texture2D" uid="uid://d37s4da5saxl4" path="res://assets/Pack 1/0px All.png" id="1_1eho2"]
 [ext_resource type="Script" path="res://scenes/player/gun.gd" id="1_xjnpv"]
 [ext_resource type="PackedScene" uid="uid://olxxtq1mkewq" path="res://scenes/player/bullet.tscn" id="2_edmhy"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_4f7vb"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ikhub"]
+properties/0/path = NodePath("..:id")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_xjnpv")
@@ -17,3 +27,14 @@ region_rect = Rect2(39.3957, 36.7088, 15.7722, 12.9683)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(45, -10)
+
+[node name="BulletSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/player/bullet.tscn")
+spawn_path = NodePath(".")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_4f7vb")
+
+[node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../MultiplayerSynchronizer")
+replication_config = SubResource("SceneReplicationConfig_ikhub")
