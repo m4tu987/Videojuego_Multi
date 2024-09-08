@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://olxxtq1mkewq"]
 
-[ext_resource type="Script" path="res://components/hitbox.gd" id="1_xhu1r"]
+[ext_resource type="Script" path="res://scenes/player/bullet.gd" id="1_eyewj"]
 [ext_resource type="Texture2D" uid="uid://b0eavar27qhff" path="res://assets/GunsKingKelpo/slime/e0dea5df0ff846f28223b7c714b2eab2VZu19iGVRpPV1NoV-1.png" id="2_kxmwr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_llk4i"]
@@ -9,7 +9,7 @@ radius = 5.0
 [node name="Bullet" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("1_xhu1r")
+script = ExtResource("1_eyewj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_kxmwr")

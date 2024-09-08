@@ -3,6 +3,11 @@ extends Node2D
 @export var bullet_scene: PackedScene
 @onready var marker_2d = $Marker2D
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fire"):
+		fire()
+	
+
 
 func fire() -> void:
 	if not bullet_scene:
@@ -10,12 +15,5 @@ func fire() -> void:
 		return
 	var bullet_inst = bullet_scene.instantiate()
 	get_parent().add_child(bullet_inst)
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	bullet_inst.global_position = marker_2d.global_position
+	bullet_inst.global_rotation	= global_rotation
