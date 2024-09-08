@@ -2,6 +2,8 @@ extends Node2D
 
 @export var id := 1
 @export var bullet_scene: PackedScene
+@export var ammo := 10
+
 @onready var marker_2d = $Marker2D
 @onready var bullet_spawner = $BulletSpawner
 @onready var multiplayer_synchronizer = $MultiplayerSynchronizer
