@@ -13,14 +13,21 @@ var can_dash = true
 @onready var player_tag = $Player_Tag
 @onready var animation_tree = $AnimationTree
 @onready var sprite_2d = $Sprite2D
+@onready var multiplayer_synchronizer = $MultiplayerSynchronizer
 
-var player 
+
 
 func _enter_tree() -> void:
 	$Gun.id = id
 
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	setup(id)
+	var player_data: Statics.PlayerData = Game.get_player(id)
+	sprite_2d.material.set_shader_parameter("to",getcolor(player_data))
+
+
+func _physics_process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		var direction = Input.get_vector("left", "right", "up", "down")
 		dir = direction.normalized()
@@ -38,22 +45,14 @@ func _physics_process(delta: float) -> void:
 		animation_tree.set("parameters/Walk/blend_position", dir)
 	animation_tree["parameters/conditions/Idle"] = !walking
 	animation_tree["parameters/conditions/is_walking"] = walking
-
 	move_and_slide()
 
 
-func setup(player_data):
-	name = str(player_data.id)
-	set_multiplayer_authority(player_data.id)
-	player_tag.text = player_data.name
-	player = player_data
-	sprite_2d.material.set_shader_parameter("to",getcolor(player_data))
+func setup(id: int) -> void:
+	set_multiplayer_authority(id, false)
+	multiplayer_synchronizer.set_multiplayer_authority(id)
 
-	
-@rpc("authority","call_local","unreliable")
-func test():
-	Debug.log("test %s" % player.name)
-	
+
 @rpc("authority","call_remote","unreliable_ordered")
 func send_position(pos):
 	position = pos
@@ -61,12 +60,12 @@ func send_position(pos):
 
 func _on_dash_cooldown_timeout():
 	can_dash = true
-	
+
+
 func getcolor(player_data):
 	if player_data.role == Statics.Role.ROLE_A:
-		return Color.GREEN_YELLOW
+		return Color.DARK_OLIVE_GREEN
 	if player_data.role == Statics.Role.ROLE_B:
-		return Color.CRIMSON
+		return Color.BROWN
 	if player_data.role == Statics.Role.ROLE_C:
-		return Color.ROYAL_BLUE
-		
+		return Color.DARK_SLATE_BLUE

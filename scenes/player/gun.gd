@@ -10,7 +10,7 @@ extends Node2D
 func _ready() -> void:
 	setup(id)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		global_rotation = global_position.direction_to(get_global_mouse_position()).angle()
 
@@ -20,9 +20,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
 		fire.rpc_id(1)
 
-func setup(id) -> void:
-	set_multiplayer_authority(id, false)
-	multiplayer_synchronizer.set_multiplayer_authority(id)
+func setup(player_id) -> void:
+	set_multiplayer_authority(player_id, false)
+	multiplayer_synchronizer.set_multiplayer_authority(player_id)
 
 @rpc("reliable", "any_peer", "call_local")
 func fire() -> void:

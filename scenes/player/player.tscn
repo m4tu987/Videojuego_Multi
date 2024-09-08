@@ -375,7 +375,7 @@ hframes = 16
 vframes = 6
 
 [node name="Gun" parent="." instance=ExtResource("4_r66d2")]
-position = Vector2(-1, -17)
+position = Vector2(0, -20)
 
 [node name="Player_Tag" type="Label" parent="."]
 offset_left = -28.0

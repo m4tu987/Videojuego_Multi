@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyi7np8o56xxk"]
+[gd_scene load_steps=8 format=3 uid="uid://dyi7np8o56xxk"]
 
 [ext_resource type="Texture2D" uid="uid://d37s4da5saxl4" path="res://assets/Pack 1/0px All.png" id="1_1eho2"]
 [ext_resource type="Script" path="res://scenes/player/gun.gd" id="1_xjnpv"]
 [ext_resource type="PackedScene" uid="uid://olxxtq1mkewq" path="res://scenes/player/bullet.tscn" id="2_edmhy"]
+[ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="3_dy7jo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cy3gj"]
+shader = ExtResource("3_dy7jo")
+shader_parameter/from = Color(0.356863, 0.431373, 0.882353, 1)
+shader_parameter/to = Color(0.670588, 0.670588, 0.670588, 1)
+shader_parameter/tolerance = 0.377
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_4f7vb"]
 properties/0/path = NodePath(".:rotation")
@@ -19,7 +26,8 @@ script = ExtResource("1_xjnpv")
 bullet_scene = ExtResource("2_edmhy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(28, -6)
+material = SubResource("ShaderMaterial_cy3gj")
+position = Vector2(25, -6)
 scale = Vector2(3, 3)
 texture = ExtResource("1_1eho2")
 region_enabled = true
