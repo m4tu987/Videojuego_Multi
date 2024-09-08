@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bb3yyl4dr2qey" path="res://scenes/player/player.tscn" id="3_mwc6d"]
 
 [node name="Main" type="Node2D"]
-y_sort_enabled = true
 script = ExtResource("1_ysfbh")
 player_scene = ExtResource("3_mwc6d")
 
