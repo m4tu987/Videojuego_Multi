@@ -46,11 +46,12 @@ func _physics_process(_delta: float) -> void:
 	animation_tree["parameters/conditions/Idle"] = !walking
 	animation_tree["parameters/conditions/is_walking"] = walking
 	move_and_slide()
+	
 
 
-func setup(id: int) -> void:
-	set_multiplayer_authority(id, false)
-	multiplayer_synchronizer.set_multiplayer_authority(id)
+func setup(set_id: int) -> void:
+	set_multiplayer_authority(set_id, false)
+	multiplayer_synchronizer.set_multiplayer_authority(set_id)
 
 
 @rpc("authority","call_remote","unreliable_ordered")
@@ -66,6 +67,6 @@ func getcolor(player_data):
 	if player_data.role == Statics.Role.ROLE_A:
 		return Color.DARK_OLIVE_GREEN
 	if player_data.role == Statics.Role.ROLE_B:
-		return Color.BROWN
+		return Color.INDIAN_RED
 	if player_data.role == Statics.Role.ROLE_C:
 		return Color.DARK_SLATE_BLUE

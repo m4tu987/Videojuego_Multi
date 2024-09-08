@@ -5,6 +5,7 @@ extends Node2D
 @onready var marker_2d = $Marker2D
 @onready var bullet_spawner = $BulletSpawner
 @onready var multiplayer_synchronizer = $MultiplayerSynchronizer
+@onready var upward_sprite = $UpwardSprite2D
 
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("fire"):
 		fire.rpc_id(1)
+		fire_fx.rpc()
 
 func setup(player_id) -> void:
 	set_multiplayer_authority(player_id, false)
@@ -35,3 +37,9 @@ func fire() -> void:
 	bullet_inst.global_position = marker_2d.global_position
 	bullet_inst.global_rotation = global_rotation
 	bullet_spawner.add_child(bullet_inst, true)
+
+@rpc("reliable", "call_local")
+func fire_fx() -> void:
+	var tween = create_tween()
+	tween.tween_property(upward_sprite, "position:x", 2, 0.05).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(upward_sprite, "position:x", 12, 0.15)

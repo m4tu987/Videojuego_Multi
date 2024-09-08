@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://olxxtq1mkewq"]
+[gd_scene load_steps=7 format=3 uid="uid://olxxtq1mkewq"]
 
 [ext_resource type="Script" path="res://scenes/player/bullet.gd" id="1_eyewj"]
 [ext_resource type="Texture2D" uid="uid://b0eavar27qhff" path="res://assets/GunsKingKelpo/slime/e0dea5df0ff846f28223b7c714b2eab2VZu19iGVRpPV1NoV-1.png" id="2_kxmwr"]
+[ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_qdeuj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2vb1"]
+shader = ExtResource("2_qdeuj")
+shader_parameter/from = Color(0.286275, 0.94902, 0.352941, 1)
+shader_parameter/to = Color(1, 0, 0.815686, 1)
+shader_parameter/tolerance = 0.371
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_llk4i"]
 radius = 5.0
@@ -20,9 +27,11 @@ collision_mask = 4
 script = ExtResource("1_eyewj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f2vb1")
 texture = ExtResource("2_kxmwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_llk4i")
 
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]

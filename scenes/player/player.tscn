@@ -356,6 +356,8 @@ properties/0/replication_mode = 0
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(1, -1)
+collision_layer = 2
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_40kih")
 metadata/_edit_horizontal_guides_ = [0.0]
@@ -375,7 +377,7 @@ hframes = 16
 vframes = 6
 
 [node name="Gun" parent="." instance=ExtResource("4_r66d2")]
-position = Vector2(0, -20)
+position = Vector2(-1, -24)
 
 [node name="Player_Tag" type="Label" parent="."]
 offset_left = -28.0

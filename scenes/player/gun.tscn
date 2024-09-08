@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyi7np8o56xxk"]
+[gd_scene load_steps=9 format=3 uid="uid://dyi7np8o56xxk"]
 
 [ext_resource type="Texture2D" uid="uid://d37s4da5saxl4" path="res://assets/Pack 1/0px All.png" id="1_1eho2"]
 [ext_resource type="Script" path="res://scenes/player/gun.gd" id="1_xjnpv"]
 [ext_resource type="PackedScene" uid="uid://olxxtq1mkewq" path="res://scenes/player/bullet.tscn" id="2_edmhy"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="3_dy7jo"]
+[ext_resource type="Script" path="res://components/upward_sprite.gd" id="5_scbxy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cy3gj"]
 shader = ExtResource("3_dy7jo")
@@ -25,16 +26,18 @@ properties/0/replication_mode = 1
 script = ExtResource("1_xjnpv")
 bullet_scene = ExtResource("2_edmhy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="UpwardSprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cy3gj")
-position = Vector2(25, -6)
+position = Vector2(12, 0)
 scale = Vector2(3, 3)
 texture = ExtResource("1_1eho2")
+offset = Vector2(5, -1)
 region_enabled = true
 region_rect = Rect2(39.3957, 36.7088, 15.7722, 12.9683)
+script = ExtResource("5_scbxy")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(45, -10)
+position = Vector2(44, -6)
 
 [node name="BulletSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player/bullet.tscn")
