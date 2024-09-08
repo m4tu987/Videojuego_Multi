@@ -74,6 +74,7 @@ func getcolor(player_data):
 	if player_data.role == Statics.Role.ROLE_C:
 		return Color.DARK_SLATE_BLUE
 
+
 func take_damage(damage: int) -> void:
 	stats.health -= damage
 
@@ -81,4 +82,3 @@ func take_damage(damage: int) -> void:
 @rpc("any_peer", "call_local", "reliable")
 func notify_take_damage(damage: int) -> void:
 	Debug.log("damage received: %d" % damage)
-	

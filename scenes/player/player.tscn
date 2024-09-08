@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_jnx1s"]
 [ext_resource type="PackedScene" uid="uid://dyi7np8o56xxk" path="res://scenes/player/gun.tscn" id="4_r66d2"]
-[ext_resource type="Script" path="res://components/hitbox.gd" id="5_rrecb"]
 [ext_resource type="Script" path="res://scenes/player/stats.gd" id="6_c7gsx"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="6_svj0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv036"]
 size = Vector2(10, 4.66667)
@@ -356,13 +356,13 @@ properties/0/path = NodePath(".:id")
 properties/0/spawn = true
 properties/0/replication_mode = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxu6d"]
-size = Vector2(37, 70)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kf87w"]
+size = Vector2(39, 69)
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 15
 motion_mode = 1
 script = ExtResource("1_40kih")
 metadata/_edit_horizontal_guides_ = [0.0]
@@ -413,16 +413,16 @@ replication_config = SubResource("SceneReplicationConfig_e1lm7")
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vf5it")
 
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("5_rrecb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-0.5, -28)
-shape = SubResource("RectangleShape2D_qxu6d")
-
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("6_c7gsx")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("6_svj0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, -28.5)
+shape = SubResource("RectangleShape2D_kf87w")
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
