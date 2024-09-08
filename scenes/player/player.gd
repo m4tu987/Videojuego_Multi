@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var id := 1
 @export var walking = false
 @export var dir = Vector2.ZERO
-
 var speed = 200
 var accel = 100
 var base_speed = 200
@@ -11,12 +10,10 @@ var dash_speed = 1000
 var dash_direction = Vector2()
 var can_dash = true
 
-
 @onready var player_tag = $Player_Tag
 @onready var animation_tree = $AnimationTree
 @onready var sprite_2d = $Sprite2D
 @onready var multiplayer_synchronizer = $MultiplayerSynchronizer
-@onready var stats: Node = $Stats
 
 
 
@@ -73,12 +70,3 @@ func getcolor(player_data):
 		return Color.INDIAN_RED
 	if player_data.role == Statics.Role.ROLE_C:
 		return Color.DARK_SLATE_BLUE
-
-func take_damage(damage: int) -> void:
-	stats.health -= damage
-
-
-@rpc("any_peer", "call_local", "reliable")
-func notify_take_damage(damage: int) -> void:
-	Debug.log("damage received: %d" % damage)
-	

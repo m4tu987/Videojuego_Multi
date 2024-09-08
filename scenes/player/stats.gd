@@ -1,11 +1,11 @@
-class_name Stats
 extends Node
 
-signal health_changed(health)
 
-@export var health := 100 :
-	set(value):
-		health = clamp(value, 0, max_health)
-		health_changed.emit(health)
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
 
-@export var max_health := 100
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
