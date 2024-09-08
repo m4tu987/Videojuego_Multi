@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyi7np8o56xxk"]
+
+[ext_resource type="Texture2D" uid="uid://d37s4da5saxl4" path="res://assets/Pack 1/0px All.png" id="1_1eho2"]
+[ext_resource type="Script" path="res://scenes/player/gun.gd" id="1_xjnpv"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_xjnpv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(28, -6)
+scale = Vector2(3, 3)
+texture = ExtResource("1_1eho2")
+region_enabled = true
+region_rect = Rect2(39.3957, 36.7088, 15.7722, 12.9683)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(45, -10)
