@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=39 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dyi7np8o56xxk" path="res://scenes/player/gun.tscn" id="4_r66d2"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="5_fwsne"]
 [ext_resource type="PackedScene" uid="uid://ck7ih0cydbkcb" path="res://scenes/stats.tscn" id="6_haq3c"]
+[ext_resource type="PackedScene" uid="uid://dentogqnrpfgu" path="res://ui/hud.tscn" id="7_2xb5s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifvl8"]
 bg_color = Color(0, 0, 0, 1)
@@ -449,5 +450,7 @@ position = Vector2(-1.5, -27.5)
 shape = SubResource("RectangleShape2D_fn5le")
 
 [node name="Stats" parent="." instance=ExtResource("6_haq3c")]
+
+[node name="HUD" parent="." instance=ExtResource("7_2xb5s")]
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]

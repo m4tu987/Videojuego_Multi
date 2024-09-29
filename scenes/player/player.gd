@@ -16,6 +16,7 @@ var can_dash = true
 @onready var multiplayer_synchronizer = $MultiplayerSynchronizer
 @onready var stats = $Stats
 @onready var health_bar = $HealthBar
+@onready var hud = $HUD
 
 
 
@@ -28,9 +29,12 @@ func _ready() -> void:
 	setup(id)
 	var player_data: Statics.PlayerData = Game.get_player(id)
 	sprite_2d.material.set_shader_parameter("to",getcolor(player_data))
+	stats.health_changed.connect(func(health): hud.health = health)
 	stats.health_changed.connect(func(health): health_bar.value = health)
+	hud.health = stats.health
 	health_bar.value = stats.health
-	health_bar.visible
+	hud.visible = is_multiplayer_authority()
+	health_bar.visible 
 	player_tag.set_text(player_data.name)
 
 		
