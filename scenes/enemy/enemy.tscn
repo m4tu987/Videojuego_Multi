@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://8qr076x3t5uu"]
+[gd_scene load_steps=6 format=3 uid="uid://8qr076x3t5uu"]
 
-[ext_resource type="Script" path="res://scenes/player/enemy.gd" id="1_5jni1"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_5jni1"]
 [ext_resource type="Texture2D" uid="uid://cit52ah3qclqt" path="res://assets/enemy/SpiderPack/IdleOrange/SpiderIdleFront1.png" id="2_5ip4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtgy3"]
@@ -8,6 +8,11 @@ size = Vector2(20, 18)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uwav1"]
 radius = 205.039
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_07c8k"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5jni1")
@@ -25,3 +30,6 @@ shape = SubResource("RectangleShape2D_mtgy3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_uwav1")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_07c8k")
