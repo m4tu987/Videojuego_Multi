@@ -14,18 +14,30 @@ var can_dash = true
 @onready var animation_tree = $AnimationTree
 @onready var sprite_2d = $Sprite2D
 @onready var multiplayer_synchronizer = $MultiplayerSynchronizer
+@onready var stats = $Stats
+@onready var health_bar = $HealthBar
+@onready var hud = $HUD
 
 
 
 func _enter_tree() -> void:
 	$Gun.id = id
+	
 
 
 func _ready() -> void:
 	setup(id)
 	var player_data: Statics.PlayerData = Game.get_player(id)
 	sprite_2d.material.set_shader_parameter("to",getcolor(player_data))
+	stats.health_changed.connect(func(health): hud.health = health)
+	stats.health_changed.connect(func(health): health_bar.value = health)
+	hud.health = stats.health
+	health_bar.value = stats.health
+	hud.visible = is_multiplayer_authority()
+	health_bar.visible 
+	player_tag.set_text(player_data.name)
 
+		
 
 func _physics_process(_delta: float) -> void:
 	if is_multiplayer_authority():
@@ -70,3 +82,6 @@ func getcolor(player_data):
 		return Color.INDIAN_RED
 	if player_data.role == Statics.Role.ROLE_C:
 		return Color.DARK_SLATE_BLUE
+#se puede tambien hacer notify_take_damage.rpc(get_multiplayer_autorithy(), damage) para que llegue solo al que tiene autoridad
+func take_damage(damage: int) -> void:
+		stats.health -= damage
