@@ -34,7 +34,7 @@ func _ready() -> void:
 	hud.health = stats.health
 	health_bar.value = stats.health
 	hud.visible = is_multiplayer_authority()
-	health_bar.visible 
+	health_bar.visible = not is_multiplayer_authority() 
 	player_tag.set_text(player_data.name)
 
 		

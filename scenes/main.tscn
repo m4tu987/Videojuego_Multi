@@ -26,6 +26,6 @@ position = Vector2(912, 323)
 position = Vector2(561, 151)
 
 [node name="Map" parent="." instance=ExtResource("3_2kqfa")]
-visible = false
 
 [node name="Map2" parent="." instance=ExtResource("4_ev4e8")]
+visible = false
