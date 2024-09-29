@@ -1,9 +1,25 @@
-[gd_scene load_steps=33 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=38 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_jnx1s"]
 [ext_resource type="PackedScene" uid="uid://dyi7np8o56xxk" path="res://scenes/player/gun.tscn" id="4_r66d2"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="5_fwsne"]
+[ext_resource type="PackedScene" uid="uid://ck7ih0cydbkcb" path="res://scenes/stats.tscn" id="6_haq3c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifvl8"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy0x7"]
+bg_color = Color(0.596806, 0.638502, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv036"]
 size = Vector2(10, 4.66667)
@@ -354,6 +370,9 @@ properties/0/path = NodePath(".:id")
 properties/0/spawn = true
 properties/0/replication_mode = 0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fn5le"]
+size = Vector2(35, 71)
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 2
@@ -362,6 +381,18 @@ motion_mode = 1
 script = ExtResource("1_40kih")
 metadata/_edit_horizontal_guides_ = [0.0]
 metadata/_edit_group_ = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 100
+custom_minimum_size = Vector2(50, 10)
+offset_left = -51.0
+offset_top = -83.0
+offset_right = 49.0
+offset_bottom = -73.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ifvl8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iy0x7")
+value = 50.0
+show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, 0.825278)
@@ -380,10 +411,10 @@ vframes = 6
 position = Vector2(-1, -24)
 
 [node name="Player_Tag" type="Label" parent="."]
-offset_left = -28.0
-offset_top = 37.0
-offset_right = 34.0
-offset_bottom = 60.0
+offset_left = -30.0
+offset_top = 10.0
+offset_right = 32.0
+offset_bottom = 33.0
 
 [node name="Dash_Cooldown" type="Timer" parent="."]
 one_shot = true
@@ -407,5 +438,16 @@ replication_config = SubResource("SceneReplicationConfig_e1lm7")
 
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vf5it")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_fwsne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1.5, -27.5)
+shape = SubResource("RectangleShape2D_fn5le")
+
+[node name="Stats" parent="." instance=ExtResource("6_haq3c")]
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]

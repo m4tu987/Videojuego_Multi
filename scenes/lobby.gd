@@ -1,7 +1,6 @@
 extends MarginContainer
 
 @export var lobby_player_scene: PackedScene
-
 # { id: true }
 var status = { 1 : false }
 var _menu_stack: Array[Control] = []
