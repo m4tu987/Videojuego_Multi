@@ -16,6 +16,9 @@ properties/0/replication_mode = 1
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5jni1")
+speed = 30
+accel = 20
+base_speed = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 9.53674e-07)
