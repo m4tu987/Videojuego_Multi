@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=4 uid="uid://bhpqpl5r7g5j0"]
+
+[ext_resource type="TileSet" uid="uid://c46m43rsog1eh" path="res://scenes/map/map.tres" id="1_0xb20"]
+[ext_resource type="Texture2D" uid="uid://c0spwsc3c40rd" path="res://assets/efectos/Retro Impact Effect Pack 5 F.png" id="2_ebqvw"]
+[ext_resource type="Texture2D" uid="uid://cer4cgvirvl32" path="res://assets/map/SciFi_DungeonTileset16x16_0x72Like.png" id="3_rdcuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pauv2"]
+size = Vector2(25, 129)
+
+[node name="DoorSection" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAABAAEAAAAAAABAAAABAAFAAAAAAABAAEABAAFAAEAAAAAAAEABAACAAMAAAAAAAIABAACAAMAAAAAAAMABAACAAMAAAAAAAQABAACAAMAAAAAAAUABAACAAMAAAAAAAYABAACAAMAAAAAAAcABAACAAMAAAAAAAgABAAEAAAAAAABAAgABAAEAAAAAAABAAcABAAFAAEAAAABAAIABAABAAMAAAABAAMABAABAAMAAAABAAQABAABAAMAAAABAAUABAABAAMAAAABAAYABAAFAAEAAAA=")
+tile_set = ExtResource("1_0xb20")
+
+[node name="Door" type="StaticBody2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="Door"]
+repeat_size = Vector2(0, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="Door/Parallax2D"]
+position = Vector2(48, 96)
+texture = ExtResource("2_ebqvw")
+hframes = 9
+vframes = 30
+frame = 225
+
+[node name="AnimationTree" type="AnimationTree" parent="Door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2(49.5, 128.5)
+shape = SubResource("RectangleShape2D_pauv2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 18)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_rdcuh")
+hframes = 16
+vframes = 15
+frame = 46
