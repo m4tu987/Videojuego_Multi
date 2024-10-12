@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=42 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
@@ -32,6 +32,48 @@ shader_parameter/from = Color(0.490196, 0.717647, 0.823529, 1)
 shader_parameter/to = Color(0.490196, 0.717647, 0.823529, 1)
 shader_parameter/tolerance = 0.16
 
+[sub_resource type="Animation" id="Animation_04qlj"]
+resource_name = "Death"
+length = 0.1
+loop_mode = 1
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.933033),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0199999),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
 [sub_resource type="Animation" id="Animation_rseco"]
 resource_name = "Idle_back"
 length = 0.1
@@ -59,6 +101,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_eq2se"]
@@ -89,6 +143,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_0eln8"]
 resource_name = "Idle_left"
@@ -117,6 +183,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_nfxgd"]
@@ -147,6 +225,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_rtqaq"]
 length = 0.001
@@ -161,6 +251,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_22kex"]
@@ -191,6 +293,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_efhr4"]
 resource_name = "Walk_forward "
@@ -219,6 +333,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ssufh"]
@@ -249,6 +375,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_c1e1w"]
 resource_name = "Walk_right"
@@ -278,9 +416,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yudyw"]
 _data = {
+"Death": SubResource("Animation_04qlj"),
 "Idle_back": SubResource("Animation_rseco"),
 "Idle_front": SubResource("Animation_eq2se"),
 "Idle_left": SubResource("Animation_0eln8"),
@@ -291,6 +442,9 @@ _data = {
 "Walk_left": SubResource("Animation_ssufh"),
 "Walk_right": SubResource("Animation_c1e1w")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ekoeq"]
+animation = &"Death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fdgm7"]
 animation = &"Idle_left"
@@ -350,9 +504,11 @@ advance_mode = 2
 advance_condition = &"Idle"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p0kun"]
-states/End/position = Vector2(530, 107)
+states/Death/node = SubResource("AnimationNodeAnimation_ekoeq")
+states/Death/position = Vector2(501, 157)
+states/End/position = Vector2(523, 74)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_lj2uq")
-states/Idle/position = Vector2(328, 71)
+states/Idle/position = Vector2(328, 74)
 states/Start/position = Vector2(127, 107)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_5gyot")
 states/Walk/position = Vector2(328, 162)
@@ -374,6 +530,9 @@ properties/0/replication_mode = 0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn5le"]
 size = Vector2(35, 71)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yf8v"]
+size = Vector2(102, 128)
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 2
@@ -381,7 +540,6 @@ collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_40kih")
 metadata/_edit_horizontal_guides_ = [0.0]
-metadata/_edit_group_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 z_index = 100
@@ -452,5 +610,13 @@ shape = SubResource("RectangleShape2D_fn5le")
 [node name="Stats" parent="." instance=ExtResource("6_haq3c")]
 
 [node name="HUD" parent="." instance=ExtResource("7_2xb5s")]
+
+[node name="ResurrectArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResurrectArea"]
+position = Vector2(-3, -8)
+shape = SubResource("RectangleShape2D_6yf8v")
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
