@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=5 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
 [ext_resource type="PackedScene" uid="uid://5ii184hki74a" path="res://scenes/map/map.tscn" id="3_2kqfa"]
 [ext_resource type="PackedScene" uid="uid://bb3yyl4dr2qey" path="res://scenes/player/player.tscn" id="3_mwc6d"]
+[ext_resource type="PackedScene" uid="uid://bhpqpl5r7g5j0" path="res://scenes/map/doorSection.tscn" id="4_xw32b"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -25,3 +26,7 @@ position = Vector2(912, 323)
 position = Vector2(561, 151)
 
 [node name="Map" parent="." instance=ExtResource("3_2kqfa")]
+z_index = -1
+
+[node name="DoorSection" parent="." instance=ExtResource("4_xw32b")]
+position = Vector2(1024, 0)
