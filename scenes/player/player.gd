@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var id := 1
@@ -9,7 +10,7 @@ var base_speed = 200
 var dash_speed = 1000
 var dash_direction = Vector2()
 var can_dash = true
-
+var _players_inside: Array[Player] = []
 @onready var player_tag = $Player_Tag
 @onready var animation_tree = $AnimationTree
 @onready var sprite_2d = $Sprite2D
@@ -17,6 +18,8 @@ var can_dash = true
 @onready var stats = $Stats
 @onready var health_bar = $HealthBar
 @onready var hud = $HUD
+@onready var playback = animation_tree["parameters/playback"]
+@onready var resurrect_area = $ResurrectArea
 
 
 
@@ -29,16 +32,25 @@ func _ready() -> void:
 	setup(id)
 	var player_data: Statics.PlayerData = Game.get_player(id)
 	sprite_2d.material.set_shader_parameter("to",getcolor(player_data))
-	stats.health_changed.connect(func(health): hud.health = health)
-	stats.health_changed.connect(func(health): health_bar.value = health)
+	stats.health_changed.connect(_on_health_changed)
 	hud.health = stats.health
 	health_bar.value = stats.health
 	hud.visible = is_multiplayer_authority()
-	health_bar.visible = not is_multiplayer_authority() 
+	health_bar.visible = not is_multiplayer_authority()
 	player_tag.set_text(player_data.name)
-
+	animation_tree.active = true
+	if is_multiplayer_authority():
+		resurrect_area.body_entered.connect(_on_dead_player_entered)
+		resurrect_area.body_exited.connect(_on_dead_player_exited)
 		
-
+func _input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
+	if event.is_action_pressed("revivir"):
+		for player in _players_inside:
+			if is_instance_valid(player):
+				player.resurrect.rpc_id(1)
+				
 func _physics_process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		var direction = Input.get_vector("left", "right", "up", "down")
@@ -51,6 +63,8 @@ func _physics_process(_delta: float) -> void:
 			velocity = dash_direction * dash_speed
 			$Dash_Cooldown.start()
 		walking = direction != Vector2.ZERO
+		if stats.health <= 0:
+			velocity = Vector2.ZERO
 		send_position.rpc(position)
 	if walking:
 		animation_tree.set("parameters/Idle/blend_position", dir)
@@ -85,3 +99,28 @@ func getcolor(player_data):
 #se puede tambien hacer notify_take_damage.rpc(get_multiplayer_autorithy(), damage) para que llegue solo al que tiene autoridad
 func take_damage(damage: int) -> void:
 		stats.health -= damage
+		
+func _on_health_changed(health) -> void:
+	hud.health = health
+	health_bar.value = health
+	if health <= 0:
+		die()
+	if health == stats.max_health:
+		playback.travel("Idle")
+func die():
+	playback.travel("Death")
+	
+@rpc("call_local", "reliable", "any_peer")
+func resurrect(): 
+	stats.health = stats.max_health
+	
+func _on_dead_player_entered(body: Node) -> void:
+	if body == self:
+		return
+	var player = body as Player
+	if player:
+		if player not in _players_inside:
+			_players_inside.push_back(player)
+func _on_dead_player_exited(body: Node) -> void:
+	if body in _players_inside:
+		_players_inside.erase(body)
