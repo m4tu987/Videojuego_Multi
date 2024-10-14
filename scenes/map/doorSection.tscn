@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=4 uid="uid://bhpqpl5r7g5j0"]
+[gd_scene load_steps=4 format=4 uid="uid://bhpqpl5r7g5j0"]
 
 [ext_resource type="TileSet" uid="uid://c46m43rsog1eh" path="res://scenes/map/map.tres" id="1_0xb20"]
+[ext_resource type="PackedScene" uid="uid://cfnews5d73jkn" path="res://scenes/map/screen.tscn" id="3_lwaxb"]
 [ext_resource type="PackedScene" uid="uid://s73tbs4l6ac6" path="res://scenes/map/door.tscn" id="4_o1gaf"]
 
 [node name="DoorSection" type="Node2D"]
@@ -12,3 +13,8 @@ tile_set = ExtResource("1_0xb20")
 
 [node name="Door" parent="." instance=ExtResource("4_o1gaf")]
 position = Vector2(96, 130)
+role = 1
+
+[node name="Screen" parent="." instance=ExtResource("3_lwaxb")]
+position = Vector2(-1, 2)
+role = 1

@@ -4,15 +4,21 @@ var player_inside: Player
 
 @onready var door = $"../Door"
 @export var role: Statics.Role
+@onready var animation_screen = $AnimationScreen
+@onready var screen_sprite = $ScreenSprite
 
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	for player in Game.players:
-		if player.role == role:
-			modulate = player.color
-			return
+	animation_screen.play("Idle")
+	if role == Statics.Role.ROLE_A:
+		screen_sprite.material.set_shader_parameter("to",Color.LIME)
+	if role == Statics.Role.ROLE_B:
+		screen_sprite.material.set_shader_parameter("to",Color.CRIMSON)
+	if role == Statics.Role.ROLE_C:
+		screen_sprite.material.set_shader_parameter("to",Color.BLUE)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action") and player_inside:
