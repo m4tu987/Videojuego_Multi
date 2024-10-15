@@ -13,8 +13,7 @@ tile_set = ExtResource("1_0xb20")
 
 [node name="Door" parent="." instance=ExtResource("4_o1gaf")]
 position = Vector2(96, 130)
-role = 1
+role = 2
 
 [node name="Screen" parent="." instance=ExtResource("3_lwaxb")]
-position = Vector2(-1, 2)
-role = 1
+role = 2

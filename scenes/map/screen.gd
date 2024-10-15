@@ -2,6 +2,7 @@ extends Area2D
 
 var player_inside: Player
 
+
 @onready var door = $"../Door"
 @export var role: Statics.Role
 @onready var animation_screen = $AnimationScreen

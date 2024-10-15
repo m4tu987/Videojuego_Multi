@@ -11,7 +11,7 @@ shader_parameter/to = Color(0.784314, 0.784314, 0.784314, 1)
 shader_parameter/tolerance = 0.483
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ebck"]
-size = Vector2(65, 125)
+size = Vector2(66, 126)
 
 [sub_resource type="Animation" id="Animation_gh4dj"]
 resource_name = "Idle"
@@ -52,6 +52,8 @@ _data = {
 }
 
 [node name="Screen" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_b0qk1")
 
 [node name="ScreenSprite" type="Sprite2D" parent="."]
@@ -64,8 +66,7 @@ vframes = 15
 frame = 47
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(33.5, 63.5)
+position = Vector2(33, 63)
 shape = SubResource("RectangleShape2D_3ebck")
 
 [node name="AnimationScreen" type="AnimationPlayer" parent="."]

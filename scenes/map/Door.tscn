@@ -12,10 +12,10 @@ shader_parameter/to = Color(0.784314, 0.784314, 0.784314, 1)
 shader_parameter/tolerance = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c4pr"]
-size = Vector2(24.5, 128)
+size = Vector2(12, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmrbq"]
-size = Vector2(69, 254)
+size = Vector2(60, 252)
 
 [sub_resource type="Animation" id="Animation_1c05n"]
 length = 0.001
@@ -79,7 +79,7 @@ script = ExtResource("1_rcj0s")
 
 [node name="Parallax2D" type="Parallax2D" parent="Ray"]
 scale = Vector2(2, 2)
-repeat_size = Vector2(0, 64)
+repeat_size = Vector2(0, 62)
 
 [node name="raySprite" type="Sprite2D" parent="Ray/Parallax2D"]
 material = SubResource("ShaderMaterial_i5yxb")
@@ -89,18 +89,18 @@ hframes = 9
 vframes = 30
 frame = 225
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ray"]
-visible = false
-position = Vector2(0, 128)
+[node name="RayCollisionShape" type="CollisionShape2D" parent="Ray"]
+position = Vector2(0, 126)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_2c4pr")
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("4_splvq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 128)
+[node name="RayHitboxShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 126)
 shape = SubResource("RectangleShape2D_mmrbq")
 
 [node name="AnimationDoor" type="AnimationPlayer" parent="."]
@@ -108,3 +108,9 @@ root_node = NodePath("../Ray")
 libraries = {
 "": SubResource("AnimationLibrary_5faco")
 }
+
+[node name="TurningOff" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="TurningOff" to="." method="_on_turning_off_timeout"]
