@@ -114,7 +114,7 @@ func die():
 func resurrect():
 	if dead == 1: 
 		stats.health = stats.max_health
-	
+		dead = 0
 func _on_dead_player_entered(body: Node) -> void:
 	if body == self:
 		return
