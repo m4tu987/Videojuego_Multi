@@ -20,8 +20,7 @@ var _players_inside: Array[Player] = []
 @onready var hud = $HUD
 @onready var playback = animation_tree["parameters/playback"]
 @onready var resurrect_area = $ResurrectArea
-
-
+var dead = 0
 
 func _enter_tree() -> void:
 	$Gun.id = id
@@ -109,10 +108,12 @@ func _on_health_changed(health) -> void:
 		playback.travel("Idle")
 func die():
 	playback.travel("Death")
+	dead = 1
 	
 @rpc("call_local", "reliable", "any_peer")
-func resurrect(): 
-	stats.health = stats.max_health
+func resurrect():
+	if dead == 1: 
+		stats.health = stats.max_health
 	
 func _on_dead_player_entered(body: Node) -> void:
 	if body == self:
