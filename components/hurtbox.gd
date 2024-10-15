@@ -6,6 +6,7 @@ extends Area2D
 func _ready() -> void:
 	if multiplayer.is_server():
 		area_entered.connect(_on_area_entered)
+		#area_exited.connect(_on_area_exited)
 	
 func _on_area_entered(area: Area2D) -> void:
 	var hitbox = area as Hitbox
@@ -15,3 +16,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if owner.has_method("take_damage"):
 			owner.take_damage(hitbox.damage)
 			hitbox.damage_dealt.emit()
+
+#func _on_area_exited(area: Area2D) -> void:
+	#var hitbox = area as Hitbox
+	#return

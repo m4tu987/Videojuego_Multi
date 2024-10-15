@@ -1,10 +1,14 @@
 extends Hitbox
 
+signal damage_dealt
+
 @export var speed = 300
 @onready var sprite_2d = $Sprite2D
 @export var owner_role: Statics.Role
 
+
 func _ready():
+	set_damage(10)
 	if owner_role == Statics.Role.ROLE_A:
 		sprite_2d.material.set_shader_parameter("to",Color.LIME)
 	if owner_role == Statics.Role.ROLE_B:
