@@ -1,6 +1,6 @@
 extends Hitbox
 
-signal damage_dealt
+
 
 @export var speed = 300
 @onready var sprite_2d = $Sprite2D

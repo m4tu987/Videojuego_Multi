@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/map/door.gd" id="1_rcj0s"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_cioti"]
 [ext_resource type="Texture2D" uid="uid://c0spwsc3c40rd" path="res://assets/efectos/Retro Impact Effect Pack 5 F.png" id="2_ebqvw"]
-[ext_resource type="Script" path="res://components/hitbox.gd" id="4_splvq"]
+[ext_resource type="Script" path="res://components/hitzone.gd" id="4_h66q7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i5yxb"]
 resource_local_to_scene = true
@@ -95,12 +95,12 @@ position = Vector2(0, 126)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_2c4pr")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitzone" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("4_splvq")
+script = ExtResource("4_h66q7")
 
-[node name="RayHitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="RayHitboxShape" type="CollisionShape2D" parent="Hitzone"]
 position = Vector2(0, 126)
 shape = SubResource("RectangleShape2D_mmrbq")
 

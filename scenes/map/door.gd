@@ -5,7 +5,7 @@ extends Node2D
 @export var role: Statics.Role
 @onready var ray_sprite = $Ray/Parallax2D/raySprite
 @onready var ray_collision_shape = $Ray/RayCollisionShape
-@onready var ray_hitbox_shape = $Hitbox/RayHitboxShape
+@onready var ray_hitbox_shape = $Hitzone/RayHitboxShape
 
 
 
