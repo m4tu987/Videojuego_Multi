@@ -9,9 +9,7 @@
 y_sort_enabled = true
 script = ExtResource("1_ysfbh")
 player_scene = ExtResource("3_mwc6d")
-
-[node name="Players" type="Node2D" parent="."]
-y_sort_enabled = true
+door_section_scene = ExtResource("4_xw32b")
 
 [node name="Markers" type="Node2D" parent="."]
 position = Vector2(0, 3)
@@ -28,5 +26,13 @@ position = Vector2(561, 151)
 [node name="Map" parent="." instance=ExtResource("3_2kqfa")]
 z_index = -1
 
-[node name="DoorSection" parent="." instance=ExtResource("4_xw32b")]
-position = Vector2(1024, 0)
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="MarkerDoor0" type="Marker2D" parent="Doors"]
+position = Vector2(1600, 0)
+
+[node name="MarkerDoor1" type="Marker2D" parent="Doors"]
+position = Vector2(2880, 0)
+
+[node name="MarkerDoor2" type="Marker2D" parent="Doors"]
+position = Vector2(4160, 0)

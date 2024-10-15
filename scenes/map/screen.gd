@@ -13,6 +13,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	animation_screen.play("Idle")
+	role = get_parent().role
 	if role == Statics.Role.ROLE_A:
 		screen_sprite.material.set_shader_parameter("to",Color.LIME)
 	if role == Statics.Role.ROLE_B:

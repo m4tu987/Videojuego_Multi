@@ -20,6 +20,7 @@ func open_local() -> void:
 
 
 func _ready():
+	role = get_parent().role
 	if role == Statics.Role.ROLE_A:
 		ray_sprite.material.set_shader_parameter("to",Color.LIME)
 	if role == Statics.Role.ROLE_B:

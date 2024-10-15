@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://components/hitbox.gd" id="4_splvq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i5yxb"]
+resource_local_to_scene = true
 shader = ExtResource("2_cioti")
 shader_parameter/from = Color(0.92549, 0.952941, 1, 1)
 shader_parameter/to = Color(0.784314, 0.784314, 0.784314, 1)

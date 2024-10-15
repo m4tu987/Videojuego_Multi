@@ -5,6 +5,7 @@
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_eo64w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ys3jy"]
+resource_local_to_scene = true
 shader = ExtResource("2_eo64w")
 shader_parameter/from = Color(0.509804, 0.662745, 0.156863, 1)
 shader_parameter/to = Color(0.784314, 0.784314, 0.784314, 1)
