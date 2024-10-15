@@ -29,9 +29,11 @@ script = ExtResource("1_eyewj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_f2vb1")
+scale = Vector2(2, 2)
 texture = ExtResource("2_kxmwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_llk4i")
 
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
