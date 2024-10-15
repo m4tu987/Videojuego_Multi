@@ -104,7 +104,7 @@ func _on_health_changed(health) -> void:
 	health_bar.value = health
 	if health <= 0:
 		die()
-	if health == stats.max_health:
+	if health == stats.max_health/2:
 		playback.travel("Idle")
 func die():
 	playback.travel("Death")
@@ -113,7 +113,7 @@ func die():
 @rpc("call_local", "reliable", "any_peer")
 func resurrect():
 	if dead == 1: 
-		stats.health = stats.max_health
+		stats.health = stats.max_health/2
 		dead = 0
 func _on_dead_player_entered(body: Node) -> void:
 	if body == self:
