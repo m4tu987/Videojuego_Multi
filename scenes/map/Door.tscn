@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/map/door.gd" id="1_rcj0s"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_cioti"]
 [ext_resource type="Texture2D" uid="uid://c0spwsc3c40rd" path="res://assets/efectos/Retro Impact Effect Pack 5 F.png" id="2_ebqvw"]
-[ext_resource type="Script" path="res://components/hitzone.gd" id="4_h66q7"]
+[ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="4_h66q7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i5yxb"]
 resource_local_to_scene = true
