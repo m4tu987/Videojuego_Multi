@@ -12,8 +12,10 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	var hitbox = area as Hitbox
 	if hitbox:
-		if self_damage and hitbox.owner != owner:
-			return
+		var bullet = hitbox as Bullet
+		if bullet:
+			if !self_damage and bullet.shooter_role == Game.get_player(owner.id).role:
+				return
 		is_inside = true
 		if owner.has_method("take_damage"):
 			owner.take_damage(hitbox.damage)
