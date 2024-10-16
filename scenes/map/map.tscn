@@ -1,13 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://5ii184hki74a"]
+[gd_scene load_steps=2 format=4 uid="uid://5ii184hki74a"]
 
-[ext_resource type="Script" path="res://scenes/map/camera_2d.gd" id="2_0d8i1"]
 [ext_resource type="TileSet" uid="uid://c46m43rsog1eh" path="res://scenes/map/map.tres" id="2_vshqp"]
 
 [node name="Map" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(512, 288)
-script = ExtResource("2_0d8i1")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scale = Vector2(2, 2)

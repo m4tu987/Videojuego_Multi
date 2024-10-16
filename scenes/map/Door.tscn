@@ -83,6 +83,7 @@ scale = Vector2(2, 2)
 repeat_size = Vector2(0, 62)
 
 [node name="raySprite" type="Sprite2D" parent="Ray/Parallax2D"]
+z_index = 10
 material = SubResource("ShaderMaterial_i5yxb")
 position = Vector2(0, 32)
 texture = ExtResource("2_ebqvw")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=6 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
 [ext_resource type="PackedScene" uid="uid://5ii184hki74a" path="res://scenes/map/map.tscn" id="3_2kqfa"]
 [ext_resource type="PackedScene" uid="uid://bb3yyl4dr2qey" path="res://scenes/player/player.tscn" id="3_mwc6d"]
 [ext_resource type="PackedScene" uid="uid://bhpqpl5r7g5j0" path="res://scenes/map/doorSection.tscn" id="4_xw32b"]
+[ext_resource type="PackedScene" uid="uid://dbsj1koyihqbf" path="res://scenes/camera/camera.tscn" id="5_c6mwe"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -36,3 +37,5 @@ position = Vector2(2880, 0)
 
 [node name="MarkerDoor2" type="Marker2D" parent="Doors"]
 position = Vector2(4160, 0)
+
+[node name="Camera" parent="." instance=ExtResource("5_c6mwe")]

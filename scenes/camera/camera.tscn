@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbsj1koyihqbf"]
+
+[ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
+[ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
+size = Vector2(1188, 576)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlu5e"]
+size = Vector2(218, 576)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vssyv"]
+size = Vector2(222, 576)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5wpn8"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:move")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
+[node name="Camera" type="Camera2D"]
+position = Vector2(512, 288)
+limit_left = 0
+limit_top = 0
+limit_bottom = 576
+script = ExtResource("1_ee05d")
+
+[node name="Hitzone" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_gjfo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitzone"]
+position = Vector2(-1042, 0)
+shape = SubResource("RectangleShape2D_2638a")
+
+[node name="BackWall" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackWall"]
+position = Vector2(-621, 0)
+shape = SubResource("RectangleShape2D_jlu5e")
+
+[node name="FrontWall" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontWall"]
+position = Vector2(623, 0)
+shape = SubResource("RectangleShape2D_vssyv")
+
+[node name="Begin" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CameraSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5wpn8")
+
+[connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
