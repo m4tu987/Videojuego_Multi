@@ -24,7 +24,6 @@ var dead = 0
 
 func _enter_tree() -> void:
 	$Gun.id = id
-	
 
 
 func _ready() -> void:
@@ -95,10 +94,11 @@ func getcolor(player_data):
 		return Color.INDIAN_RED
 	if player_data.role == Statics.Role.ROLE_C:
 		return Color.DARK_SLATE_BLUE
+
 #se puede tambien hacer notify_take_damage.rpc(get_multiplayer_autorithy(), damage) para que llegue solo al que tiene autoridad
 func take_damage(damage: int) -> void:
 		stats.health -= damage
-		
+
 func _on_health_changed(health) -> void:
 	hud.health = health
 	health_bar.value = health
@@ -106,6 +106,7 @@ func _on_health_changed(health) -> void:
 		die()
 	if health == stats.max_health/2:
 		playback.travel("Idle")
+
 func die():
 	playback.travel("Death")
 	dead = 1
@@ -115,6 +116,7 @@ func resurrect():
 	if dead == 1: 
 		stats.health = stats.max_health/2
 		dead = 0
+
 func _on_dead_player_entered(body: Node) -> void:
 	if body == self:
 		return
@@ -122,6 +124,7 @@ func _on_dead_player_entered(body: Node) -> void:
 	if player:
 		if player not in _players_inside:
 			_players_inside.push_back(player)
+
 func _on_dead_player_exited(body: Node) -> void:
 	if body in _players_inside:
 		_players_inside.erase(body)
