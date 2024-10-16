@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
-size = Vector2(1188, 576)
+size = Vector2(564, 576)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlu5e"]
 size = Vector2(218, 576)
@@ -33,7 +33,7 @@ collision_mask = 3
 script = ExtResource("1_gjfo0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitzone"]
-position = Vector2(-1042, 0)
+position = Vector2(-730, 0)
 shape = SubResource("RectangleShape2D_2638a")
 
 [node name="BackWall" type="StaticBody2D" parent="."]
