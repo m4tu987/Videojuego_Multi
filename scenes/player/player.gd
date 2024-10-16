@@ -104,7 +104,7 @@ func _on_health_changed(health) -> void:
 	health_bar.value = health
 	if health <= 0:
 		die()
-	if health == stats.max_health/2:
+	if health > 0:
 		playback.travel("Idle")
 
 func die():
