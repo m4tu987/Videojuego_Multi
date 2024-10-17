@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbsj1koyihqbf"]
+[gd_scene load_steps=8 format=3 uid="uid://dbsj1koyihqbf"]
 
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
@@ -19,6 +19,10 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:move")
 properties/1/spawn = true
 properties/1/replication_mode = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6tfxi"]
+particle_flag_disable_z = true
+gravity = Vector3(100, 0, 0)
 
 [node name="Camera" type="Camera2D"]
 position = Vector2(512, 288)
@@ -58,5 +62,9 @@ one_shot = true
 
 [node name="CameraSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5wpn8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-512, 0)
+process_material = SubResource("ParticleProcessMaterial_6tfxi")
 
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
