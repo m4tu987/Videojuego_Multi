@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=4 uid="uid://bhpqpl5r7g5j0"]
+
+[ext_resource type="TileSet" uid="uid://c46m43rsog1eh" path="res://scenes/map/map.tres" id="1_0xb20"]
+[ext_resource type="Script" path="res://scenes/map/door_section.gd" id="1_4qfdl"]
+[ext_resource type="PackedScene" uid="uid://cfnews5d73jkn" path="res://scenes/map/screen.tscn" id="3_lwaxb"]
+[ext_resource type="PackedScene" uid="uid://s73tbs4l6ac6" path="res://scenes/map/Door.tscn" id="4_o1gaf"]
+
+[node name="DoorSection" type="Node2D"]
+script = ExtResource("1_4qfdl")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAABAAEAAAAAAABAAAABAAFAAAAAAABAAEABAAFAAEAAAAAAAEABAACAAMAAAAAAAIABAAAAAMAAAAAAAMABAAAAAMAAAAAAAQABAAAAAMAAAAAAAUABAAAAAMAAAAAAAYABAAAAAMAAAAAAAcABAACAAMAAAAAAAgABAAEAAAAAAABAAgABAAEAAAAAAABAAcABAAFAAEAAAABAAIABAABAAMAAAABAAMABAABAAMAAAABAAQABAABAAMAAAABAAUABAABAAMAAAABAAYABAAFAAEAAAA=")
+tile_set = ExtResource("1_0xb20")
+
+[node name="Door" parent="." instance=ExtResource("4_o1gaf")]
+position = Vector2(96, 130)
+
+[node name="Screen" parent="." instance=ExtResource("3_lwaxb")]
