@@ -9,8 +9,10 @@ var target: Node2D
 @onready var detection_area: Area2D = $DetectionArea
 @export var is_global := true
 
+@onready var stats := $EnemyStats
 
 func _ready() -> void:
+	stats.health_changed.connect(_on_health_changed)
 	if not is_global:
 		if multiplayer.is_server():
 			detection_area.body_entered.connect(_on_body_entered)
@@ -41,6 +43,21 @@ func _on_body_entered(body: Node) -> void:
 func _on_body_exited(body: Node) -> void:
 	if body == target:
 		set_target(null)
+
+func take_damage(damage: int) -> void:
+		stats.health -= damage
+		if stats.health <=0:
+			queue_free()
+
+
+func _on_health_changed(health) -> void:
+	if health<=0:
+		die.rpc()
+
+
+@rpc("any_peer", "reliable")
+func die() -> void:
+	queue_free()
 
 
 func set_target(value: Node2D) -> void:
