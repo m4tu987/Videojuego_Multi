@@ -1,11 +1,19 @@
-extends Node
+class_name Hurtbox_enemy
+extends Area2D
+
+@export var self_damage = false
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _ready() -> void:
+	if multiplayer.is_server():
+		area_entered.connect(_on_area_entered)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_area_entered(area: Area2D) -> void:
+	var hitbox = area as Hitbox
+	if hitbox:
+		if self_damage and hitbox.owner != owner:
+			return
+		if owner.has_method("take_damage"):
+			owner.take_damage(hitbox.damage)
+			hitbox.damage_dealt.emit()

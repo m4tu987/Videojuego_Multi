@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://8qr076x3t5uu"]
+[gd_scene load_steps=8 format=3 uid="uid://8qr076x3t5uu"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_5jni1"]
 [ext_resource type="Texture2D" uid="uid://cit52ah3qclqt" path="res://assets/enemy/SpiderPack/IdleOrange/SpiderIdleFront1.png" id="2_5ip4m"]
 [ext_resource type="PackedScene" uid="uid://cpk2b7cb1w0jd" path="res://scenes/enemy/enemy_stats.tscn" id="3_2dtxh"]
+[ext_resource type="Script" path="res://components/hurtbox_enemy.gd" id="4_2r43k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtgy3"]
-size = Vector2(20, 18)
+size = Vector2(33, 29)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_07c8k"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86g8f"]
+size = Vector2(33, 29)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5jni1")
@@ -24,10 +28,19 @@ scale = Vector2(2.5, 2.348)
 texture = ExtResource("2_5ip4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_mtgy3")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_07c8k")
 
 [node name="EnemyStats" parent="." instance=ExtResource("3_2dtxh")]
+
+[node name="Hurtbox_enemy" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("4_2r43k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_enemy"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_86g8f")
