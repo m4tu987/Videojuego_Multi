@@ -6,17 +6,12 @@ extends CharacterBody2D
 
 var target: Node2D
 
-@onready var detection_area: Area2D = $DetectionArea
 @export var is_global := true
 
 @onready var stats := $EnemyStats
 
 func _ready() -> void:
 	stats.health_changed.connect(_on_health_changed)
-	if not is_global:
-		if multiplayer.is_server():
-			detection_area.body_entered.connect(_on_body_entered)
-			detection_area.body_exited.connect(_on_body_exited)
 
 func _physics_process(_delta: float) -> void:
 	if is_global:
@@ -62,7 +57,9 @@ func die() -> void:
 
 func set_target(value: Node2D) -> void:
 	target = value
-	var path = target.get_path() if target else null
+	var path = null
+	if target:
+		target.get_path()  
 	set_target_remote.rpc(path)
 
 @rpc("any_peer", "reliable")
