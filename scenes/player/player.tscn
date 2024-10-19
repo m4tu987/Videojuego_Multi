@@ -536,7 +536,7 @@ size = Vector2(102, 128)
 [node name="player" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 motion_mode = 1
 script = ExtResource("1_40kih")
 metadata/_edit_horizontal_guides_ = [0.0]
@@ -599,8 +599,8 @@ replication_config = SubResource("SceneReplicationConfig_e1lm7")
 replication_config = SubResource("SceneReplicationConfig_vf5it")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("5_fwsne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -617,8 +617,8 @@ visible = false
 
 [node name="ResurrectArea" type="Area2D" parent="."]
 visible = false
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ResurrectArea"]
 position = Vector2(0, -8)

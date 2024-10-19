@@ -26,7 +26,7 @@ properties/2/spawn = true
 properties/2/replication_mode = 2
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 14
+collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_eyewj")
 
