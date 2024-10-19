@@ -41,20 +41,20 @@ void fragment()
 {
 	// we usually want more granularity the closer we are to the original color
 	float _tol = tolerance * tolerance;
-
+	
 	vec4 tex = texture(TEXTURE, UV);
 	vec3 source_hsv = rgb2hsv(tex.rgb);
 	vec3 initial_hsv = rgb2hsv(from.rgb);
 	vec3 hsv_shift = rgb2hsv(to.rgb) - initial_hsv;
-
+	
 	float hue = initial_hsv.r;
-
+	
 	// the .r here represents HUE, .g is SATURATION, .b is LUMINANCE
 	if (hue - source_hsv.r >= -_tol && hue - source_hsv.r <= +_tol)
 	{
 		vec3 final_hsv = source_hsv + hsv_shift;
 		tex.rgb = hsv2rgb(final_hsv);
 	}
-
+	
 	COLOR = tex * modulate;
 }

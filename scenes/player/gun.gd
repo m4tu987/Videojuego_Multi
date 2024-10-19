@@ -34,7 +34,6 @@ func fire() -> void:
 		Debug.log("No bullet provided")
 		return
 	var bullet_inst = bullet_scene.instantiate()
-	bullet_inst.shooter_role = Game.get_player(get_parent().id).role
 	bullet_inst.global_position = marker_2d.global_position
 	bullet_inst.global_rotation = global_rotation
 	bullet_spawner.add_child(bullet_inst, true)

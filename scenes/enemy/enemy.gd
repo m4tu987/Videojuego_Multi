@@ -18,7 +18,7 @@ func _ready() -> void:
 			detection_area.body_entered.connect(_on_body_entered)
 			detection_area.body_exited.connect(_on_body_exited)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if is_global:
 		var closest = null
 		var closest_distance_squared = 0
