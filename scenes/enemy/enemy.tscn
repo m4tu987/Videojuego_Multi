@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://8qr076x3t5uu"]
+[gd_scene load_steps=11 format=3 uid="uid://8qr076x3t5uu"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_5jni1"]
 [ext_resource type="Texture2D" uid="uid://cit52ah3qclqt" path="res://assets/enemy/SpiderPack/IdleOrange/SpiderIdleFront1.png" id="2_5ip4m"]
 [ext_resource type="PackedScene" uid="uid://cpk2b7cb1w0jd" path="res://scenes/enemy/enemy_stats.tscn" id="3_2dtxh"]
-[ext_resource type="Script" path="res://components/hurtbox.gd" id="4_pvmm8"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy_hurtbox.gd" id="4_p3yhg"]
+[ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="5_lr0on"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtgy3"]
 size = Vector2(20, 18)
@@ -19,6 +20,9 @@ properties/0/replication_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgbwy"]
 size = Vector2(31, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tetw0"]
+size = Vector2(54, 47)
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5jni1")
 speed = 30
@@ -31,7 +35,6 @@ scale = Vector2(2.5, 2.348)
 texture = ExtResource("2_5ip4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_mtgy3")
 
@@ -47,12 +50,21 @@ replication_config = SubResource("SceneReplicationConfig_07c8k")
 
 [node name="EnemyStats" parent="." instance=ExtResource("3_2dtxh")]
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="EnemyHurtbox" type="Area2D" parent="."]
+visible = false
 position = Vector2(-1, 0)
 collision_layer = 6
 collision_mask = 6
-script = ExtResource("4_pvmm8")
+script = ExtResource("4_p3yhg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_rgbwy")
+
+[node name="Hitzone" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("5_lr0on")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitzone"]
+shape = SubResource("RectangleShape2D_tetw0")

@@ -11,6 +11,8 @@ var target: Node2D
 
 @onready var stats := $EnemyStats
 
+
+
 func _ready() -> void:
 	stats.health_changed.connect(_on_health_changed)
 	if not is_global:
