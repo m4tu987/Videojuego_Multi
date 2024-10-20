@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=8 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
 [ext_resource type="PackedScene" uid="uid://5ii184hki74a" path="res://scenes/map/map.tscn" id="3_2kqfa"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bhpqpl5r7g5j0" path="res://scenes/map/doorSection.tscn" id="4_xw32b"]
 [ext_resource type="PackedScene" uid="uid://dbsj1koyihqbf" path="res://scenes/camera/camera.tscn" id="5_c6mwe"]
 [ext_resource type="PackedScene" uid="uid://8qr076x3t5uu" path="res://scenes/enemy/enemy.tscn" id="6_x6e6d"]
+[ext_resource type="PackedScene" uid="uid://bhorhn2k7tnvg" path="res://scenes/enemy_spawner.tscn" id="7_h2vji"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -43,3 +44,11 @@ position = Vector2(4160, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("6_x6e6d")]
 position = Vector2(270, 259)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("7_h2vji")]
+enemy_scene = ExtResource("6_x6e6d")
+
+[node name="Marker2D" parent="EnemySpawner" index="0"]
+position = Vector2(352, 166)
+
+[editable path="EnemySpawner"]

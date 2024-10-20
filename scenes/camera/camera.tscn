@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbsj1koyihqbf"]
+[gd_scene load_steps=13 format=3 uid="uid://dbsj1koyihqbf"]
 
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
+[ext_resource type="PackedScene" uid="uid://bhorhn2k7tnvg" path="res://scenes/enemy_spawner.tscn" id="3_m4a83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
 size = Vector2(564, 576)
@@ -100,4 +101,12 @@ amount = 350
 process_material = SubResource("ParticleProcessMaterial_6tfxi")
 local_coords = true
 
+[node name="EnemySpawner" parent="." instance=ExtResource("3_m4a83")]
+_spawnable_scenes = PackedStringArray("res://scenes/enemy/enemy.tscn")
+
+[node name="Marker2D" parent="EnemySpawner" index="0"]
+position = Vector2(202, 189)
+
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
+
+[editable path="EnemySpawner"]

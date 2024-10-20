@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhorhn2k7tnvg"]
+
+[ext_resource type="Script" path="res://scenes/enemy_spawner.gd" id="1_2nitc"]
+
+[node name="EnemySpawner" type="MultiplayerSpawner"]
+_spawnable_scenes = PackedStringArray("res://scenes/enemy/enemy.tscn")
+spawn_path = NodePath(".")
+script = ExtResource("1_2nitc")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.254
+autostart = true
