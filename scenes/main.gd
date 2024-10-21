@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 @export var player_scene : PackedScene
 @onready var markers = $Markers
 

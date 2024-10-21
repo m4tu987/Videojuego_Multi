@@ -1,11 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=10 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
 [ext_resource type="PackedScene" uid="uid://5ii184hki74a" path="res://scenes/map/map.tscn" id="3_2kqfa"]
 [ext_resource type="PackedScene" uid="uid://bb3yyl4dr2qey" path="res://scenes/player/player.tscn" id="3_mwc6d"]
 [ext_resource type="PackedScene" uid="uid://bhpqpl5r7g5j0" path="res://scenes/map/doorSection.tscn" id="4_xw32b"]
 [ext_resource type="PackedScene" uid="uid://dbsj1koyihqbf" path="res://scenes/camera/camera.tscn" id="5_c6mwe"]
-[ext_resource type="PackedScene" uid="uid://8qr076x3t5uu" path="res://scenes/enemy/enemy.tscn" id="6_x6e6d"]
+[ext_resource type="Script" path="res://scenes/victory_area.gd" id="6_s4uon"]
+[ext_resource type="PackedScene" uid="uid://buwp47718778m" path="res://scenes/Menus/VictoryText.tscn" id="7_opfe5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkwre"]
+size = Vector2(506, 572)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_es6s8"]
+properties/0/path = NodePath("VictoryArea:winners")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("VictoryArea:win")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -31,15 +43,31 @@ z_index = -1
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="MarkerDoor0" type="Marker2D" parent="Doors"]
-position = Vector2(1600, 0)
+position = Vector2(960, 0)
 
 [node name="MarkerDoor1" type="Marker2D" parent="Doors"]
-position = Vector2(2880, 0)
+position = Vector2(1600, 0)
 
 [node name="MarkerDoor2" type="Marker2D" parent="Doors"]
-position = Vector2(4160, 0)
+position = Vector2(2240, 0)
 
 [node name="Camera" parent="." instance=ExtResource("5_c6mwe")]
 
-[node name="Enemy" parent="." instance=ExtResource("6_x6e6d")]
-position = Vector2(270, 259)
+[node name="VictoryArea" type="Area2D" parent="."]
+position = Vector2(848, 283)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("6_s4uon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VictoryArea"]
+position = Vector2(711, 5)
+shape = SubResource("RectangleShape2D_qkwre")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_es6s8")
+
+[node name="VictoryText" parent="." instance=ExtResource("7_opfe5")]
+offset_left = 512.0
+offset_top = 288.0
+offset_right = 552.0
+offset_bottom = 328.0

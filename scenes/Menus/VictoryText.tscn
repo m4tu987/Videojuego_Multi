@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://buwp47718778m"]
+
+[ext_resource type="Script" path="res://scenes/Menus/victory_text.gd" id="1_73nc0"]
+
+[sub_resource type="Theme" id="Theme_qmg1k"]
+Label/font_sizes/font_size = 100
+Label/fonts/font = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lipd7"]
+bg_color = Color(0, 0.719112, 0.349859, 1)
+
+[node name="VictoryText" type="MarginContainer"]
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qmg1k")
+script = ExtResource("1_73nc0")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 1000
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lipd7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.5
+offset_top = -88.5
+offset_right = 188.5
+offset_bottom = 88.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Victory"
+horizontal_alignment = 1

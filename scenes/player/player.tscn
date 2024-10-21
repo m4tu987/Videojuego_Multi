@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=44 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="5_fwsne"]
 [ext_resource type="PackedScene" uid="uid://ck7ih0cydbkcb" path="res://scenes/stats.tscn" id="6_haq3c"]
 [ext_resource type="PackedScene" uid="uid://dentogqnrpfgu" path="res://ui/hud.tscn" id="7_2xb5s"]
+[ext_resource type="Script" path="res://scenes/player/win_condition.gd" id="8_7uh48"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifvl8"]
 bg_color = Color(0, 0, 0, 1)
@@ -533,6 +534,9 @@ size = Vector2(35, 71)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yf8v"]
 size = Vector2(102, 128)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h05xa"]
+radius = 15.5242
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 2
@@ -613,16 +617,23 @@ wait_time = 0.5
 [node name="Stats" parent="." instance=ExtResource("6_haq3c")]
 
 [node name="HUD" parent="." instance=ExtResource("7_2xb5s")]
-visible = false
 
 [node name="ResurrectArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ResurrectArea"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_6yf8v")
+
+[node name="WinCondition" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("8_7uh48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinCondition"]
+position = Vector2(-1, -22)
+shape = SubResource("CircleShape2D_h05xa")
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="Hurtbox/ReDamage" to="Hurtbox" method="_on_re_damage_timeout"]
