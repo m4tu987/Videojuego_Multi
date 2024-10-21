@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 100
-@export var accel = 50
-@export var base_speed = 50
+@export var speed = 150
+@export var accel = 80
 
 var target: Node2D
 

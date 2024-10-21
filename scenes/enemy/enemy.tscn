@@ -24,9 +24,6 @@ radius = 46.0109
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_5jni1")
-speed = 30
-accel = 20
-base_speed = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1

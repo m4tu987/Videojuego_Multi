@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbsj1koyihqbf"]
+[gd_scene load_steps=14 format=3 uid="uid://dbsj1koyihqbf"]
 
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
 [ext_resource type="PackedScene" uid="uid://bhorhn2k7tnvg" path="res://scenes/enemy_spawner.tscn" id="3_m4a83"]
+[ext_resource type="PackedScene" uid="uid://8qr076x3t5uu" path="res://scenes/enemy/enemy.tscn" id="4_3l45n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
 size = Vector2(564, 576)
@@ -103,10 +104,10 @@ process_material = SubResource("ParticleProcessMaterial_6tfxi")
 local_coords = true
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_m4a83")]
-_spawnable_scenes = PackedStringArray("res://scenes/enemy/enemy.tscn")
+enemy_scene = ExtResource("4_3l45n")
 
 [node name="Marker2D" parent="EnemySpawner" index="0"]
-position = Vector2(202, 189)
+position = Vector2(145, 287)
 
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
 

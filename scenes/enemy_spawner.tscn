@@ -10,5 +10,4 @@ script = ExtResource("1_2nitc")
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.254
 autostart = true
