@@ -1,0 +1,2 @@
+class_name WinCondition
+extends Area2D

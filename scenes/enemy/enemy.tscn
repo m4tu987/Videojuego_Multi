@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://8qr076x3t5uu"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_5jni1"]
-[ext_resource type="Texture2D" uid="uid://cit52ah3qclqt" path="res://assets/enemy/SpiderPack/IdleOrange/SpiderIdleFront1.png" id="2_5ip4m"]
+[ext_resource type="Texture2D" uid="uid://xw32s13s8q5u" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleSide1.png" id="2_5cfqa"]
 [ext_resource type="PackedScene" uid="uid://cpk2b7cb1w0jd" path="res://scenes/enemy/enemy_stats.tscn" id="3_2dtxh"]
 [ext_resource type="Script" path="res://components/hurtbox_enemy.gd" id="4_2r43k"]
 [ext_resource type="Script" path="res://scenes/enemy/attack_area.gd" id="5_7oorw"]
@@ -29,9 +29,10 @@ accel = 20
 base_speed = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(0, 9.53674e-07)
 scale = Vector2(2.5, 2.348)
-texture = ExtResource("2_5ip4m")
+texture = ExtResource("2_5cfqa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)

@@ -59,6 +59,7 @@ hue_variation_max = 0.08
 position = Vector2(512, 288)
 limit_left = 0
 limit_top = 0
+limit_right = 3200
 limit_bottom = 576
 script = ExtResource("1_ee05d")
 

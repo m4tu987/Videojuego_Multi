@@ -17,7 +17,6 @@ var _thread = null
 
 @onready var player_id: Label = %PlayerId
 
-
 func _ready() -> void:
 	if use_upnp:
 		_thread = Thread.new()

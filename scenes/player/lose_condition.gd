@@ -1,0 +1,2 @@
+class_name LoseCondition
+extends Area2D

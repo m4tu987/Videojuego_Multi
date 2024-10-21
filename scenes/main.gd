@@ -7,6 +7,7 @@ extends Node2D
 @onready var doors = $Doors
 var door_colors = [Statics.Role.ROLE_A, Statics.Role.ROLE_B, Statics.Role.ROLE_C]
 
+
 func _ready() -> void:
 	for i in Game.players.size():
 		var player_data = Game.players[i]
