@@ -1,14 +1,12 @@
 extends Node2D
 
-signal win
-@onready var victory_text = $Camera/VictoryText
-
 @export var player_scene : PackedScene
 @onready var markers = $Markers
 
 @export var door_section_scene : PackedScene
 @onready var doors = $Doors
 var door_colors = [Statics.Role.ROLE_A, Statics.Role.ROLE_B, Statics.Role.ROLE_C]
+
 
 func _ready() -> void:
 	for i in Game.players.size():
@@ -27,9 +25,3 @@ func _ready() -> void:
 		door_inst.global_position = child.global_position
 		add_child(door_inst, true)
 		index += 1
-	victory_text.visible = false
-	win.connect(victory_display)
-
-@rpc("call_remote","reliable","authority")
-func victory_display():
-	victory_text.visible = true
