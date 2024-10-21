@@ -1,8 +1,7 @@
 extends Area2D
 
 @export var winners:= 0
-@export var win:= false
-@onready var victory_text = $"../VictoryText"
+@onready var main = $".."
 
 
 
@@ -11,9 +10,7 @@ func _ready() -> void:
 		area_entered.connect(_on_area_entered)
 		
 
-func _process(delta):
-	print(win)
-	victory_text.visible = win
+
 
 func _on_area_entered(area: Area2D) -> void:
 	var winner = area as WinCondition
@@ -25,8 +22,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func victory():
-	print("AAAAAAAAAAAAAAAAA")
-	win = true
+	main.win.emit()
+	
 	
 	
 	

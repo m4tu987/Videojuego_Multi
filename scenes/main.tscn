@@ -15,9 +15,6 @@ size = Vector2(506, 572)
 properties/0/path = NodePath("VictoryArea:winners")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("VictoryArea:win")
-properties/1/spawn = true
-properties/1/replication_mode = 1
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -53,6 +50,10 @@ position = Vector2(2240, 0)
 
 [node name="Camera" parent="." instance=ExtResource("5_c6mwe")]
 
+[node name="VictoryText" parent="Camera" instance=ExtResource("7_opfe5")]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="VictoryArea" type="Area2D" parent="."]
 position = Vector2(848, 283)
 collision_layer = 16
@@ -60,14 +61,8 @@ collision_mask = 16
 script = ExtResource("6_s4uon")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VictoryArea"]
-position = Vector2(711, 5)
+position = Vector2(303, 9)
 shape = SubResource("RectangleShape2D_qkwre")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_es6s8")
-
-[node name="VictoryText" parent="." instance=ExtResource("7_opfe5")]
-offset_left = 512.0
-offset_top = 288.0
-offset_right = 552.0
-offset_bottom = 328.0
