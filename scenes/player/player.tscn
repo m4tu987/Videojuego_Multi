@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=46 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ck7ih0cydbkcb" path="res://scenes/stats.tscn" id="6_haq3c"]
 [ext_resource type="PackedScene" uid="uid://dentogqnrpfgu" path="res://ui/hud.tscn" id="7_2xb5s"]
 [ext_resource type="Script" path="res://scenes/player/win_condition.gd" id="8_7uh48"]
+[ext_resource type="Script" path="res://scenes/player/lose_condition.gd" id="9_knyi1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifvl8"]
 bg_color = Color(0, 0, 0, 1)
@@ -537,6 +538,9 @@ size = Vector2(102, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_h05xa"]
 radius = 15.5242
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j4r27"]
+radius = 16.0
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 2
@@ -634,6 +638,15 @@ script = ExtResource("8_7uh48")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinCondition"]
 position = Vector2(-1, -22)
 shape = SubResource("CircleShape2D_h05xa")
+
+[node name="LoseCondition" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("9_knyi1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LoseCondition"]
+position = Vector2(-2, -23)
+shape = SubResource("CircleShape2D_j4r27")
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="Hurtbox/ReDamage" to="Hurtbox" method="_on_re_damage_timeout"]

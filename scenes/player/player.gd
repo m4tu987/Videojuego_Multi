@@ -21,6 +21,9 @@ var _players_inside: Array[Player] = []
 @onready var playback = animation_tree["parameters/playback"]
 @onready var resurrect_area = $ResurrectArea
 var dead = 0
+@onready var lose_condition = $LoseCondition/CollisionShape2D2
+
+
 
 func _enter_tree() -> void:
 	$Gun.id = id
@@ -37,10 +40,12 @@ func _ready() -> void:
 	health_bar.visible = not is_multiplayer_authority()
 	player_tag.set_text(player_data.name)
 	animation_tree.active = true
+	lose_condition.disabled = true
 	if is_multiplayer_authority():
 		resurrect_area.body_entered.connect(_on_dead_player_entered)
 		resurrect_area.body_exited.connect(_on_dead_player_exited)
-		
+
+
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
@@ -110,12 +115,14 @@ func _on_health_changed(health) -> void:
 func die():
 	playback.travel("Death")
 	dead = 1
+	lose_condition.disabled = false
 	
 @rpc("call_local", "reliable", "any_peer")
 func resurrect():
 	if dead == 1: 
 		stats.health = stats.max_health/2
 		dead = 0
+		lose_condition.disabled = true
 
 func _on_dead_player_entered(body: Node) -> void:
 	if body == self:

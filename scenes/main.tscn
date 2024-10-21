@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=12 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
 [ext_resource type="PackedScene" uid="uid://5ii184hki74a" path="res://scenes/map/map.tscn" id="3_2kqfa"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bhpqpl5r7g5j0" path="res://scenes/map/doorSection.tscn" id="4_xw32b"]
 [ext_resource type="PackedScene" uid="uid://dbsj1koyihqbf" path="res://scenes/camera/camera.tscn" id="5_c6mwe"]
 [ext_resource type="Script" path="res://scenes/victory_area.gd" id="6_s4uon"]
+[ext_resource type="PackedScene" uid="uid://b0uk8i3822c8i" path="res://scenes/Menus/DefeatText.tscn" id="7_6i5nb"]
 [ext_resource type="PackedScene" uid="uid://buwp47718778m" path="res://scenes/Menus/VictoryText.tscn" id="7_opfe5"]
+[ext_resource type="PackedScene" uid="uid://bwk38igmvg1ho" path="res://scenes/defeat_check.tscn" id="9_tqc4e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkwre"]
 size = Vector2(506, 572)
@@ -49,10 +51,20 @@ position = Vector2(1600, 0)
 position = Vector2(2240, 0)
 
 [node name="Camera" parent="." instance=ExtResource("5_c6mwe")]
+limit_right = 1000000
 
 [node name="VictoryText" parent="Camera" instance=ExtResource("7_opfe5")]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="DefeatText" parent="Camera" instance=ExtResource("7_6i5nb")]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DefeatCheck" parent="Camera" instance=ExtResource("9_tqc4e")]
+position = Vector2(-512, -288)
+collision_layer = 32
+collision_mask = 32
 
 [node name="VictoryArea" type="Area2D" parent="."]
 position = Vector2(2944, 283)
@@ -63,5 +75,6 @@ script = ExtResource("6_s4uon")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VictoryArea"]
 shape = SubResource("RectangleShape2D_qkwre")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="VictoryArea"]
+root_path = NodePath("../..")
 replication_config = SubResource("SceneReplicationConfig_es6s8")
