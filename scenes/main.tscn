@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=13 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
 [ext_resource type="PackedScene" uid="uid://5ii184hki74a" path="res://scenes/map/map.tscn" id="3_2kqfa"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b0uk8i3822c8i" path="res://scenes/Menus/DefeatText.tscn" id="7_6i5nb"]
 [ext_resource type="PackedScene" uid="uid://buwp47718778m" path="res://scenes/Menus/VictoryText.tscn" id="7_opfe5"]
 [ext_resource type="PackedScene" uid="uid://bwk38igmvg1ho" path="res://scenes/defeat_check.tscn" id="9_tqc4e"]
+[ext_resource type="PackedScene" uid="uid://8qr076x3t5uu" path="res://scenes/enemy/enemy.tscn" id="10_osclt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkwre"]
 size = Vector2(506, 572)
@@ -78,3 +79,23 @@ shape = SubResource("RectangleShape2D_qkwre")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="VictoryArea"]
 root_path = NodePath("../..")
 replication_config = SubResource("SceneReplicationConfig_es6s8")
+
+[node name="Enemy" parent="." instance=ExtResource("10_osclt")]
+position = Vector2(152, 156)
+speed = 150
+accel = 80
+
+[node name="Enemy2" parent="." instance=ExtResource("10_osclt")]
+position = Vector2(147, 257)
+speed = 150
+accel = 80
+
+[node name="Enemy3" parent="." instance=ExtResource("10_osclt")]
+position = Vector2(161, 351)
+speed = 150
+accel = 80
+
+[node name="Enemy4" parent="." instance=ExtResource("10_osclt")]
+position = Vector2(148, 450)
+speed = 150
+accel = 80
