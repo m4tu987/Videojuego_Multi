@@ -11,9 +11,9 @@ var _menu_stack: Array[Control] = []
 @onready var ip = %IP
 @onready var back_join: Button = %BackJoin
 @onready var confirm_join: Button = %ConfirmJoin
-@onready var role_a: Button = %RoleA
-@onready var role_b: Button = %RoleB
-@onready var role_c: Button = %RoleC
+@onready var role_a: Button = %Green
+@onready var role_b: Button = %Red
+@onready var role_c: Button = %Blue
 @onready var back_ready: Button = %BackReady
 @onready var ready_toggle: Button = %Ready
 @onready var menus: MarginContainer = %Menus
@@ -27,9 +27,7 @@ var _menu_stack: Array[Control] = []
 
 
 func _ready():
-	if Game.multiplayer_test:
-		get_tree().change_scene_to_file.call_deferred("res://scenes/lobby_test.tscn")
-		return
+
 	
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connection_failed)

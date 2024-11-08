@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=47 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dentogqnrpfgu" path="res://ui/hud.tscn" id="7_2xb5s"]
 [ext_resource type="Script" path="res://scenes/player/win_condition.gd" id="8_7uh48"]
 [ext_resource type="Script" path="res://scenes/player/lose_condition.gd" id="9_knyi1"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="10_8g5mc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifvl8"]
 bg_color = Color(0, 0, 0, 1)
@@ -647,6 +648,21 @@ script = ExtResource("9_knyi1")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="LoseCondition"]
 position = Vector2(-2, -23)
 shape = SubResource("CircleShape2D_j4r27")
+
+[node name="ResurrectionTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ResurrectionProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -122.0
+offset_right = 1290.0
+offset_bottom = 182.0
+scale = Vector2(0.3, 0.3)
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+texture_progress = ExtResource("10_8g5mc")
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="Hurtbox/ReDamage" to="Hurtbox" method="_on_re_damage_timeout"]

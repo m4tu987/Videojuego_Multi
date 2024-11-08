@@ -22,6 +22,8 @@ var _players_inside: Array[Player] = []
 @onready var resurrect_area = $ResurrectArea
 var dead = 0
 @onready var lose_condition = $LoseCondition/CollisionShape2D2
+@onready var resurrection_timer = $ResurrectionTimer
+@onready var resurrection_progress_bar = $ResurrectionProgressBar
 
 
 
@@ -44,16 +46,22 @@ func _ready() -> void:
 	if is_multiplayer_authority():
 		resurrect_area.body_entered.connect(_on_dead_player_entered)
 		resurrect_area.body_exited.connect(_on_dead_player_exited)
-
+		resurrection_timer.timeout.connect(_on_resurrection_timeout)
 
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
-	if event.is_action_pressed("revivir"):
-		for player in _players_inside:
-			if is_instance_valid(player):
-				player.resurrect.rpc_id(1)
-				
+	if _players_inside.size():
+		if event.is_action_pressed("revivir"):
+			resurrection_timer.start()
+		if event.is_action_released("revivir"):
+			resurrection_timer.stop()
+			resurrection_progress_bar.value = 0
+
+func _process(delta: float) -> void:
+	if not resurrection_timer.is_stopped():
+		resurrection_progress_bar.value = 1 - (resurrection_timer.time_left / resurrection_timer.wait_time)
+		
 func _physics_process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		var direction = Input.get_vector("left", "right", "up", "down")
@@ -135,3 +143,11 @@ func _on_dead_player_entered(body: Node) -> void:
 func _on_dead_player_exited(body: Node) -> void:
 	if body in _players_inside:
 		_players_inside.erase(body)
+	if not _players_inside.is_empty():
+		resurrection_timer.stop()
+		resurrection_progress_bar.value = 0
+func _on_resurrection_timeout() -> void:
+	for player in _players_inside:
+		if is_instance_valid(player):
+			player.resurrect.rpc_id(1)
+	resurrection_progress_bar.value = 0
