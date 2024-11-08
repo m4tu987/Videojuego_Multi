@@ -6,3 +6,6 @@ Guns                                SnoopethDuckDuck
 Free Sci-Fi TileSet Space Station   Aske4 (@AskeArtist)
 SciFi Dungeon Tileset               Thetra00 (@Thetra00)
 Retro Impact Effect Pack 5          BDragon1727
+Font+ [80's Retro Future]           SciGho (@CrystalScience)
+Healzone pixel & classic fonts      thUg-inc (@thUg__inc)
+Pixel Neon UI Asset pack            Àngels Riba (Asrigu)
