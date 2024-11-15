@@ -2,28 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
+[ext_resource type="Texture2D" uid="uid://d24dmxlw3ocik" path="res://assets/HUD/Barra_vida_vacia.png" id="2_1a8ps"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_jnx1s"]
+[ext_resource type="Texture2D" uid="uid://bc66gp7bo8xdw" path="res://assets/HUD/barra_vida_llena.png" id="3_2tmyt"]
 [ext_resource type="PackedScene" uid="uid://dyi7np8o56xxk" path="res://scenes/player/gun.tscn" id="4_r66d2"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="5_fwsne"]
 [ext_resource type="PackedScene" uid="uid://ck7ih0cydbkcb" path="res://scenes/stats.tscn" id="6_haq3c"]
 [ext_resource type="PackedScene" uid="uid://dentogqnrpfgu" path="res://ui/hud.tscn" id="7_2xb5s"]
 [ext_resource type="Script" path="res://scenes/player/win_condition.gd" id="8_7uh48"]
 [ext_resource type="Script" path="res://scenes/player/lose_condition.gd" id="9_knyi1"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="10_8g5mc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifvl8"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy0x7"]
-bg_color = Color(0.596806, 0.638502, 0, 1)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
+[ext_resource type="Texture2D" uid="uid://cv2np082tdl1v" path="res://assets/HUD/circulo1.png" id="10_balfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv036"]
 size = Vector2(10, 4.66667)
@@ -550,17 +538,17 @@ motion_mode = 1
 script = ExtResource("1_40kih")
 metadata/_edit_horizontal_guides_ = [0.0]
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="TextureProgressBar" parent="."]
 z_index = 100
 custom_minimum_size = Vector2(50, 10)
-offset_left = -31.0
-offset_top = -86.0
-offset_right = 29.0
-offset_bottom = -76.0
-theme_override_styles/background = SubResource("StyleBoxFlat_ifvl8")
-theme_override_styles/fill = SubResource("StyleBoxFlat_iy0x7")
+offset_left = -53.0
+offset_top = -84.0
+offset_right = -3.0
+offset_bottom = -74.0
+scale = Vector2(2.5, 2.5)
 value = 50.0
-show_percentage = false
+texture_under = ExtResource("2_1a8ps")
+texture_progress = ExtResource("3_2tmyt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, 0.825278)
@@ -654,15 +642,15 @@ wait_time = 2.5
 one_shot = true
 
 [node name="ResurrectionProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -22.0
-offset_top = -122.0
-offset_right = 1290.0
-offset_bottom = 182.0
-scale = Vector2(0.3, 0.3)
+offset_left = -25.0
+offset_top = -129.0
+offset_right = -8.0
+offset_bottom = -113.0
+scale = Vector2(3, 3)
 max_value = 1.0
 step = 0.01
 fill_mode = 4
-texture_progress = ExtResource("10_8g5mc")
+texture_progress = ExtResource("10_balfx")
 
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="Hurtbox/ReDamage" to="Hurtbox" method="_on_re_damage_timeout"]
