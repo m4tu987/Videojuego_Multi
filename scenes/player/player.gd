@@ -1,6 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
+signal A_died
+signal A_resurrected
+signal B_died
+signal B_resurrected
+signal C_died
+signal C_resurrected
+
 @export var id := 1
 @export var walking = false
 @export var dir = Vector2.ZERO
@@ -21,7 +28,6 @@ var _players_inside: Array[Player] = []
 @onready var playback = animation_tree["parameters/playback"]
 @onready var resurrect_area = $ResurrectArea
 var dead = 0
-@onready var lose_condition = $LoseCondition/CollisionShape2D2
 @onready var resurrection_timer = $ResurrectionTimer
 @onready var resurrection_progress_bar = $ResurrectionProgressBar
 
@@ -42,7 +48,6 @@ func _ready() -> void:
 	health_bar.visible = not is_multiplayer_authority()
 	player_tag.set_text(player_data.name)
 	animation_tree.active = true
-	lose_condition.disabled = true
 	if is_multiplayer_authority():
 		resurrect_area.body_entered.connect(_on_dead_player_entered)
 		resurrect_area.body_exited.connect(_on_dead_player_exited)
@@ -123,14 +128,26 @@ func _on_health_changed(health) -> void:
 func die():
 	playback.travel("Death")
 	dead = 1
-	lose_condition.disabled = false
-	
+	var player_data: Statics.PlayerData = Game.get_player(id)
+	if player_data.role == Statics.Role.ROLE_A:
+		A_died.emit()
+	if player_data.role == Statics.Role.ROLE_B:
+		B_died.emit()
+	if player_data.role == Statics.Role.ROLE_C:
+		C_died.emit()
+
 @rpc("call_local", "reliable", "any_peer")
 func resurrect():
 	if dead == 1: 
 		stats.health = stats.max_health/2
 		dead = 0
-		lose_condition.disabled = true
+		var player_data: Statics.PlayerData = Game.get_player(id)
+		if player_data.role == Statics.Role.ROLE_A:
+			A_resurrected.emit()
+		if player_data.role == Statics.Role.ROLE_B:
+			B_resurrected.emit()
+		if player_data.role == Statics.Role.ROLE_C:
+			C_resurrected.emit()
 
 func _on_dead_player_entered(body: Node) -> void:
 	if body == self:
