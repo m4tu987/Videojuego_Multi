@@ -25,15 +25,27 @@ func _ready():
 			victory.rpc()
 
 func Aready():
+	AreadyServer.rpc_id(1)
+
+@rpc("call_local","any_peer","reliable")
+func AreadyServer():
 	A_condition = 1
 	on_condition_change()
 
 func Bready():
+	BreadyServer.rpc_id(1)
+
+@rpc("call_local","any_peer","reliable")
+func BreadyServer():
 	B_condition = 1
 	on_condition_change()
 
 
 func Cready():
+	CreadyServer.rpc_id(1)
+
+@rpc("call_local","any_peer","reliable")
+func CreadyServer():
 	C_condition = 1
 	on_condition_change()
 
@@ -42,7 +54,7 @@ func Cready():
 func on_condition_change():
 	print(A_condition, B_condition, C_condition)
 	if A_condition == 1 and B_condition == 1 and C_condition == 1:
-		victory().rpc
+		victory.rpc()
 
 
 @rpc("call_local","reliable","any_peer")
