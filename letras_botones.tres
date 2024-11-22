@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://chgdwwfkaose"]
 
-[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/fonts/80s-retro-future.ttf" id="1_pk7pe"]
+[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="1_pk7pe"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujg63"]
 

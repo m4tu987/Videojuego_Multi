@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bqe585bi4f3ik"
-path="res://.godot/imported/80s-retro-future.ttf-2f80bc06f1d3edd4ef4b03db4611b442.fontdata"
+path="res://.godot/imported/80s-retro-future.ttf-3fa13e7aaa02e3b91c9102d6cbf969aa.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/80s-retro-future.ttf"
-dest_files=["res://.godot/imported/80s-retro-future.ttf-2f80bc06f1d3edd4ef4b03db4611b442.fontdata"]
+source_file="res://assets/80s-retro-future.ttf"
+dest_files=["res://.godot/imported/80s-retro-future.ttf-3fa13e7aaa02e3b91c9102d6cbf969aa.fontdata"]
 
 [params]
 

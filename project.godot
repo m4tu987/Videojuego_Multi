@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="multiplayer_example"
+config/name="Alien Escape"
 run/main_scene="res://scenes/Menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleFront1.png"
 
 [autoload]
 
