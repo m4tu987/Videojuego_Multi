@@ -4,25 +4,33 @@ signal reload_finished
 
 @export var id := 1
 @export var bullet_scene: PackedScene
-@export var ammo := 10 :
+@export var ammo := 30 :
 	set(value):
 		ammo = value
 		if ammo_label:
 			ammo_label.text = str(ammo)
-@export var max_ammo := 10
+@export var max_ammo := 30
+@export var max_total_ammo := 90:
+	set(value):
+		max_total_ammo = value
+		if max_ammo_label:
+			max_ammo_label.text = str(max_total_ammo)
 @onready var marker_2d = $Marker2D
 @onready var bullet_spawner = $BulletSpawner
 @onready var multiplayer_synchronizer = $MultiplayerSynchronizer
 @onready var upward_sprite = $UpwardSprite2D
 @onready var canvas_layer = $CanvasLayer
-@onready var ammo_label = $CanvasLayer/MarginContainer/AmmoLabel
 @export var reload_cooldown := 3.0
 @export var is_reloading := false
+@onready var ammo_label = $CanvasLayer/TextureRect/MarginContainer/HBoxContainer/AmmoLabel
+@onready var max_ammo_label = $CanvasLayer/TextureRect/MarginContainer/HBoxContainer/max_ammoLabel
+
 var can_reload = true
 func _ready() -> void:
 	setup(id)
 	canvas_layer.visible = is_multiplayer_authority()
 	ammo = max_ammo
+	max_total_ammo = 90
 	reload_finished.connect(real_reload)
 func _process(_delta: float) -> void:
 	if is_multiplayer_authority():
@@ -84,8 +92,18 @@ func reload_fx() -> void:
 		reload_finished.emit()
 	await get_tree().create_timer(reload_cooldown).timeout
 	is_reloading = false
+	
 func real_reload() -> void:
-	ammo = max_ammo
-
+	var needed_ammo = max_ammo - ammo
+	if max_total_ammo >= needed_ammo:
+		ammo += needed_ammo
+		max_total_ammo -= needed_ammo
+	else:
+		ammo += max_total_ammo
+		max_total_ammo = 0 
+	if ammo_label:
+		ammo_label.text = str(ammo)
+	if max_ammo_label:
+		max_ammo_label.text = str(max_total_ammo)
 func _on_reload_timer_timeout():
 	can_reload = true

@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyi7np8o56xxk"]
+[gd_scene load_steps=13 format=3 uid="uid://dyi7np8o56xxk"]
 
 [ext_resource type="Texture2D" uid="uid://d37s4da5saxl4" path="res://assets/Pack 1/0px All.png" id="1_1eho2"]
 [ext_resource type="Script" path="res://scenes/player/gun.gd" id="1_xjnpv"]
 [ext_resource type="PackedScene" uid="uid://olxxtq1mkewq" path="res://scenes/player/bullet.tscn" id="2_edmhy"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="3_dy7jo"]
 [ext_resource type="Script" path="res://components/upward_sprite.gd" id="5_scbxy"]
-[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="6_ug6dk"]
+[ext_resource type="Texture2D" uid="uid://ctvygs8dxb631" path="res://assets/HUD/PixelNeonUI/Menu_Blue/Menu_ui_blue_prueba.png" id="6_6dut0"]
+[ext_resource type="LabelSettings" uid="uid://duuxvmiwf68lv" path="res://resources/gun_theme_label.tres" id="6_t01dx"]
+[ext_resource type="Texture2D" uid="uid://b0cttekjeyp16" path="res://assets/icons/Free-Skill-32x32-Icons-for-Cyberpunk-Game/1 Icons/1/Skillicon1_30.png" id="7_oo607"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cy3gj"]
 shader = ExtResource("3_dy7jo")
@@ -28,10 +30,11 @@ properties/1/replication_mode = 2
 properties/2/path = NodePath("..:max_ammo")
 properties/2/spawn = true
 properties/2/replication_mode = 2
+properties/3/path = NodePath("..:max_total_ammo")
+properties/3/spawn = true
+properties/3/replication_mode = 2
 
-[sub_resource type="LabelSettings" id="LabelSettings_pc6te"]
-font = ExtResource("6_ug6dk")
-font_size = 32
+[sub_resource type="Theme" id="Theme_qwskr"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_xjnpv")
@@ -63,22 +66,49 @@ replication_config = SubResource("SceneReplicationConfig_ikhub")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 470.0
+offset_right = 324.0
+offset_bottom = 598.0
+scale = Vector2(1.49142, 0.770707)
+texture = ExtResource("6_6dut0")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TextureRect"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -266.0
-offset_top = -61.0
-offset_right = -225.0
-offset_bottom = 2.0
+offset_left = 31.6052
+offset_top = -82.5872
+offset_right = 134.605
+offset_bottom = -2.58715
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.784967, 0.934434)
 
-[node name="AmmoLabel" type="Label" parent="CanvasLayer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TextureRect/MarginContainer"]
 layout_mode = 2
-label_settings = SubResource("LabelSettings_pc6te")
+
+[node name="AmmoLabel" type="Label" parent="CanvasLayer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("6_t01dx")
+
+[node name="slash" type="Label" parent="CanvasLayer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+label_settings = ExtResource("6_t01dx")
+
+[node name="max_ammoLabel" type="Label" parent="CanvasLayer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("6_t01dx")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_qwskr")
+texture = ExtResource("7_oo607")
 
 [node name="reload_timer" type="Timer" parent="."]
 one_shot = true
