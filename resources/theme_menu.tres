@@ -3,9 +3,9 @@
 [ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="1_6itij"]
 
 [resource]
-Button/font_sizes/font_size = 25
+Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("1_6itij")
-Label/font_sizes/font_size = 28
+Label/font_sizes/font_size = 48
 Label/fonts/font = ExtResource("1_6itij")
 MarginContainer/constants/margin_bottom = 50
 MarginContainer/constants/margin_left = 100
