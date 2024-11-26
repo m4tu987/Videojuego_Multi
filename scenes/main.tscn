@@ -53,4 +53,4 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="WinSection" parent="." instance=ExtResource("10_tsswf")]
-position = Vector2(640, 0)
+position = Vector2(64000, 0)

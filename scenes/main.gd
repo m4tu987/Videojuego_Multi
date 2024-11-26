@@ -31,13 +31,13 @@ func _ready() -> void:
 		player_inst.B_resurrected.connect(_on_player_b_resurrected)
 		player_inst.C_resurrected.connect(_on_player_c_resurrected)
 	
-	var index = 0
-	for child in doors.get_children():
-		var door_inst = door_section_scene.instantiate()
-		door_inst.role = door_colors[index] 
-		door_inst.global_position = child.global_position
-		add_child(door_inst, true)
-		index += 1
+#	var index = 0
+#	for child in doors.get_children():
+#		var door_inst = door_section_scene.instantiate()
+#		door_inst.role = door_colors[index] 
+#		door_inst.global_position = child.global_position
+#		add_child(door_inst, true)
+#		index += 1
 
 
 func _on_player_a_died():

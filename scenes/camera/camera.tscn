@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbsj1koyihqbf"]
+[gd_scene load_steps=15 format=3 uid="uid://dbsj1koyihqbf"]
 
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
+[ext_resource type="PackedScene" uid="uid://c203i6mdrx2re" path="res://scenes/map/doorSectionA.tscn" id="2_85oa2"]
+[ext_resource type="PackedScene" uid="uid://d3bdkod6p5hd1" path="res://scenes/map/doorSectionB.tscn" id="3_6oq0q"]
+[ext_resource type="PackedScene" uid="uid://w0ge8xdea4nx" path="res://scenes/map/doorSectionC.tscn" id="4_jorx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
 size = Vector2(564, 576)
@@ -61,6 +64,7 @@ limit_top = 0
 limit_right = 3200
 limit_bottom = 576
 script = ExtResource("1_ee05d")
+doors_scenes = Array[PackedScene]([ExtResource("2_85oa2"), ExtResource("3_6oq0q"), ExtResource("4_jorx3")])
 
 [node name="Hitzone" type="Area2D" parent="."]
 collision_layer = 3
@@ -100,5 +104,18 @@ position = Vector2(-512, 0)
 amount = 350
 process_material = SubResource("ParticleProcessMaterial_6tfxi")
 local_coords = true
+
+[node name="DoorSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/map/doorSectionA.tscn", "res://scenes/map/doorSectionB.tscn", "res://scenes/map/doorSectionC.tscn")
+spawn_path = NodePath("../Doors")
+
+[node name="DoorTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="DoorPositions" type="Marker2D" parent="."]
+position = Vector2(320, -288)
 
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
