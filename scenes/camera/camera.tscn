@@ -107,15 +107,12 @@ local_coords = true
 
 [node name="DoorSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/map/doorSectionA.tscn", "res://scenes/map/doorSectionB.tscn", "res://scenes/map/doorSectionC.tscn")
-spawn_path = NodePath("../Doors")
 
 [node name="DoorTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.0
 autostart = true
 
-[node name="Doors" type="Node2D" parent="."]
-
 [node name="DoorPositions" type="Marker2D" parent="."]
-position = Vector2(320, -288)
+position = Vector2(1280, -288)
 
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]

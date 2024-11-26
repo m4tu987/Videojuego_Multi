@@ -30,19 +30,9 @@ position = Vector2(611, 183)
 [node name="Map" parent="." instance=ExtResource("3_2kqfa")]
 z_index = -1
 
-[node name="Doors" type="Node2D" parent="."]
-
-[node name="MarkerDoor0" type="Marker2D" parent="Doors"]
-position = Vector2(2560, 0)
-
-[node name="MarkerDoor1" type="Marker2D" parent="Doors"]
-position = Vector2(2880, 0)
-
-[node name="MarkerDoor2" type="Marker2D" parent="Doors"]
-position = Vector2(3200, 0)
-
 [node name="Camera" parent="." instance=ExtResource("5_c6mwe")]
 limit_right = 1000000
+move = false
 
 [node name="VictoryText" parent="Camera" instance=ExtResource("7_opfe5")]
 offset_right = 40.0
@@ -54,3 +44,5 @@ offset_bottom = 40.0
 
 [node name="WinSection" parent="." instance=ExtResource("10_tsswf")]
 position = Vector2(64000, 0)
+
+[node name="Doors" type="Node2D" parent="."]

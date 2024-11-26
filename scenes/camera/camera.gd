@@ -5,8 +5,9 @@ extends Camera2D
 var roles = [Statics.Role.ROLE_A,Statics.Role.ROLE_B,Statics.Role.ROLE_C]
 var camera_speed = 64
 @onready var door_timer = $DoorTimer
-@onready var doors = $Doors
 @onready var door_positions = $DoorPositions
+@onready var doors = $"../Doors"
+
 
 
 func _ready():
@@ -26,9 +27,11 @@ func _physics_process(delta):
 func _on_begin_timeout():
 	move = true
 
-
-
 func _on_door_timer():
+	spawn_door.rpc()
+
+@rpc("call_local","authority","reliable")
+func spawn_door():
 	var door_scene = doors_scenes.pick_random()
 	var door_inst = door_scene.instantiate()
 	door_inst.global_position = door_positions.global_position
