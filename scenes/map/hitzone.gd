@@ -4,4 +4,4 @@ extends Hitbox
 
 
 func _ready():
-	set_damage(0)
+	set_damage(5)
