@@ -28,11 +28,13 @@ func _on_begin_timeout():
 	move = true
 
 func _on_door_timer():
-	spawn_door.rpc()
+	var index = randf_range(0,doors_scenes.size()+1)
+	if index<doors_scenes.size():
+		spawn_door.rpc(index)
 
 @rpc("call_local","authority","reliable")
-func spawn_door():
-	var door_scene = doors_scenes.pick_random()
+func spawn_door(door_index):
+	var door_scene = doors_scenes[door_index]
 	var door_inst = door_scene.instantiate()
 	door_inst.global_position = door_positions.global_position
 	doors.add_child(door_inst, true)
