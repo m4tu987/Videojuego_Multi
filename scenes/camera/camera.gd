@@ -1,6 +1,7 @@
 extends Camera2D
 
 @export var move:= false
+@export var is_spawning:= true
 @export var doors_scenes: Array[PackedScene] = []
 var roles = [Statics.Role.ROLE_A,Statics.Role.ROLE_B,Statics.Role.ROLE_C]
 var camera_speed = 64
@@ -11,13 +12,12 @@ var camera_speed = 64
 
 
 func _ready():
-	$Begin.start()
 	if multiplayer.is_server():
 		door_timer.timeout.connect(_on_door_timer)
 
-func _input(event):
-	if event.is_action_pressed("stop"):
-		move = !move
+#func _input(event):
+#	if event.is_action_pressed("stop"):
+#		move = !move
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
@@ -27,10 +27,18 @@ func _physics_process(delta):
 func _on_begin_timeout():
 	move = true
 
+func _on_stop_spawning_timeout():
+	is_spawning = false 
+
+func _on_stop_timeout():
+	move = false
+
+
 func _on_door_timer():
-	var index = randf_range(0,doors_scenes.size()+1)
-	if index<doors_scenes.size():
-		spawn_door.rpc(index)
+	if is_spawning:
+		var index = randf_range(0,doors_scenes.size()+1)
+		if index<doors_scenes.size():
+			spawn_door.rpc(index)
 
 @rpc("call_local","authority","reliable")
 func spawn_door(door_index):

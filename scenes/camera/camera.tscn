@@ -94,6 +94,7 @@ shape = SubResource("RectangleShape2D_vssyv")
 [node name="Begin" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+autostart = true
 
 [node name="CameraSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5wpn8")
@@ -115,4 +116,16 @@ autostart = true
 [node name="DoorPositions" type="Marker2D" parent="."]
 position = Vector2(1280, -288)
 
+[node name="Stop" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
+autostart = true
+
+[node name="StopSpawning" type="Timer" parent="."]
+wait_time = 144.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
+[connection signal="timeout" from="Stop" to="." method="_on_stop_timeout"]
+[connection signal="timeout" from="StopSpawning" to="." method="_on_stop_spawning_timeout"]

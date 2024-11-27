@@ -52,7 +52,6 @@ func CreadyServer():
 
 @rpc("call_local", "reliable", "any_peer")
 func on_condition_change():
-	print(A_condition, B_condition, C_condition)
 	if A_condition == 1 and B_condition == 1 and C_condition == 1:
 		victory.rpc()
 
