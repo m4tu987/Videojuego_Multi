@@ -163,6 +163,7 @@ func _on_dead_player_exited(body: Node) -> void:
 	if not _players_inside.is_empty():
 		resurrection_timer.stop()
 		resurrection_progress_bar.value = 0
+
 func _on_resurrection_timeout() -> void:
 	for player in _players_inside:
 		if is_instance_valid(player):

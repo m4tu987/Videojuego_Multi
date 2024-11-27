@@ -15,9 +15,9 @@ func _ready():
 	if multiplayer.is_server():
 		door_timer.timeout.connect(_on_door_timer)
 
-#func _input(event):
-#	if event.is_action_pressed("stop"):
-#		move = !move
+func _input(event):
+	if event.is_action_pressed("stop"):
+		move = !move
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
