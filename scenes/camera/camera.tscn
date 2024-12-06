@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbsj1koyihqbf"]
+[gd_scene load_steps=15 format=3 uid="uid://dbsj1koyihqbf"]
 
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
-[ext_resource type="PackedScene" uid="uid://bhorhn2k7tnvg" path="res://scenes/enemy_spawner.tscn" id="3_m4a83"]
-[ext_resource type="PackedScene" uid="uid://8qr076x3t5uu" path="res://scenes/enemy/enemy.tscn" id="4_3l45n"]
+[ext_resource type="PackedScene" uid="uid://c203i6mdrx2re" path="res://scenes/map/doorSectionA.tscn" id="2_85oa2"]
+[ext_resource type="PackedScene" uid="uid://d3bdkod6p5hd1" path="res://scenes/map/doorSectionB.tscn" id="3_6oq0q"]
+[ext_resource type="PackedScene" uid="uid://w0ge8xdea4nx" path="res://scenes/map/doorSectionC.tscn" id="4_jorx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
 size = Vector2(564, 576)
@@ -63,6 +64,7 @@ limit_top = 0
 limit_right = 3200
 limit_bottom = 576
 script = ExtResource("1_ee05d")
+doors_scenes = Array[PackedScene]([ExtResource("2_85oa2"), ExtResource("3_6oq0q"), ExtResource("4_jorx3")])
 
 [node name="Hitzone" type="Area2D" parent="."]
 collision_layer = 3
@@ -92,6 +94,7 @@ shape = SubResource("RectangleShape2D_vssyv")
 [node name="Begin" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+autostart = true
 
 [node name="CameraSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5wpn8")
@@ -103,12 +106,26 @@ amount = 350
 process_material = SubResource("ParticleProcessMaterial_6tfxi")
 local_coords = true
 
-[node name="EnemySpawner" parent="." instance=ExtResource("3_m4a83")]
-enemy_scene = ExtResource("4_3l45n")
+[node name="DoorSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/map/doorSectionA.tscn", "res://scenes/map/doorSectionB.tscn", "res://scenes/map/doorSectionC.tscn")
 
-[node name="Marker2D" parent="EnemySpawner" index="0"]
-position = Vector2(145, 287)
+[node name="DoorTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="DoorPositions" type="Marker2D" parent="."]
+position = Vector2(1280, -288)
+
+[node name="Stop" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
+autostart = true
+
+[node name="StopSpawning" type="Timer" parent="."]
+wait_time = 144.0
+one_shot = true
+autostart = true
 
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
-
-[editable path="EnemySpawner"]
+[connection signal="timeout" from="Stop" to="." method="_on_stop_timeout"]
+[connection signal="timeout" from="StopSpawning" to="." method="_on_stop_spawning_timeout"]

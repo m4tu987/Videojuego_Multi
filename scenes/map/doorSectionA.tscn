@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c203i6mdrx2re"]
+
+[ext_resource type="PackedScene" uid="uid://bhpqpl5r7g5j0" path="res://scenes/map/doorSection.tscn" id="1_kaywh"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="DoorSection" parent="." instance=ExtResource("1_kaywh")]
+role = 1

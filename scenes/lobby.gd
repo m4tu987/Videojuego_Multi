@@ -24,6 +24,7 @@ var _menu_stack: Array[Control] = []
 @onready var start_timer: Timer = $StartTimer
 @onready var time_container: HBoxContainer = %TimeContainer
 @onready var time: Label = %Time
+@onready var animation_player = $Parallax2D/Sprite2D/AnimationPlayer
 
 
 func _ready():
@@ -63,7 +64,7 @@ func _ready():
  else "")
 	
 	Game.upnp_completed.connect(_on_upnp_completed, 1)
-
+	animation_player.play("new_animation")
 
 func _process(_delta: float) -> void:
 	if !start_timer.is_stopped():

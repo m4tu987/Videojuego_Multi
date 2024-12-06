@@ -1,4 +1,57 @@
-[gd_scene format=3 uid="uid://b7kaojr3o5h3k"]
+[gd_scene load_steps=6 format=3 uid="uid://b7kaojr3o5h3k"]
+
+[ext_resource type="Script" path="res://scenes/Menus/credits.gd" id="1_swhkl"]
+[ext_resource type="Texture2D" uid="uid://bflsl6qcwy43f" path="res://assets/HUD/Strip And GIF/space6_4-frames.png" id="2_6ybqq"]
+
+[sub_resource type="Animation" id="Animation_dm666"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gjh6y"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_036rm"]
+_data = {
+"RESET": SubResource("Animation_dm666"),
+"new_animation": SubResource("Animation_gjh6y")
+}
 
 [node name="Credits" type="MarginContainer"]
 anchors_preset = 15
@@ -8,6 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_swhkl")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -21,5 +75,42 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Cooming Soon.....
+text = "Credits"
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Top Down Space Suit Asset Pack      panko! (@pankozone)
+Spider Enemy Pixel Art              Camacebra Games (@Camacebra)
+GUNS + RELOADS                      Sire assets
+Guns                                SnoopethDuckDuck
+8 Guns + Projectiles                KingKelpo (@KelpoKing)
+Free Sci-Fi TileSet Space Station   Aske4 (@AskeArtist)
+SciFi Dungeon Tileset               Thetra00 (@Thetra00)
+Retro Impact Effect Pack 5          BDragon1727
+Font+ [80's Retro Future]           SciGho (@CrystalScience)
+Healzone pixel & classic fonts      thUg-inc (@thUg__inc)
+Pixel Neon UI Asset pack            Àngels Riba (Asrigu)
+Space                               PiiiXL (@2Biiit)
 "
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Back"
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -1
+scale = Vector2(5, 5)
+repeat_size = Vector2(64, 64)
+repeat_times = 22
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(644, 154.041)
+texture = ExtResource("2_6ybqq")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Parallax2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_036rm")
+}

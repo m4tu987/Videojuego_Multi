@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://duuxvmiwf68lv"]
+
+[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="1_exvyc"]
+
+[resource]
+font = ExtResource("1_exvyc")
+font_size = 32

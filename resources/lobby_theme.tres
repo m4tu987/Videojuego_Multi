@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bevplhdm85o2i"]
+
+[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="1_qnnm3"]
+
+[resource]
+Button/fonts/font = ExtResource("1_qnnm3")
+Label/fonts/font = ExtResource("1_qnnm3")
+LineEdit/fonts/font = ExtResource("1_qnnm3")
