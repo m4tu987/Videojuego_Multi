@@ -6,8 +6,10 @@ extends CharacterBody2D
 var target: Node2D
 
 @export var is_global := true
+@export var death_fx : PackedScene
 @onready var attack_area = $AttackArea/CollisionShape2D
 @onready var stats := $EnemyStats
+
 
 func _ready() -> void:
 	stats.health_changed.connect(_on_health_changed)
@@ -59,6 +61,12 @@ func _on_health_changed(health) -> void:
 
 @rpc("any_peer", "reliable")
 func die() -> void:
+	if not death_fx:
+		pass
+	else:
+		var death_inst = death_fx.instantiate()
+		death_inst.global_position = global_position
+		get_parent().add_child(death_inst)
 	queue_free()
 
 

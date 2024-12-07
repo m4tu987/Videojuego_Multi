@@ -1,7 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://8qr076x3t5uu"]
+[gd_scene load_steps=62 format=3 uid="uid://8qr076x3t5uu"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_5jni1"]
 [ext_resource type="Texture2D" uid="uid://xw32s13s8q5u" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleSide1.png" id="2_5cfqa"]
+[ext_resource type="PackedScene" uid="uid://ci3qwyc2qmani" path="res://scenes/enemy/deathFX.tscn" id="2_q03gx"]
 [ext_resource type="Texture2D" uid="uid://brx0e2flon7o0" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleUp1.png" id="2_xwv33"]
 [ext_resource type="PackedScene" uid="uid://cpk2b7cb1w0jd" path="res://scenes/enemy/enemy_stats.tscn" id="3_2dtxh"]
 [ext_resource type="Texture2D" uid="uid://b7m83w7j3q4pr" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleUp2.png" id="3_a3xey"]
@@ -724,8 +725,25 @@ tracks/0/keys = {
 "values": [63, 64, 65, 66, 68, 69]
 }
 
+[sub_resource type="Animation" id="Animation_u4t0b"]
+resource_name = "Death"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpawnEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [86, 85, 84, 83, 82, 81, 80]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_65f3c"]
 _data = {
+"Death": SubResource("Animation_u4t0b"),
 "RESET": SubResource("Animation_6dttu"),
 "spawn": SubResource("Animation_1lo7a")
 }
@@ -734,6 +752,7 @@ _data = {
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_5jni1")
+death_fx = ExtResource("2_q03gx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
