@@ -59,7 +59,7 @@ func _on_health_changed(health) -> void:
 		die.rpc()
 
 
-@rpc("any_peer", "reliable")
+@rpc("any_peer", "reliable", "call_local")
 func die() -> void:
 	if not death_fx:
 		pass
