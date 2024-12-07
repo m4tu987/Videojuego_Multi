@@ -6,11 +6,12 @@ extends CharacterBody2D
 var target: Node2D
 
 @export var is_global := true
-
+@onready var attack_area = $AttackArea/CollisionShape2D
 @onready var stats := $EnemyStats
 
 func _ready() -> void:
 	stats.health_changed.connect(_on_health_changed)
+	$SpawnAnimation.play("spawn")
 
 func _physics_process(_delta: float) -> void:
 	if is_global:
@@ -23,9 +24,16 @@ func _physics_process(_delta: float) -> void:
 				closest_distance_squared = player_distance_squared
 		target = closest
 	if target:
-		var direction = sign(target.global_position - global_position)
-		velocity.x = move_toward(velocity.x, direction.x * speed, accel)
-		velocity.y = move_toward(velocity.y, direction.y * speed, accel)
+		var direction = (target.global_position - global_position).normalized()
+		if (global_position.distance_to(target.global_position) > 50):
+			velocity.x = move_toward(velocity.x, direction.x * speed, accel)
+			velocity.y = move_toward(velocity.y, direction.y * speed, accel)
+		else:
+			velocity = Vector2.ZERO
+	if velocity == Vector2.ZERO:
+		pass
+	else:
+		$AnimationTree.set("parameters/Walking/blend_position", velocity)
 	move_and_slide()
 	
 func _on_body_entered(body: Node) -> void:

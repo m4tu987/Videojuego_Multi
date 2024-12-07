@@ -1,12 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbsj1koyihqbf"]
+[gd_scene load_steps=15 format=3 uid="uid://dbsj1koyihqbf"]
 
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
 [ext_resource type="PackedScene" uid="uid://c203i6mdrx2re" path="res://scenes/map/doorSectionA.tscn" id="2_85oa2"]
 [ext_resource type="PackedScene" uid="uid://d3bdkod6p5hd1" path="res://scenes/map/doorSectionB.tscn" id="3_6oq0q"]
 [ext_resource type="PackedScene" uid="uid://w0ge8xdea4nx" path="res://scenes/map/doorSectionC.tscn" id="4_jorx3"]
-[ext_resource type="PackedScene" uid="uid://0sqjmbepew42" path="res://scenes/enemy/new_spawner.tscn" id="6_jo6wp"]
-[ext_resource type="PackedScene" uid="uid://8qr076x3t5uu" path="res://scenes/enemy/enemy.tscn" id="7_vb36j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
 size = Vector2(564, 576)
@@ -128,17 +126,6 @@ wait_time = 144.0
 one_shot = true
 autostart = true
 
-[node name="NewSpawner" parent="." instance=ExtResource("6_jo6wp")]
-visible = false
-show_behind_parent = true
-scene = ExtResource("7_vb36j")
-spawn_zone = Rect2(-350, -210, 100, 420)
-
-[node name="MultiplayerSpawner" parent="NewSpawner" index="0"]
-_spawnable_scenes = PackedStringArray("res://scenes/enemy/enemy.tscn")
-
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
 [connection signal="timeout" from="Stop" to="." method="_on_stop_timeout"]
 [connection signal="timeout" from="StopSpawning" to="." method="_on_stop_spawning_timeout"]
-
-[editable path="NewSpawner"]

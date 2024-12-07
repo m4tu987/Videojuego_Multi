@@ -562,6 +562,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_6kjun")
 hframes = 16
 vframes = 6
+frame = 5
 
 [node name="Gun" parent="." instance=ExtResource("4_r66d2")]
 position = Vector2(-1, -24)

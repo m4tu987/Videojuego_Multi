@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5hufqs7sbm01"]
+[gd_scene load_steps=11 format=3 uid="uid://b5hufqs7sbm01"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ysfbh"]
 [ext_resource type="PackedScene" uid="uid://5ii184hki74a" path="res://scenes/map/map.tscn" id="3_2kqfa"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dbsj1koyihqbf" path="res://scenes/camera/camera.tscn" id="5_c6mwe"]
 [ext_resource type="PackedScene" uid="uid://b0uk8i3822c8i" path="res://scenes/Menus/DefeatText.tscn" id="7_6i5nb"]
 [ext_resource type="PackedScene" uid="uid://buwp47718778m" path="res://scenes/Menus/VictoryText.tscn" id="7_opfe5"]
+[ext_resource type="PackedScene" uid="uid://0sqjmbepew42" path="res://scenes/enemy/new_spawner.tscn" id="8_s5u64"]
+[ext_resource type="PackedScene" uid="uid://8qr076x3t5uu" path="res://scenes/enemy/enemy.tscn" id="9_kfye1"]
 [ext_resource type="PackedScene" uid="uid://8d2ip3vepasa" path="res://scenes/map/winSection.tscn" id="10_tsswf"]
 
 [node name="Main" type="Node2D"]
@@ -41,7 +43,22 @@ offset_bottom = 40.0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="EnemySpawner" parent="Camera" instance=ExtResource("8_s5u64")]
+visible = false
+show_behind_parent = true
+y_sort_enabled = true
+scene = ExtResource("9_kfye1")
+spawn_zone = Rect2(-500, -210, 100, 420)
+
+[node name="MultiplayerSpawner" parent="Camera/EnemySpawner" index="0"]
+_spawnable_scenes = PackedStringArray("res://scenes/enemy/enemy.tscn")
+
+[node name="Timer" parent="Camera/EnemySpawner" index="1"]
+wait_time = 3.0
+
 [node name="WinSection" parent="." instance=ExtResource("10_tsswf")]
 position = Vector2(11328, 0)
 
 [node name="Doors" type="Node2D" parent="."]
+
+[editable path="Camera/EnemySpawner"]
