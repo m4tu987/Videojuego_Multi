@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbsj1koyihqbf"]
+[gd_scene load_steps=13 format=3 uid="uid://dbsj1koyihqbf"]
 
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
 [ext_resource type="PackedScene" uid="uid://c203i6mdrx2re" path="res://scenes/map/doorSectionA.tscn" id="2_85oa2"]
 [ext_resource type="PackedScene" uid="uid://d3bdkod6p5hd1" path="res://scenes/map/doorSectionB.tscn" id="3_6oq0q"]
 [ext_resource type="PackedScene" uid="uid://w0ge8xdea4nx" path="res://scenes/map/doorSectionC.tscn" id="4_jorx3"]
+[ext_resource type="Texture2D" uid="uid://dbfwkrohyubtq" path="res://assets/efectos/Retro Impact Effect Pack 5 B.png" id="6_5rjie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
-size = Vector2(564, 576)
+size = Vector2(64, 576)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlu5e"]
 size = Vector2(218, 576)
@@ -23,39 +24,25 @@ properties/1/path = NodePath(".:move")
 properties/1/spawn = true
 properties/1/replication_mode = 2
 
-[sub_resource type="Gradient" id="Gradient_cr2ap"]
-offsets = PackedFloat32Array(0, 0.403226, 0.991935)
-colors = PackedColorArray(1, 0, 0.760784, 1, 1, 0, 1, 1, 0.694118, 0, 1, 1)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3cfrt"]
+particles_animation = true
+particles_anim_h_frames = 9
+particles_anim_v_frames = 30
+particles_anim_loop = true
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7nsi3"]
-gradient = SubResource("Gradient_cr2ap")
-
-[sub_resource type="Curve" id="Curve_tam6v"]
-min_value = 5.0
-max_value = 200.0
-_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_hbn48"]
-curve = SubResource("Curve_tam6v")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6tfxi"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k7hhj"]
+lifetime_randomness = 0.5
 particle_flag_disable_z = true
+emission_shape_offset = Vector3(-5, 0, 0)
 emission_shape = 3
-emission_box_extents = Vector3(1, 224, 0)
-spread = 0.0
-initial_velocity_min = 50.0
-initial_velocity_max = 150.0
-angular_velocity_min = 50.0
-angular_velocity_max = 75.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = -175.0
-linear_accel_max = -150.0
-scale_over_velocity_max = 1000.0
-scale_over_velocity_curve = SubResource("CurveTexture_hbn48")
-color_ramp = SubResource("GradientTexture1D_7nsi3")
-hue_variation_min = -2.23517e-08
-hue_variation_max = 0.08
+emission_box_extents = Vector3(0, 40, 0)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+gravity = Vector3(50, 0, 0)
+damping_min = 75.0
+damping_max = 100.0
+anim_offset_min = 0.0333
+anim_offset_max = 0.0555
 
 [node name="Camera" type="Camera2D"]
 position = Vector2(512, 288)
@@ -72,7 +59,7 @@ collision_mask = 3
 script = ExtResource("1_gjfo0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitzone"]
-position = Vector2(-730, 0)
+position = Vector2(-480, 0)
 shape = SubResource("RectangleShape2D_2638a")
 
 [node name="BackWall" type="StaticBody2D" parent="."]
@@ -101,9 +88,12 @@ replication_config = SubResource("SceneReplicationConfig_5wpn8")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = 100
+material = SubResource("CanvasItemMaterial_3cfrt")
 position = Vector2(-512, 0)
-amount = 350
-process_material = SubResource("ParticleProcessMaterial_6tfxi")
+scale = Vector2(4, 4)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_k7hhj")
+texture = ExtResource("6_5rjie")
 local_coords = true
 
 [node name="DoorSpawner" type="MultiplayerSpawner" parent="."]
