@@ -1,11 +1,10 @@
-[gd_scene load_steps=65 format=3 uid="uid://8qr076x3t5uu"]
+[gd_scene load_steps=63 format=3 uid="uid://8qr076x3t5uu"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_5jni1"]
 [ext_resource type="Texture2D" uid="uid://xw32s13s8q5u" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleSide1.png" id="2_5cfqa"]
 [ext_resource type="PackedScene" uid="uid://ci3qwyc2qmani" path="res://scenes/enemy/deathFX.tscn" id="2_q03gx"]
 [ext_resource type="Texture2D" uid="uid://brx0e2flon7o0" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleUp1.png" id="2_xwv33"]
 [ext_resource type="PackedScene" uid="uid://cpk2b7cb1w0jd" path="res://scenes/enemy/enemy_stats.tscn" id="3_2dtxh"]
-[ext_resource type="PackedScene" uid="uid://bys8n6cqu4y7p" path="res://scenes/enemy/attackFX.tscn" id="3_70uil"]
 [ext_resource type="Texture2D" uid="uid://b7m83w7j3q4pr" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleUp2.png" id="3_a3xey"]
 [ext_resource type="Script" path="res://components/hurtbox_enemy.gd" id="4_2r43k"]
 [ext_resource type="Texture2D" uid="uid://v8cchexb418u" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleUp3.png" id="4_5sbmu"]
@@ -742,12 +741,8 @@ tracks/0/keys = {
 "values": [63, 64, 65, 66, 68, 69]
 }
 
-[sub_resource type="Animation" id="Animation_2dqj7"]
-resource_name = "Attack"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_65f3c"]
 _data = {
-"Attack": SubResource("Animation_2dqj7"),
 "Death": SubResource("Animation_u4t0b"),
 "RESET": SubResource("Animation_6dttu"),
 "spawn": SubResource("Animation_1lo7a")
@@ -761,7 +756,6 @@ collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_5jni1")
 death_fx = ExtResource("2_q03gx")
-attack_fx = ExtResource("3_70uil")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
@@ -831,10 +825,4 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_1oun4")
 
-[node name="AttackDuration" type="Timer" parent="."]
-wait_time = 0.7
-
-[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
-[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
-[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]

@@ -7,13 +7,19 @@ var target: Node2D
 
 @export var is_global := true
 @export var death_fx : PackedScene
-@onready var attack_area = $AttackArea/CollisionShape2D
+@export var attack_fx : PackedScene 
 @onready var stats := $EnemyStats
+@onready var player_detector = $PlayerDetector
+@onready var attack_area = $AttackArea
+@export var objective = false
 
 
 func _ready() -> void:
 	stats.health_changed.connect(_on_health_changed)
 	$SpawnAnimation.play("spawn")
+	if is_multiplayer_authority():
+		player_detector.body_entered.connect(_on_player_detector_body_entered)
+		player_detector.body_exited.connect(_on_player_detector_body_exited)
 
 func _physics_process(_delta: float) -> void:
 	if is_global:
@@ -27,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 		target = closest
 	if target:
 		var direction = (target.global_position - global_position).normalized()
-		if (global_position.distance_to(target.global_position) > 50):
+		if (global_position.distance_to(target.global_position) > 60):
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel)
 			velocity.y = move_toward(velocity.y, direction.y * speed, accel)
 		else:
@@ -83,3 +89,33 @@ func set_target_remote(target_path):
 		target = get_node(target_path)
 	else:
 		target = null
+
+@rpc("any_peer","reliable","call_local")
+func attack():
+	var attack_inst = attack_fx.instantiate()
+	attack_inst.global_position = $AttackArea/CollisionShape2D.global_position
+	get_parent().add_child(attack_inst)
+	attack_area.set_deferred("monitorable", true)
+	attack_area.set_deferred("monitoring", true)
+	$AttackDuration.start()
+
+
+func _on_player_detector_body_entered(body):
+	var player = body as Player
+	if player:
+		objective = true
+		attack.rpc()
+
+func _on_player_detector_body_exited(body):
+	var player = body as Player
+	if player:
+		objective = true
+
+func _on_attack_duration_timeout():
+	attack_area.set_deferred("monitorable", false)
+	attack_area.set_deferred("monitoring", false)
+	$AttackCooldown.start()
+
+func _on_attack_cooldown_timeout():
+	if (objective):
+		attack.rpc()
