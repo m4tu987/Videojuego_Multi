@@ -10,7 +10,6 @@ var target: Node2D
 @export var attack_fx : PackedScene 
 @onready var stats := $EnemyStats
 @onready var player_detector = $PlayerDetector
-@onready var attack_area = $AttackArea
 @export var objective = false
 
 
@@ -93,11 +92,13 @@ func set_target_remote(target_path):
 @rpc("any_peer","reliable","call_local")
 func attack():
 	var attack_inst = attack_fx.instantiate()
-	attack_inst.global_position = $AttackArea/CollisionShape2D.global_position
+	attack_inst.global_position = $AttackPosition.global_position
 	get_parent().add_child(attack_inst)
-	attack_area.set_deferred("monitorable", true)
-	attack_area.set_deferred("monitoring", true)
-	$AttackDuration.start()
+	player_detector.set_deferred("monitoring", false)
+	$AttackCooldown.start()
+
+func _on_attack_cooldown_timeout():
+	player_detector.set_deferred("monitoring", true)
 
 
 func _on_player_detector_body_entered(body):
@@ -110,12 +111,3 @@ func _on_player_detector_body_exited(body):
 	var player = body as Player
 	if player:
 		objective = true
-
-func _on_attack_duration_timeout():
-	attack_area.set_deferred("monitorable", false)
-	attack_area.set_deferred("monitoring", false)
-	$AttackCooldown.start()
-
-func _on_attack_cooldown_timeout():
-	if (objective):
-		attack.rpc()

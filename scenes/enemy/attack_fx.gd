@@ -1,7 +1,10 @@
-extends Node2D
+extends Hitbox
+
+
 
 
 func _ready():
+	set_damage(5)
 	$SpawnAnimation.play("Attack")
 
 
