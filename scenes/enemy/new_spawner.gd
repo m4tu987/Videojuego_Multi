@@ -25,7 +25,7 @@ func _on_timer_timeout() -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	queue_redraw()
 
 

@@ -63,7 +63,7 @@ func _input(event: InputEvent) -> void:
 			resurrection_timer.stop()
 			resurrection_progress_bar.value = 0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not resurrection_timer.is_stopped():
 		resurrection_progress_bar.value = 1 - (resurrection_timer.time_left / resurrection_timer.wait_time)
 		

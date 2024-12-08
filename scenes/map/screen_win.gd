@@ -22,7 +22,7 @@ func _ready() -> void:
 	if role == Statics.Role.ROLE_C:
 		screen_sprite.material.set_shader_parameter("to",Color.BLUE)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not $HackingTime.is_stopped():
 		hacking_progress_bar.value = 1 - ($HackingTime.time_left / $HackingTime.wait_time)
 
