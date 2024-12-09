@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://8qr076x3t5uu"]
+[gd_scene load_steps=67 format=3 uid="uid://8qr076x3t5uu"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_5jni1"]
 [ext_resource type="Texture2D" uid="uid://xw32s13s8q5u" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleSide1.png" id="2_5cfqa"]
@@ -9,10 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://b7m83w7j3q4pr" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleUp2.png" id="3_a3xey"]
 [ext_resource type="Script" path="res://components/hurtbox_enemy.gd" id="4_2r43k"]
 [ext_resource type="Texture2D" uid="uid://v8cchexb418u" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleUp3.png" id="4_5sbmu"]
+[ext_resource type="AudioStream" uid="uid://dbpo65rn81258" path="res://assets/Alien Escape!/Ataque Enemy Var.1.wav" id="4_k1tqa"]
+[ext_resource type="AudioStream" uid="uid://ciq01w5thvlyw" path="res://assets/Alien Escape!/Ataque Enemy Var.2.wav" id="5_5oc71"]
 [ext_resource type="Texture2D" uid="uid://pj01imuiok47" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleUp4.png" id="5_q5lar"]
 [ext_resource type="Texture2D" uid="uid://dye2uj2hvk8dg" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleFront1.png" id="6_h1yxw"]
+[ext_resource type="AudioStream" uid="uid://dpcair6x3sw55" path="res://assets/Alien Escape!/Ataque Enemy Var.3.wav" id="6_t0sv4"]
 [ext_resource type="Texture2D" uid="uid://bt3ridtwu4der" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleFront3.png" id="7_3fj2a"]
 [ext_resource type="Texture2D" uid="uid://dxey1i7r7gaa5" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleFront2.png" id="7_b41wo"]
+[ext_resource type="AudioStream" uid="uid://dpjd5meb4dg0x" path="res://assets/Alien Escape!/Ataque Enemy Var.4.wav" id="7_gmra7"]
 [ext_resource type="Texture2D" uid="uid://bopfx6gp01c14" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleFront4.png" id="8_vw61o"]
 [ext_resource type="Texture2D" uid="uid://dgev1n6b36218" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleSide2.png" id="11_mcwre"]
 [ext_resource type="Texture2D" uid="uid://cv6s8xe18ow5l" path="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleSide3.png" id="12_gc10p"]
@@ -758,6 +762,7 @@ collision_mask = 15
 script = ExtResource("1_5jni1")
 death_fx = ExtResource("2_q03gx")
 attack_fx = ExtResource("3_70uil")
+spawn_sound = Array[AudioStream]([ExtResource("4_k1tqa"), ExtResource("5_5oc71"), ExtResource("6_t0sv4"), ExtResource("7_gmra7")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)

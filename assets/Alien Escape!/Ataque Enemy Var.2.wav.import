@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ciq01w5thvlyw"
+path="res://.godot/imported/Ataque Enemy Var.2.wav-9afd897418f29fc0f37429bf59651c8c.sample"
+
+[deps]
+
+source_file="res://assets/Alien Escape!/Ataque Enemy Var.2.wav"
+dest_files=["res://.godot/imported/Ataque Enemy Var.2.wav-9afd897418f29fc0f37429bf59651c8c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

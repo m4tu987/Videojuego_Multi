@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://duj36s8fopf43"
+path="res://.godot/imported/Disparo Var.2.wav-f71d76b5692bf9a6208f483bbdd6e9b9.sample"
+
+[deps]
+
+source_file="res://assets/Alien Escape!/Disparo Var.2.wav"
+dest_files=["res://.godot/imported/Disparo Var.2.wav-f71d76b5692bf9a6208f483bbdd6e9b9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

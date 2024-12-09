@@ -10,11 +10,13 @@ var target: Node2D
 @export var attack_fx : PackedScene 
 @onready var stats := $EnemyStats
 @onready var player_detector = $PlayerDetector
+@export var spawn_sound: Array[AudioStream] = []
 @export var objective = false
 
 
 func _ready() -> void:
 	stats.health_changed.connect(_on_health_changed)
+	AudioManager.play_stream(spawn_sound.pick_random())
 	$SpawnAnimation.play("spawn")
 	if is_multiplayer_authority():
 		player_detector.body_entered.connect(_on_player_detector_body_entered)

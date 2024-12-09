@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci3qwyc2qmani"]
+[gd_scene load_steps=12 format=3 uid="uid://ci3qwyc2qmani"]
 
 [ext_resource type="Texture2D" uid="uid://dbfwkrohyubtq" path="res://assets/efectos/Retro Impact Effect Pack 5 B.png" id="1_748ss"]
 [ext_resource type="Script" path="res://scenes/enemy/death_fx.gd" id="1_wv6j7"]
+[ext_resource type="AudioStream" uid="uid://8xjxiuvm5p5j" path="res://assets/Alien Escape!/Enemy Dead Var.1.wav" id="2_iceis"]
+[ext_resource type="AudioStream" uid="uid://dho5ghl00eqbc" path="res://assets/Alien Escape!/Enemy Dead Var.2.wav" id="3_ma5c3"]
+[ext_resource type="AudioStream" uid="uid://eccuuflg44d1" path="res://assets/Alien Escape!/Enemy Dead Var.3.wav" id="4_d81qe"]
+[ext_resource type="AudioStream" uid="uid://dco6li7tby4td" path="res://assets/Alien Escape!/Enemy Dead Var.4.wav" id="5_cj4ul"]
 
 [sub_resource type="Animation" id="Animation_u0t13"]
 resource_name = "Attack"
@@ -76,6 +80,7 @@ _data = {
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_wv6j7")
+death_sound = Array[AudioStream]([ExtResource("2_iceis"), ExtResource("3_ma5c3"), ExtResource("4_d81qe"), ExtResource("5_cj4ul")])
 
 [node name="SpawnEffect" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)

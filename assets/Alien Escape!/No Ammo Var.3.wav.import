@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4ne06lu7iivj"
+path="res://.godot/imported/No Ammo Var.3.wav-912866bc7bfa2f638ed2cb79ba33627d.sample"
+
+[deps]
+
+source_file="res://assets/Alien Escape!/No Ammo Var.3.wav"
+dest_files=["res://.godot/imported/No Ammo Var.3.wav-912866bc7bfa2f638ed2cb79ba33627d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
