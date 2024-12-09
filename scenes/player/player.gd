@@ -117,6 +117,13 @@ func getcolor(player_data):
 func take_damage(damage: int) -> void:
 		stats.health -= damage
 
+func get_healed_local(heal: int) -> void:
+	get_healed.rpc(heal)
+
+@rpc("any_peer", "call_local", "reliable")
+func get_healed(heal: int) -> void:
+	stats.health += heal
+
 func _on_health_changed(health) -> void:
 	hud.health = health
 	health_bar.value = health

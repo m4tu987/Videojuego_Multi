@@ -1,3 +1,4 @@
+class_name Gun
 extends Node2D
 
 signal reload_finished
