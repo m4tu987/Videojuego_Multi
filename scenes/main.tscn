@@ -58,6 +58,7 @@ wait_time = 5.0
 
 [node name="WinSection" parent="." instance=ExtResource("10_tsswf")]
 position = Vector2(11328, 0)
+sound = null
 
 [node name="Doors" type="Node2D" parent="."]
 

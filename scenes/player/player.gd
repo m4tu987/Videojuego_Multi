@@ -196,23 +196,13 @@ func _on_resurrection_timeout() -> void:
 	resurrection_progress_bar.value = 0
 
 func add_scent() -> void:
-	if not scent_scene:
-		print("Error: scent_scene no está cargada correctamente.")
-		return
-
-	# Instanciar la escena correctamente
 	var scent = scent_scene.instantiate()  # Utiliza `instantiate` en lugar de `instance`
-	if not scent:
-		print("Error: No se pudo instanciar la escena scent.")
-		return
 	
 	# Configurar el nodo scent
 	scent.player = self
-	scent.position = self.position
+	scent.global_position = global_position
 
 	# Agregarlo a la escena actual
 	if get_tree().current_scene:
 		get_tree().current_scene.add_child(scent)
 		scent_trail.push_front(scent)
-	else:
-		print("Error: No se puede añadir a la escena actual.")

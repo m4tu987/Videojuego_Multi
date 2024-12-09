@@ -60,11 +60,12 @@ func _physics_process(_delta: float) -> void:
 					direction = (closest_scent.global_position - global_position).normalized()
 					velocity.x = move_toward(velocity.x, direction.x * speed, accel)
 					velocity.y = move_toward(velocity.y, direction.y * speed, accel)
+					Debug.log("asdfadsfasdf")
 				else:
 					velocity = Vector2.ZERO
 			else:
 				velocity = Vector2.ZERO
-		elif (global_position.distance_to(target.global_position) > 60):
+		elif (global_position.distance_to(target.global_position) > 40):
 			# Si hay línea de visión y está lejos, moverse hacia el objetivo
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel)
 			velocity.y = move_toward(velocity.y, direction.y * speed, accel)

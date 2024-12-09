@@ -35,8 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://cx5xeeuy4erud" path="res://assets/enemy/SpiderPack/WalkingPurple/SpiderWalkingUp4.png" id="28_tophp"]
 [ext_resource type="Texture2D" uid="uid://dbfwkrohyubtq" path="res://assets/efectos/Retro Impact Effect Pack 5 B.png" id="29_82co0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtgy3"]
-size = Vector2(64, 35)
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8vkq"]
+radius = 27.02
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_07c8k"]
 properties/0/path = NodePath(".:position")
@@ -765,8 +765,8 @@ attack_fx = ExtResource("3_70uil")
 spawn_sound = Array[AudioStream]([ExtResource("4_k1tqa"), ExtResource("5_5oc71"), ExtResource("6_t0sv4"), ExtResource("7_gmra7")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6.5)
-shape = SubResource("RectangleShape2D_mtgy3")
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_q8vkq")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_07c8k")
@@ -825,7 +825,7 @@ shape = SubResource("CircleShape2D_1oun4")
 position = Vector2(60, 0)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-collision_mask = 5
+visible = false
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
