@@ -11,6 +11,7 @@ signal C_resurrected
 @export var id := 1
 @export var walking = false
 @export var dir = Vector2.ZERO
+@export var damage_sound: Array[AudioStream] = []
 var speed = 200
 var accel = 100
 var base_speed = 200
@@ -123,7 +124,9 @@ func getcolor2(player_data):
 
 #se puede tambien hacer notify_take_damage.rpc(get_multiplayer_autorithy(), damage) para que llegue solo al que tiene autoridad
 func take_damage(damage: int) -> void:
-		stats.health -= damage
+	if !dead:
+		AudioManager.play_stream(damage_sound.pick_random())
+	stats.health -= damage
 
 func get_healed_local(heal: int) -> void:
 	get_healed.rpc(heal)
