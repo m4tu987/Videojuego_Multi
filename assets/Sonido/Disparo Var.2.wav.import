@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buirbbomw8e4f"
+path="res://.godot/imported/Disparo Var.2.wav-9aa501ae403ae718f5560213b77f8046.sample"
+
+[deps]
+
+source_file="res://assets/Sonido/Disparo Var.2.wav"
+dest_files=["res://.godot/imported/Disparo Var.2.wav-9aa501ae403ae718f5560213b77f8046.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

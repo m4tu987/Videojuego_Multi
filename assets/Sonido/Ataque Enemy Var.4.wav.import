@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnsma71af8p73"
+path="res://.godot/imported/Ataque Enemy Var.4.wav-da6f40004af24ab7117bd6c4eaec078c.sample"
+
+[deps]
+
+source_file="res://assets/Sonido/Ataque Enemy Var.4.wav"
+dest_files=["res://.godot/imported/Ataque Enemy Var.4.wav-da6f40004af24ab7117bd6c4eaec078c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

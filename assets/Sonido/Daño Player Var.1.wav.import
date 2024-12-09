@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1ittvdc6cxth"
+path="res://.godot/imported/Daño Player Var.1.wav-48789890293c2d7cb0e3d0dc473bbf7d.sample"
+
+[deps]
+
+source_file="res://assets/Sonido/Daño Player Var.1.wav"
+dest_files=["res://.godot/imported/Daño Player Var.1.wav-48789890293c2d7cb0e3d0dc473bbf7d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

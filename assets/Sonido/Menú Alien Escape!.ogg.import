@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3vwmualyuflq"
+path="res://.godot/imported/Menú Alien Escape!.ogg-818700dbc882352203fca237bc81b53f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sonido/Menú Alien Escape!.ogg"
+dest_files=["res://.godot/imported/Menú Alien Escape!.ogg-818700dbc882352203fca237bc81b53f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
