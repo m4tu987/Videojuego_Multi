@@ -124,6 +124,9 @@ func get_healed_local(heal: int) -> void:
 func get_healed(heal: int) -> void:
 	stats.health += heal
 
+func get_ammo(ammo: int) -> void:
+	$Gun.more_total_ammo_local(ammo)
+
 func _on_health_changed(health) -> void:
 	hud.health = health
 	health_bar.value = health

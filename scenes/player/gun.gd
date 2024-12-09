@@ -33,6 +33,7 @@ func _ready() -> void:
 	ammo = max_ammo
 	max_total_ammo = 90
 	reload_finished.connect(real_reload)
+
 func _process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		global_rotation = global_position.direction_to(get_global_mouse_position()).angle()
@@ -43,15 +44,24 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
 		fire.rpc_id(1)
 		fire_fx.rpc()
+
 func _physics_process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		if Input.is_action_just_pressed("reload") and can_reload:
 			can_reload = false
 			reload.rpc_id(1)
 			$reload_timer.start()
+
 func setup(player_id) -> void:
 	set_multiplayer_authority(player_id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_id)
+
+func more_total_ammo_local(extra: int) -> void:
+	more_total_ammo.rpc(extra)
+
+@rpc("any_peer", "call_local", "reliable")
+func more_total_ammo(extra: int) -> void:
+	max_total_ammo += extra
 
 @rpc("reliable", "any_peer", "call_local")
 func fire() -> void:
@@ -106,5 +116,6 @@ func real_reload() -> void:
 		ammo_label.text = str(ammo)
 	if max_ammo_label:
 		max_ammo_label.text = str(max_total_ammo)
+
 func _on_reload_timer_timeout():
 	can_reload = true
