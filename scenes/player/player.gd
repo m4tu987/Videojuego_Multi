@@ -113,6 +113,14 @@ func getcolor(player_data):
 	if player_data.role == Statics.Role.ROLE_C:
 		return Color.DARK_SLATE_BLUE
 
+func getcolor2(player_data):
+	if player_data.role == Statics.Role.ROLE_A:
+		return Color.LIME
+	if player_data.role == Statics.Role.ROLE_B:
+		return Color.CRIMSON
+	if player_data.role == Statics.Role.ROLE_C:
+		return Color.BLUE
+
 #se puede tambien hacer notify_take_damage.rpc(get_multiplayer_autorithy(), damage) para que llegue solo al que tiene autoridad
 func take_damage(damage: int) -> void:
 		stats.health -= damage

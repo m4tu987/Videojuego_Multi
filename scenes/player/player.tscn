@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bb3yyl4dr2qey"]
+[gd_scene load_steps=49 format=3 uid="uid://bb3yyl4dr2qey"]
 
 [ext_resource type="Texture2D" uid="uid://buxpgxehb4253" path="res://assets/player/astronaut_export_sheet.png" id="1_6kjun"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_40kih"]
@@ -9,9 +9,17 @@
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="5_fwsne"]
 [ext_resource type="PackedScene" uid="uid://ck7ih0cydbkcb" path="res://scenes/stats.tscn" id="6_haq3c"]
 [ext_resource type="PackedScene" uid="uid://dentogqnrpfgu" path="res://ui/hud.tscn" id="7_2xb5s"]
+[ext_resource type="Theme" path="res://resources/lobby_theme.tres" id="7_d5xi5"]
 [ext_resource type="Script" path="res://scenes/player/win_condition.gd" id="8_7uh48"]
 [ext_resource type="Script" path="res://scenes/player/lose_condition.gd" id="9_knyi1"]
 [ext_resource type="Texture2D" uid="uid://cv2np082tdl1v" path="res://assets/HUD/circulo1.png" id="10_balfx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whbmx"]
+resource_local_to_scene = true
+shader = ExtResource("2_jnx1s")
+shader_parameter/from = Color(0, 0.596078, 0.862745, 1)
+shader_parameter/to = Color(0, 0.894305, 0.898503, 1)
+shader_parameter/tolerance = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv036"]
 size = Vector2(10, 4.66667)
@@ -540,6 +548,7 @@ metadata/_edit_horizontal_guides_ = [0.0]
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 z_index = 100
+material = SubResource("ShaderMaterial_whbmx")
 custom_minimum_size = Vector2(50, 10)
 offset_left = -53.0
 offset_top = -84.0
@@ -571,6 +580,7 @@ offset_left = -30.0
 offset_top = 10.0
 offset_right = 32.0
 offset_bottom = 33.0
+theme = ExtResource("7_d5xi5")
 
 [node name="Dash_Cooldown" type="Timer" parent="."]
 one_shot = true

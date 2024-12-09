@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var health_bar = $HealthBar
 
 
+
 @export var health := 100 : 
 	set(value):
 		health = value

@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dentogqnrpfgu"]
+[gd_scene load_steps=6 format=3 uid="uid://dentogqnrpfgu"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_jkai8"]
 [ext_resource type="Texture2D" uid="uid://d24dmxlw3ocik" path="res://assets/HUD/Barra_vida_vacia.png" id="2_6r0ww"]
+[ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_rjaoh"]
 [ext_resource type="Texture2D" uid="uid://bc66gp7bo8xdw" path="res://assets/HUD/barra_vida_llena.png" id="3_lp0x1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iym4p"]
+resource_local_to_scene = true
+shader = ExtResource("2_rjaoh")
+shader_parameter/from = Color(0, 0.596078, 0.862745, 1)
+shader_parameter/to = Color(0, 0.894118, 0.898039, 1)
+shader_parameter/tolerance = 1.0
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_jkai8")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+material = SubResource("ShaderMaterial_iym4p")
 offset_left = 20.0
 offset_top = 515.0
 offset_right = 170.0
