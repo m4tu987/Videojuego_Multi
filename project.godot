@@ -13,7 +13,10 @@ config_version=5
 config/name="Alien Escape"
 run/main_scene="res://scenes/Menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://assets/DisociadoGames2.png"
+boot_splash/use_filter=false
 config/icon="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleFront1.png"
+boot_splash/minimum_display_time=3000
 
 [autoload]
 
