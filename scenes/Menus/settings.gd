@@ -17,7 +17,7 @@ func _ready():
 func _on_back():
 	get_tree().change_scene_to_file("res://scenes/Menus/main_menu.tscn")
 func _on_music_volume_changed(value):
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),linear_to_db(value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),linear_to_db(value))
 func _on_sfx_volume_changed(value_changed):
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),linear_to_db(sfx_slider.value))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),linear_to_db(sfx_slider.value))
 		AudioManager.play_stream(sfx)

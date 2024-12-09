@@ -2934,6 +2934,7 @@ tile_set = SubResource("TileSet_06fca")
 rendering_quadrant_size = 64
 
 [node name="reload_timer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="reload_timer" to="." method="_on_reload_timer_timeout"]

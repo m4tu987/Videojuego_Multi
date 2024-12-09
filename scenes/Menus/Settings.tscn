@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd0xj54qewm3x"]
+[gd_scene load_steps=11 format=3 uid="uid://bd0xj54qewm3x"]
 
 [ext_resource type="Script" path="res://scenes/Menus/settings.gd" id="1_jl3kk"]
 [ext_resource type="Texture2D" uid="uid://bflsl6qcwy43f" path="res://assets/HUD/Strip And GIF/space6_4-frames.png" id="2_6y5e7"]
 [ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="2_qcqqj"]
+[ext_resource type="AudioStream" uid="uid://bnevqa3g580sf" path="res://assets/Alien Escape!/Daño Player Var.3.wav" id="2_xwngp"]
 [ext_resource type="Theme" uid="uid://dqmm05iu5skty" path="res://resources/tema_label.tres" id="3_8modb"]
 
 [sub_resource type="Theme" id="Theme_ey2u0"]
@@ -71,6 +72,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jl3kk")
+sfx = ExtResource("2_xwngp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

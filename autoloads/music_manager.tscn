@@ -10,6 +10,7 @@ script = ExtResource("1_oovxy")
 
 [node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_6facp")
+bus = &"Music"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
@@ -18,9 +19,11 @@ one_shot = true
 [node name="IntroGameMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7qyc4")
 volume_db = 5.0
+bus = &"Music"
 
 [node name="GameMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8v2as")
+bus = &"Music"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="IntroGameMusicPlayer" to="." method="_on_intro_game_music_player_finished"]
