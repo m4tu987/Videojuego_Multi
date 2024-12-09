@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bctn1p188myhe"]
+
+[ext_resource type="PackedScene" uid="uid://ctg303dwyuuq4" path="res://scenes/map/box.tscn" id="1_31c5g"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Box" parent="." instance=ExtResource("1_31c5g")]
+role = 2
+type = 1

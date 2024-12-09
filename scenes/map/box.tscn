@@ -55,6 +55,8 @@ _data = {
 }
 
 [node name="Box" type="StaticBody2D"]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_2oqf2")
 heal_simbol = ExtResource("2_13qfw")
 ammo_simbol = ExtResource("3_5cfyf")
