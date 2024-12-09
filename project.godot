@@ -21,6 +21,7 @@ Debug="*res://autoloads/debug.gd"
 Game="*res://autoloads/game.tscn"
 AudioManager="*res://autoloads/audio_manager.tscn"
 MusicManager="*res://autoloads/music_manager.tscn"
+VictoryMenu="*res://autoloads/Victory_menu.tscn"
 
 [display]
 

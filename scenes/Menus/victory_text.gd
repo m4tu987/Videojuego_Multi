@@ -1,11 +1,13 @@
 extends MarginContainer
-
-#@onready var button = $Panel/MarginContainer/VBoxContainer/Button
+@onready var back_menu = $Panel/MarginContainer/VBoxContainer/Back_menu
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	button.pressed.connect(back_menu)
+func _ready():
+	get_tree().paused = false
+	back_menu.pressed.connect(_back_menu)
 
-
-#func back_menu():
-#	get_tree().change_scene_to_file("res://scenes/Menus/main_menu.tscn")
+func _back_menu():
+	multiplayer.multiplayer_peer.close()
+	Game.players = []
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/Menus/main_menu.tscn")

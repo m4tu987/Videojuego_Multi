@@ -14,13 +14,10 @@ func play_menu_music() -> void:
 
 func play_game_music() -> void:
 	menu_music_player.stop()
-	Debug.log("paramos")
 	$Timer.start()
 
 func _on_timer_timeout():
-	Debug.log("y parte")
 	intro_game_music_player.play()
 
 func _on_intro_game_music_player_finished():
-	Debug.log("y sigue")
 	game_music_player.play()
