@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7dlpljiv4h0u"]
+[gd_scene load_steps=8 format=3 uid="uid://c7dlpljiv4h0u"]
 
 [ext_resource type="Theme" uid="uid://bpdlassp3u5v" path="res://resources/theme_menu.tres" id="1_ifl0m"]
 [ext_resource type="Script" path="res://scenes/Menus/main_menu.gd" id="2_tcapv"]
 [ext_resource type="Theme" uid="uid://chgdwwfkaose" path="res://letras_botones.tres" id="3_22kvm"]
-[ext_resource type="AudioStream" uid="uid://byi6qce01tcwv" path="res://assets/Alien Escape!/Menú Alien Escape!.ogg" id="3_otpxb"]
 [ext_resource type="Texture2D" uid="uid://bflsl6qcwy43f" path="res://assets/HUD/Strip And GIF/space6_4-frames.png" id="4_bxfcu"]
 
 [sub_resource type="Animation" id="Animation_dm666"]
@@ -53,7 +52,6 @@ grow_vertical = 2
 scale = Vector2(1, 0.993243)
 theme = ExtResource("1_ifl0m")
 script = ExtResource("2_tcapv")
-music = ExtResource("3_otpxb")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2

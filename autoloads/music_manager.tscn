@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw6evwpfml8g2"]
+[gd_scene load_steps=5 format=3 uid="uid://cw6evwpfml8g2"]
 
 [ext_resource type="Script" path="res://autoloads/music_manager.gd" id="1_oovxy"]
+[ext_resource type="AudioStream" uid="uid://byi6qce01tcwv" path="res://assets/Alien Escape!/Menú Alien Escape!.ogg" id="2_6facp"]
+[ext_resource type="AudioStream" uid="uid://yhdh4h8ub0sw" path="res://assets/Alien Escape!/Alien Escape! Intro.ogg" id="2_7qyc4"]
+[ext_resource type="AudioStream" uid="uid://dttjnsullojwf" path="res://assets/Alien Escape!/Alien Escape!.ogg" id="3_8v2as"]
 
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_oovxy")
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6facp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="IntroGameMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7qyc4")
+volume_db = 5.0
+
+[node name="GameMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8v2as")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="IntroGameMusicPlayer" to="." method="_on_intro_game_music_player_finished"]
