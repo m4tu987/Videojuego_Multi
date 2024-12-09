@@ -1,13 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0uk8i3822c8i"]
+[gd_scene load_steps=7 format=3 uid="uid://b0uk8i3822c8i"]
 
+[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="1_8r8ob"]
 [ext_resource type="Script" path="res://scenes/Menus/defeat_text.gd" id="1_a7vvi"]
 
+[sub_resource type="FontFile" id="FontFile_d1ec0"]
+cache/0/100/0/ascent = 0.0
+cache/0/100/0/descent = 0.0
+cache/0/100/0/underline_position = 0.0
+cache/0/100/0/underline_thickness = 0.0
+cache/0/100/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
 [sub_resource type="Theme" id="Theme_qmg1k"]
+default_font = ExtResource("1_8r8ob")
 Label/font_sizes/font_size = 100
-Label/fonts/font = null
+Label/fonts/font = SubResource("FontFile_d1ec0")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lipd7"]
 bg_color = Color(0, 0.719112, 0.349859, 1)
+
+[sub_resource type="Theme" id="Theme_0x6ri"]
+default_font = ExtResource("1_8r8ob")
 
 [node name="DefeatText" type="MarginContainer"]
 process_mode = 3
@@ -44,6 +61,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_0x6ri")
 text = "Defeat"
 horizontal_alignment = 1
 

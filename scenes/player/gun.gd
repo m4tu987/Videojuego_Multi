@@ -107,13 +107,12 @@ func reload() -> void:
 @rpc("any_peer","reliable", "call_local")
 func reload_fx() -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(upward_sprite, "position:y", -4, 0.1)
-	tween.tween_property(upward_sprite, "position:y", 10, 0.1)
-	tween.tween_property(upward_sprite, "position:y", 0, 0.1)
+	tween.tween_property(upward_sprite, "position:y", -4, 0.5)
+	tween.tween_property(upward_sprite, "position:y", 10, 0.5)
+	tween.tween_property(upward_sprite, "position:y", 0, 0.4)
 	await tween.finished
 	if multiplayer.is_server():
 		reload_finished.emit()
-	await get_tree().create_timer(reload_cooldown).timeout
 	is_reloading = false
 	
 func real_reload() -> void:

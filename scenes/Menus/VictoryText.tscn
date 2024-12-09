@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://buwp47718778m"]
+[gd_scene load_steps=7 format=3 uid="uid://buwp47718778m"]
 
 [ext_resource type="Script" path="res://scenes/Menus/victory_text.gd" id="1_73nc0"]
+[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="1_146ux"]
 
 [sub_resource type="Theme" id="Theme_qmg1k"]
 Label/font_sizes/font_size = 100
@@ -8,6 +9,12 @@ Label/fonts/font = null
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lipd7"]
 bg_color = Color(0, 0.719112, 0.349859, 1)
+
+[sub_resource type="Theme" id="Theme_xs0gm"]
+default_font = ExtResource("1_146ux")
+
+[sub_resource type="Theme" id="Theme_vp3kq"]
+default_font = ExtResource("1_146ux")
 
 [node name="VictoryText" type="MarginContainer"]
 process_mode = 3
@@ -44,10 +51,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_xs0gm")
 text = "Victory"
 horizontal_alignment = 1
 
 [node name="Back_menu" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_vp3kq")
 text = "Back to menu
 "
