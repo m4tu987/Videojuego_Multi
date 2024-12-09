@@ -21,7 +21,7 @@ signal reload_finished
 @onready var multiplayer_synchronizer = $MultiplayerSynchronizer
 @onready var upward_sprite = $UpwardSprite2D
 @onready var canvas_layer = $CanvasLayer
-@export var reload_cooldown := 3.0
+@export var reload_cooldown := 1.5
 @export var is_reloading := false
 @onready var ammo_label = $CanvasLayer/TextureRect/MarginContainer/HBoxContainer/AmmoLabel
 @onready var max_ammo_label = $CanvasLayer/TextureRect/MarginContainer/HBoxContainer/max_ammoLabel
@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
-	if event.is_action_pressed("fire") and !is_reloading:
+	if event.is_action_pressed("fire"):
 		fire.rpc_id(1)
 		fire_fx.rpc()
 
@@ -73,6 +73,8 @@ func fire() -> void:
 		return
 	if not bullet_scene:
 		Debug.log("No bullet provided")
+		return
+	if is_reloading:
 		return
 	if ammo <= 0:
 		AudioManager.play_stream(no_ammo_sound.pick_random())
