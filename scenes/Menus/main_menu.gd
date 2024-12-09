@@ -1,4 +1,7 @@
 extends MarginContainer
+
+@export var music: AudioStream
+
 @onready var start = %Start
 @onready var credits = %Credits
 @onready var exit = %Exit
@@ -7,6 +10,7 @@ extends MarginContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MusicManager.play(music)
 	if Game.multiplayer_test:
 		get_tree().change_scene_to_file.call_deferred("res://scenes/lobby_test.tscn")
 		return

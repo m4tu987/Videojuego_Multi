@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7dlpljiv4h0u"]
+[gd_scene load_steps=9 format=3 uid="uid://c7dlpljiv4h0u"]
 
 [ext_resource type="Theme" uid="uid://bpdlassp3u5v" path="res://resources/theme_menu.tres" id="1_ifl0m"]
 [ext_resource type="Script" path="res://scenes/Menus/main_menu.gd" id="2_tcapv"]
 [ext_resource type="Theme" uid="uid://chgdwwfkaose" path="res://letras_botones.tres" id="3_22kvm"]
+[ext_resource type="AudioStream" uid="uid://byi6qce01tcwv" path="res://assets/Alien Escape!/Menú Alien Escape!.ogg" id="3_otpxb"]
 [ext_resource type="Texture2D" uid="uid://bflsl6qcwy43f" path="res://assets/HUD/Strip And GIF/space6_4-frames.png" id="4_bxfcu"]
 
 [sub_resource type="Animation" id="Animation_dm666"]
@@ -27,22 +28,10 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:hframes")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -64,6 +53,7 @@ grow_vertical = 2
 scale = Vector2(1, 0.993243)
 theme = ExtResource("1_ifl0m")
 script = ExtResource("2_tcapv")
+music = ExtResource("3_otpxb")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2

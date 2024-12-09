@@ -20,6 +20,7 @@ config/icon="res://assets/enemy/SpiderPack/IdlePurple/SpiderIdleFront1.png"
 Debug="*res://autoloads/debug.gd"
 Game="*res://autoloads/game.tscn"
 AudioManager="*res://autoloads/audio_manager.tscn"
+MusicManager="*res://autoloads/music_manager.tscn"
 
 [display]
 
