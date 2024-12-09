@@ -25,10 +25,11 @@ func _physics_process(_delta: float) -> void:
 		var closest = null
 		var closest_distance_squared = 0
 		for player in Game.players:
-			var player_distance_squared = (player.local_scene.global_position - global_position).length_squared()
-			if not closest or player_distance_squared < closest_distance_squared:
-				closest = player.local_scene
-				closest_distance_squared = player_distance_squared
+			if player.local_scene.dead == 0:
+				var player_distance_squared = (player.local_scene.global_position - global_position).length_squared()
+				if not closest or player_distance_squared < closest_distance_squared:
+					closest = player.local_scene
+					closest_distance_squared = player_distance_squared
 		target = closest
 	if target:
 		var direction = (target.global_position - global_position).normalized()
