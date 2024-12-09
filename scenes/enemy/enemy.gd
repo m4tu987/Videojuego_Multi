@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if is_global:
+		# Encuentra el jugador más cercano
 		var closest = null
 		var closest_distance_squared = 0
 		for player in Game.players:
@@ -30,19 +31,36 @@ func _physics_process(_delta: float) -> void:
 				closest = player.local_scene
 				closest_distance_squared = player_distance_squared
 		target = closest
+	
 	if target:
+		# Configurar RayCast2D para verificar línea de visión
+		var raycast = $RayCast2D
+		raycast.target_position = target.global_position - global_position
+		raycast.enabled = true
+		raycast.force_raycast_update()
+		
 		var direction = (target.global_position - global_position).normalized()
-		if (global_position.distance_to(target.global_position) > 60):
+		
+		if raycast.is_colliding():
+			# Si no hay línea de visión, reduce la velocidad o realiza otra acción
+			velocity = Vector2.ZERO
+		elif (global_position.distance_to(target.global_position) > 60):
+			# Si hay línea de visión y está lejos, moverse hacia el objetivo
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel)
 			velocity.y = move_toward(velocity.y, direction.y * speed, accel)
 		else:
+			# Si está cerca del objetivo, detenerse
 			velocity = Vector2.ZERO
-	if velocity == Vector2.ZERO:
-		pass
-	else:
+
+	if velocity != Vector2.ZERO:
 		$AnimationTree.set("parameters/Walking/blend_position", velocity)
+	else:
+		$AnimationTree.set("parameters/Walking/blend_position", Vector2.ZERO)
+		
 	move_and_slide()
-	
+
+
+
 func _on_body_entered(body: Node) -> void:
 	var player = body as Player
 	if player:

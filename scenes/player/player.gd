@@ -30,7 +30,9 @@ var _players_inside: Array[Player] = []
 var dead = 0
 @onready var resurrection_timer = $ResurrectionTimer
 @onready var resurrection_progress_bar = $ResurrectionProgressBar
-
+const scent_scene = preload("res://scenes/player/scent.tscn")
+var scent_trail = []
+@onready var scent_timer = $ScentTimer
 
 
 func _enter_tree() -> void:
@@ -52,6 +54,8 @@ func _ready() -> void:
 		resurrect_area.body_entered.connect(_on_dead_player_entered)
 		resurrect_area.body_exited.connect(_on_dead_player_exited)
 		resurrection_timer.timeout.connect(_on_resurrection_timeout)
+	scent_timer.connect("timeout", Callable(self, "add_scent"))
+	scent_timer.start()
 
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
@@ -169,3 +173,25 @@ func _on_resurrection_timeout() -> void:
 		if is_instance_valid(player):
 			player.resurrect.rpc_id(1)
 	resurrection_progress_bar.value = 0
+
+func add_scent() -> void:
+	if not scent_scene:
+		print("Error: scent_scene no está cargada correctamente.")
+		return
+
+	# Instanciar la escena correctamente
+	var scent = scent_scene.instantiate()  # Utiliza `instantiate` en lugar de `instance`
+	if not scent:
+		print("Error: No se pudo instanciar la escena scent.")
+		return
+	
+	# Configurar el nodo scent
+	scent.player = self
+	scent.position = self.position
+
+	# Agregarlo a la escena actual
+	if get_tree().current_scene:
+		get_tree().current_scene.add_child(scent)
+		scent_trail.push_front(scent)
+	else:
+		print("Error: No se puede añadir a la escena actual.")

@@ -48,7 +48,7 @@ visible = false
 show_behind_parent = true
 y_sort_enabled = true
 scene = ExtResource("9_kfye1")
-spawn_zone = Rect2(-500, -210, 100, 420)
+spawn_zone = Rect2(-430, -210, 100, 420)
 
 [node name="MultiplayerSpawner" parent="Camera/EnemySpawner" index="0"]
 _spawnable_scenes = PackedStringArray("res://scenes/enemy/enemy.tscn")

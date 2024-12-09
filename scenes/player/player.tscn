@@ -652,5 +652,8 @@ step = 0.01
 fill_mode = 4
 texture_progress = ExtResource("10_balfx")
 
+[node name="ScentTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="Dash_Cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="Hurtbox/ReDamage" to="Hurtbox" method="_on_re_damage_timeout"]

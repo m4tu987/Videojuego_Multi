@@ -819,6 +819,9 @@ shape = SubResource("CircleShape2D_1oun4")
 [node name="AttackPosition" type="Marker2D" parent="."]
 position = Vector2(60, 0)
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 5
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
