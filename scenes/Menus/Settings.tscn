@@ -1,7 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd0xj54qewm3x"]
+[gd_scene load_steps=10 format=3 uid="uid://bd0xj54qewm3x"]
 
 [ext_resource type="Script" path="res://scenes/Menus/settings.gd" id="1_jl3kk"]
 [ext_resource type="Texture2D" uid="uid://bflsl6qcwy43f" path="res://assets/HUD/Strip And GIF/space6_4-frames.png" id="2_6y5e7"]
+[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="2_qcqqj"]
+[ext_resource type="Theme" uid="uid://dqmm05iu5skty" path="res://resources/tema_label.tres" id="3_8modb"]
+
+[sub_resource type="Theme" id="Theme_ey2u0"]
+Label/font_sizes/font_size = 39
+Label/fonts/font = ExtResource("2_qcqqj")
+
+[sub_resource type="Theme" id="Theme_t3cfw"]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("2_qcqqj")
 
 [sub_resource type="Animation" id="Animation_dm666"]
 length = 0.001
@@ -53,8 +63,78 @@ _data = {
 "new_animation": SubResource("Animation_gjh6y")
 }
 
-[node name="Settings" type="MarginContainer"]
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_jl3kk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -38.5
+offset_right = 31.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ey2u0")
+text = "Settings"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("3_8modb")
+text = "MUSIC
+"
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="Label" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("3_8modb")
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_t3cfw")
+text = "BACK"
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 z_index = -1

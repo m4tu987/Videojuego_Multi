@@ -1,5 +1,5 @@
 extends MarginContainer
-
+@export var music: AudioStream
 
 @onready var start = %Start
 @onready var credits = %Credits
