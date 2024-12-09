@@ -1,11 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbsj1koyihqbf"]
+[gd_scene load_steps=19 format=3 uid="uid://dbsj1koyihqbf"]
 
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="1_ee05d"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="1_gjfo0"]
 [ext_resource type="PackedScene" uid="uid://c203i6mdrx2re" path="res://scenes/map/doorSectionA.tscn" id="2_85oa2"]
 [ext_resource type="PackedScene" uid="uid://d3bdkod6p5hd1" path="res://scenes/map/doorSectionB.tscn" id="3_6oq0q"]
 [ext_resource type="PackedScene" uid="uid://w0ge8xdea4nx" path="res://scenes/map/doorSectionC.tscn" id="4_jorx3"]
+[ext_resource type="PackedScene" uid="uid://bjn57cpx2a5wl" path="res://scenes/map/HealBoxA.tscn" id="5_88wmc"]
+[ext_resource type="PackedScene" uid="uid://bctn1p188myhe" path="res://scenes/map/HealBoxB.tscn" id="6_1lsmv"]
 [ext_resource type="Texture2D" uid="uid://dbfwkrohyubtq" path="res://assets/efectos/Retro Impact Effect Pack 5 B.png" id="6_5rjie"]
+[ext_resource type="PackedScene" uid="uid://d35jjou6gd3fi" path="res://scenes/map/HealBoxC.tscn" id="7_yf6eu"]
+[ext_resource type="PackedScene" uid="uid://cycfh57lh1lxc" path="res://scenes/map/AmmoBoxA.tscn" id="8_6qhvx"]
+[ext_resource type="PackedScene" uid="uid://ct0klcoub1xpu" path="res://scenes/map/AmmoBoxB.tscn" id="9_q8df8"]
+[ext_resource type="PackedScene" uid="uid://cj2yxudqkaboo" path="res://scenes/map/AmmoBoxC.tscn" id="10_lsmtg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2638a"]
 size = Vector2(64, 576)
@@ -52,6 +58,7 @@ limit_right = 3200
 limit_bottom = 576
 script = ExtResource("1_ee05d")
 doors_scenes = Array[PackedScene]([ExtResource("2_85oa2"), ExtResource("3_6oq0q"), ExtResource("4_jorx3")])
+box_scenes = Array[PackedScene]([ExtResource("5_88wmc"), ExtResource("6_1lsmv"), ExtResource("7_yf6eu"), ExtResource("8_6qhvx"), ExtResource("9_q8df8"), ExtResource("10_lsmtg")])
 
 [node name="Hitzone" type="Area2D" parent="."]
 collision_layer = 3
@@ -97,7 +104,7 @@ texture = ExtResource("6_5rjie")
 local_coords = true
 
 [node name="DoorSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/map/doorSectionA.tscn", "res://scenes/map/doorSectionB.tscn", "res://scenes/map/doorSectionC.tscn")
+_spawnable_scenes = PackedStringArray("res://scenes/map/doorSectionA.tscn", "res://scenes/map/doorSectionB.tscn", "res://scenes/map/doorSectionC.tscn", "res://scenes/map/AmmoBoxA.tscn", "res://scenes/map/AmmoBoxB.tscn", "res://scenes/map/AmmoBoxC.tscn", "res://scenes/map/HealBoxA.tscn", "res://scenes/map/HealBoxB.tscn", "res://scenes/map/HealBoxC.tscn")
 
 [node name="DoorTimer" type="Timer" parent="."]
 wait_time = 7.0
@@ -115,6 +122,13 @@ autostart = true
 wait_time = 144.0
 one_shot = true
 autostart = true
+
+[node name="BoxTimer" type="Timer" parent="."]
+wait_time = 21.0
+autostart = true
+
+[node name="BoxPositions" type="Marker2D" parent="."]
+position = Vector2(1088, -32)
 
 [connection signal="timeout" from="Begin" to="." method="_on_begin_timeout"]
 [connection signal="timeout" from="Stop" to="." method="_on_stop_timeout"]

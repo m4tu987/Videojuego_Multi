@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxf3gjjdm4a32"
+path="res://.godot/imported/Enemy Dead Var.3.mp3-37fb9955a874c1b846237715af5e5b99.mp3str"
+
+[deps]
+
+source_file="res://sonido/enemyDeath/Enemy Dead Var.3.mp3"
+dest_files=["res://.godot/imported/Enemy Dead Var.3.mp3-37fb9955a874c1b846237715af5e5b99.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

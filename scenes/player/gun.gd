@@ -1,3 +1,4 @@
+class_name Gun
 extends Node2D
 
 signal reload_finished
@@ -24,6 +25,10 @@ signal reload_finished
 @export var is_reloading := false
 @onready var ammo_label = $CanvasLayer/TextureRect/MarginContainer/HBoxContainer/AmmoLabel
 @onready var max_ammo_label = $CanvasLayer/TextureRect/MarginContainer/HBoxContainer/max_ammoLabel
+@export var shoot_sound: Array[AudioStream] = []
+@export var no_ammo_sound: Array[AudioStream] = []
+@export var reload_sound: Array[AudioStream] = []
+
 
 var can_reload = true
 func _ready() -> void:
@@ -32,6 +37,7 @@ func _ready() -> void:
 	ammo = max_ammo
 	max_total_ammo = 90
 	reload_finished.connect(real_reload)
+
 func _process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		global_rotation = global_position.direction_to(get_global_mouse_position()).angle()
@@ -39,18 +45,27 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
-	if event.is_action_pressed("fire"):
+	if event.is_action_pressed("fire") and !is_reloading:
 		fire.rpc_id(1)
 		fire_fx.rpc()
+
 func _physics_process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		if Input.is_action_just_pressed("reload") and can_reload:
 			can_reload = false
 			reload.rpc_id(1)
 			$reload_timer.start()
+
 func setup(player_id) -> void:
 	set_multiplayer_authority(player_id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_id)
+
+func more_total_ammo_local(extra: int) -> void:
+	more_total_ammo.rpc(extra)
+
+@rpc("any_peer", "call_local", "reliable")
+func more_total_ammo(extra: int) -> void:
+	max_total_ammo += extra
 
 @rpc("reliable", "any_peer", "call_local")
 func fire() -> void:
@@ -60,7 +75,9 @@ func fire() -> void:
 		Debug.log("No bullet provided")
 		return
 	if ammo <= 0:
+		AudioManager.play_stream(no_ammo_sound.pick_random())
 		return
+	AudioManager.play_stream(shoot_sound.pick_random())
 	ammo -= 1
 	var bullet_inst = bullet_scene.instantiate()
 	bullet_inst.shooter_role = Game.get_player(get_parent().id).role
@@ -79,6 +96,10 @@ func reload() -> void:
 	if not multiplayer.is_server():
 		return
 	is_reloading = true
+	if max_total_ammo > 0:
+		AudioManager.play_stream(reload_sound.pick_random())
+	else:
+		AudioManager.play_stream(no_ammo_sound.pick_random())
 	reload_fx.rpc()
 	
 @rpc("any_peer","reliable", "call_local")
@@ -96,6 +117,7 @@ func reload_fx() -> void:
 func real_reload() -> void:
 	var needed_ammo = max_ammo - ammo
 	if max_total_ammo >= needed_ammo:
+		
 		ammo += needed_ammo
 		max_total_ammo -= needed_ammo
 	else:
@@ -105,5 +127,6 @@ func real_reload() -> void:
 		ammo_label.text = str(ammo)
 	if max_ammo_label:
 		max_ammo_label.text = str(max_total_ammo)
+
 func _on_reload_timer_timeout():
 	can_reload = true

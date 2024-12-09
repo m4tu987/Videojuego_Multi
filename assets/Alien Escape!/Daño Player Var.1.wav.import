@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://drrso3m0d22xq"
+path="res://.godot/imported/Daño Player Var.1.wav-e44bd7817b6729b0d5c227e491ca682a.sample"
+
+[deps]
+
+source_file="res://assets/Alien Escape!/Daño Player Var.1.wav"
+dest_files=["res://.godot/imported/Daño Player Var.1.wav-e44bd7817b6729b0d5c227e491ca682a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

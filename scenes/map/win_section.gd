@@ -9,6 +9,8 @@ extends Node2D
 @onready var main = $".."
 @onready var victory_text = $"../Camera/VictoryText"
 
+@export var sound: AudioStream
+
 @export var A_condition = 0 
 @export var B_condition = 0
 @export var C_condition = 0
@@ -25,6 +27,7 @@ func _ready():
 			victory.rpc()
 
 func Aready():
+	AudioManager.play_stream(sound)
 	AreadyServer.rpc_id(1)
 
 @rpc("call_local","any_peer","reliable")
@@ -38,10 +41,12 @@ func Bready():
 @rpc("call_local","any_peer","reliable")
 func BreadyServer():
 	B_condition = 1
+	AudioManager.play_stream(sound)
 	on_condition_change()
 
 
 func Cready():
+	AudioManager.play_stream(sound)
 	CreadyServer.rpc_id(1)
 
 @rpc("call_local","any_peer","reliable")

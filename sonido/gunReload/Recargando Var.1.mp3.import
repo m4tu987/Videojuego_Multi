@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djola3dmykxux"
+path="res://.godot/imported/Recargando Var.1.mp3-09b1c9156fe98cf8b22fd89c54627c77.mp3str"
+
+[deps]
+
+source_file="res://sonido/gunReload/Recargando Var.1.mp3"
+dest_files=["res://.godot/imported/Recargando Var.1.mp3-09b1c9156fe98cf8b22fd89c54627c77.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

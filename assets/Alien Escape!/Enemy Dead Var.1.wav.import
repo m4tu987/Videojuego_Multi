@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8xjxiuvm5p5j"
+path="res://.godot/imported/Enemy Dead Var.1.wav-a43d9ec8de9b31967e6cb03c0953c711.sample"
+
+[deps]
+
+source_file="res://assets/Alien Escape!/Enemy Dead Var.1.wav"
+dest_files=["res://.godot/imported/Enemy Dead Var.1.wav-a43d9ec8de9b31967e6cb03c0953c711.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

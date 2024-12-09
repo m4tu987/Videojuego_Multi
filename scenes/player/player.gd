@@ -11,6 +11,7 @@ signal C_resurrected
 @export var id := 1
 @export var walking = false
 @export var dir = Vector2.ZERO
+@export var damage_sound: Array[AudioStream] = []
 var speed = 200
 var accel = 100
 var base_speed = 200
@@ -117,9 +118,29 @@ func getcolor(player_data):
 	if player_data.role == Statics.Role.ROLE_C:
 		return Color.DARK_SLATE_BLUE
 
+func getcolor2(player_data):
+	if player_data.role == Statics.Role.ROLE_A:
+		return Color.LIME
+	if player_data.role == Statics.Role.ROLE_B:
+		return Color.CRIMSON
+	if player_data.role == Statics.Role.ROLE_C:
+		return Color.BLUE
+
 #se puede tambien hacer notify_take_damage.rpc(get_multiplayer_autorithy(), damage) para que llegue solo al que tiene autoridad
 func take_damage(damage: int) -> void:
-		stats.health -= damage
+	if !dead:
+		AudioManager.play_stream(damage_sound.pick_random())
+	stats.health -= damage
+
+func get_healed_local(heal: int) -> void:
+	get_healed.rpc(heal)
+
+@rpc("any_peer", "call_local", "reliable")
+func get_healed(heal: int) -> void:
+	stats.health += heal
+
+func get_ammo(ammo: int) -> void:
+	$Gun.more_total_ammo_local(ammo)
 
 func _on_health_changed(health) -> void:
 	hud.health = health

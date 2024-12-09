@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://s73tbs4l6ac6"]
+[gd_scene load_steps=13 format=3 uid="uid://s73tbs4l6ac6"]
 
 [ext_resource type="Script" path="res://scenes/map/door.gd" id="1_rcj0s"]
+[ext_resource type="AudioStream" uid="uid://bi2gse6i7joki" path="res://assets/Alien Escape!/Sonido Random.wav" id="2_5by8u"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_cioti"]
 [ext_resource type="Texture2D" uid="uid://c0spwsc3c40rd" path="res://assets/efectos/Retro Impact Effect Pack 5 F.png" id="2_ebqvw"]
 [ext_resource type="Script" path="res://scenes/map/hitzone.gd" id="4_h66q7"]
@@ -75,6 +76,7 @@ _data = {
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_rcj0s")
+sound = ExtResource("2_5by8u")
 
 [node name="Ray" type="StaticBody2D" parent="."]
 

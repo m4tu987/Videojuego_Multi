@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bys8n6cqu4y7p"]
+[gd_scene load_steps=10 format=3 uid="uid://bys8n6cqu4y7p"]
 
 [ext_resource type="Script" path="res://scenes/enemy/attack_fx.gd" id="1_ghpe4"]
 [ext_resource type="Texture2D" uid="uid://dbfwkrohyubtq" path="res://assets/efectos/Retro Impact Effect Pack 5 B.png" id="1_p2run"]
+[ext_resource type="AudioStream" uid="uid://dbpo65rn81258" path="res://assets/Alien Escape!/Ataque Enemy Var.1.wav" id="2_0h5i4"]
+[ext_resource type="AudioStream" uid="uid://ciq01w5thvlyw" path="res://assets/Alien Escape!/Ataque Enemy Var.2.wav" id="3_qjcoe"]
+[ext_resource type="AudioStream" uid="uid://dpcair6x3sw55" path="res://assets/Alien Escape!/Ataque Enemy Var.3.wav" id="4_pwcja"]
+[ext_resource type="AudioStream" uid="uid://dpjd5meb4dg0x" path="res://assets/Alien Escape!/Ataque Enemy Var.4.wav" id="5_wtplq"]
 
 [sub_resource type="Animation" id="Animation_u0t13"]
 resource_name = "Attack"
@@ -31,6 +35,7 @@ radius = 60.0333
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ghpe4")
+attack_sound = Array[AudioStream]([ExtResource("2_0h5i4"), ExtResource("3_qjcoe"), ExtResource("4_pwcja"), ExtResource("5_wtplq")])
 
 [node name="SpawnEffect" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
