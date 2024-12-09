@@ -31,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 				closest = player.local_scene
 				closest_distance_squared = player_distance_squared
 		target = closest
-	
+
 	if target:
 		# Configurar RayCast2D para verificar línea de visión
 		var raycast = $RayCast2D
@@ -42,8 +42,25 @@ func _physics_process(_delta: float) -> void:
 		var direction = (target.global_position - global_position).normalized()
 		
 		if raycast.is_colliding():
-			# Si no hay línea de visión, reduce la velocidad o realiza otra acción
-			velocity = Vector2.ZERO
+			# Si no hay línea de visión, buscar el rastro más cercano
+			if target.scent_trail.size() > 0:
+				var closest_scent = null
+				var closest_scent_distance_squared = INF
+				for scent in target.scent_trail:
+					var scent_distance_squared = (scent.global_position - global_position).length_squared()
+					if scent_distance_squared < closest_scent_distance_squared:
+						closest_scent = scent
+						closest_scent_distance_squared = scent_distance_squared
+				
+				if closest_scent:
+					# Moverse hacia el rastro más cercano
+					direction = (closest_scent.global_position - global_position).normalized()
+					velocity.x = move_toward(velocity.x, direction.x * speed, accel)
+					velocity.y = move_toward(velocity.y, direction.y * speed, accel)
+				else:
+					velocity = Vector2.ZERO
+			else:
+				velocity = Vector2.ZERO
 		elif (global_position.distance_to(target.global_position) > 60):
 			# Si hay línea de visión y está lejos, moverse hacia el objetivo
 			velocity.x = move_toward(velocity.x, direction.x * speed, accel)
@@ -58,6 +75,7 @@ func _physics_process(_delta: float) -> void:
 		$AnimationTree.set("parameters/Walking/blend_position", Vector2.ZERO)
 		
 	move_and_slide()
+
 
 
 
