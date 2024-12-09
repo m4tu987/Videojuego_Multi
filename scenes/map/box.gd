@@ -6,10 +6,12 @@ enum Type {
 	Ammo
 }
 
+
 @export var role: Statics.Role 
 @export var type: Type
 @export var heal_simbol: Texture2D
 @export var ammo_simbol: Texture2D
+@export var sound: AudioStream
 var activated:= false
 @onready var simbol = $Simbol
 @onready var activation_area = $ActivationArea
@@ -69,6 +71,7 @@ func _on_activation_timer_timeout():
 	activated = true 
 	activation_progress_bar.value = 0
 	activation_area.set_deferred("monitoring",false)
+	AudioManager.play_stream(sound)
 	if type == Type.Heal:
 		heal_players()
 	if type == Type.Ammo:

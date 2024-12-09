@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://8d2ip3vepasa"]
+[gd_scene load_steps=24 format=4 uid="uid://8d2ip3vepasa"]
 
 [ext_resource type="Script" path="res://scenes/map/win_section.gd" id="1_abk83"]
 [ext_resource type="TileSet" uid="uid://c46m43rsog1eh" path="res://scenes/map/map.tres" id="1_deqeg"]
+[ext_resource type="AudioStream" uid="uid://bi2gse6i7joki" path="res://assets/Alien Escape!/Sonido Random.wav" id="2_e2u7l"]
 [ext_resource type="Texture2D" uid="uid://cer4cgvirvl32" path="res://assets/map/SciFi_DungeonTileset16x16_0x72Like.png" id="2_mc3oj"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_nqfxl"]
 [ext_resource type="PackedScene" uid="uid://d1nkf2iut684" path="res://scenes/map/screenWin.tscn" id="4_467om"]
@@ -349,6 +350,7 @@ properties/2/replication_mode = 2
 
 [node name="WinSection" type="Node2D"]
 script = ExtResource("1_abk83")
+sound = ExtResource("2_e2u7l")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)

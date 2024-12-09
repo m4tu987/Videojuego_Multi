@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var animation_door = $AnimationDoor
 @export var role: Statics.Role
+@export var sound: AudioStream
 @onready var ray_sprite = $Ray/Parallax2D/raySprite
 @onready var ray_collision_shape = $Ray/RayCollisionShape
 @onready var ray_hitbox_shape = $Hitzone/RayHitboxShape
@@ -15,6 +16,7 @@ func open() -> void:
 
 @rpc("any_peer", "reliable", "call_local")
 func open_local() -> void:
+	AudioManager.play_stream(sound)
 	animation_door.play("turnOff")
 	$TurningOff.start()
 
