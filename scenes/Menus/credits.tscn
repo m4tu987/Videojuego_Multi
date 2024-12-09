@@ -54,7 +54,7 @@ _data = {
 "new_animation": SubResource("Animation_gjh6y")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ij5h2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ipwp"]
 texture = ExtResource("4_qwlw7")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
@@ -2856,7 +2856,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_opxf6"]
 tile_size = Vector2i(32, 32)
-sources/2 = SubResource("TileSetAtlasSource_ij5h2")
+sources/2 = SubResource("TileSetAtlasSource_1ipwp")
 
 [node name="Node2D" type="Control"]
 layout_mode = 3

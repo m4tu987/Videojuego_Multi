@@ -4,8 +4,8 @@ extends Control
 
 @onready var animation_player = $Parallax2D/Sprite2D/AnimationPlayer
 @onready var music_slider = %MusicSlider
-@onready var back = $VBoxContainer/back
 @onready var sfx_slider = %SFXSlider
+@onready var back = $back
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
