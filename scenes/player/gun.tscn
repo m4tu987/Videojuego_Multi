@@ -1,13 +1,25 @@
-[gd_scene load_steps=15 format=4 uid="uid://dyi7np8o56xxk"]
+[gd_scene load_steps=27 format=4 uid="uid://dyi7np8o56xxk"]
 
 [ext_resource type="Texture2D" uid="uid://d37s4da5saxl4" path="res://assets/Pack 1/0px All.png" id="1_1eho2"]
 [ext_resource type="Script" path="res://scenes/player/gun.gd" id="1_xjnpv"]
 [ext_resource type="PackedScene" uid="uid://olxxtq1mkewq" path="res://scenes/player/bullet.tscn" id="2_edmhy"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="3_dy7jo"]
+[ext_resource type="AudioStream" uid="uid://t3gsbebaf7c4" path="res://assets/Alien Escape!/Disparo Var.1.wav" id="3_wkl5y"]
+[ext_resource type="AudioStream" uid="uid://duj36s8fopf43" path="res://assets/Alien Escape!/Disparo Var.2.wav" id="4_tidbf"]
 [ext_resource type="Script" path="res://components/upward_sprite.gd" id="5_scbxy"]
+[ext_resource type="AudioStream" uid="uid://x420errqu207" path="res://assets/Alien Escape!/Disparo Var.3.wav" id="5_u138q"]
+[ext_resource type="AudioStream" uid="uid://dm50oo7no7pb3" path="res://assets/Alien Escape!/Disparo Var.4.wav" id="6_jvsix"]
 [ext_resource type="LabelSettings" uid="uid://duuxvmiwf68lv" path="res://resources/gun_theme_label.tres" id="6_t01dx"]
+[ext_resource type="AudioStream" uid="uid://mskvwenyn2r3" path="res://assets/Alien Escape!/No Ammo Var.1.wav" id="7_2pd8r"]
 [ext_resource type="Texture2D" uid="uid://e3gcfud38nku" path="res://assets/icons/Free-Skill-32x32-Icons-for-Cyberpunk-Game/1 Icons/1/Skillicon1_22.png" id="8_6rmfj"]
+[ext_resource type="AudioStream" uid="uid://dvixvfebqqnf1" path="res://assets/Alien Escape!/No Ammo Var.2.wav" id="8_oetum"]
+[ext_resource type="AudioStream" uid="uid://b4ne06lu7iivj" path="res://assets/Alien Escape!/No Ammo Var.3.wav" id="9_pmkmv"]
 [ext_resource type="Texture2D" uid="uid://d33n01wcml81y" path="res://assets/HUD/PixelNeonUI/Menu_Blue/Menu_ui_blue_base.png" id="9_rbv6u"]
+[ext_resource type="AudioStream" uid="uid://d2t1338qga0vl" path="res://assets/Alien Escape!/No Ammo Var.4.wav" id="10_rgrmk"]
+[ext_resource type="AudioStream" uid="uid://bomk8ribxay0x" path="res://assets/Alien Escape!/Recargando Var.1.wav" id="11_anqte"]
+[ext_resource type="AudioStream" uid="uid://dpqj7ly3gmoyh" path="res://assets/Alien Escape!/Recargando Var.2.wav" id="12_wg4kd"]
+[ext_resource type="AudioStream" uid="uid://bww4jht621og3" path="res://assets/Alien Escape!/Recargando Var.3.wav" id="13_twymn"]
+[ext_resource type="AudioStream" uid="uid://dd0wplq3gmpe2" path="res://assets/Alien Escape!/Recargando Var.4.wav" id="14_ibukc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cy3gj"]
 shader = ExtResource("3_dy7jo")
@@ -2843,6 +2855,9 @@ sources/2 = SubResource("TileSetAtlasSource_e2xak")
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_xjnpv")
 bullet_scene = ExtResource("2_edmhy")
+shoot_sound = Array[AudioStream]([ExtResource("3_wkl5y"), ExtResource("4_tidbf"), ExtResource("5_u138q"), ExtResource("6_jvsix")])
+no_ammo_sound = Array[AudioStream]([ExtResource("7_2pd8r"), ExtResource("8_oetum"), ExtResource("9_pmkmv"), ExtResource("10_rgrmk")])
+reload_sound = Array[AudioStream]([ExtResource("11_anqte"), ExtResource("12_wg4kd"), ExtResource("13_twymn"), ExtResource("14_ibukc")])
 
 [node name="UpwardSprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cy3gj")
