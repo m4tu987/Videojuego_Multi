@@ -54,7 +54,7 @@ spawn_zone = Rect2(-500, -210, 100, 420)
 _spawnable_scenes = PackedStringArray("res://scenes/enemy/enemy.tscn")
 
 [node name="Timer" parent="Camera/EnemySpawner" index="1"]
-wait_time = 5.0
+wait_time = 3.0
 
 [node name="WinSection" parent="." instance=ExtResource("10_tsswf")]
 position = Vector2(11328, 0)

@@ -71,11 +71,15 @@ func _on_activation_timer_timeout():
 	activated = true 
 	activation_progress_bar.value = 0
 	activation_area.set_deferred("monitoring",false)
-	AudioManager.play_stream(sound)
+	box_fx.rpc()
 	if type == Type.Heal:
 		heal_players()
 	if type == Type.Ammo:
 		ammo_players()
+
+@rpc("any_peer","reliable","call_local")	
+func box_fx():
+	AudioManager.play_stream(sound)
 
 func heal_players():
 	for player in player_list:

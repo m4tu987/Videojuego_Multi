@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c3bcdty8j2rhj"]
+[gd_scene load_steps=13 format=4 uid="uid://c3bcdty8j2rhj"]
 
 [ext_resource type="Script" path="res://scenes/Menus/how_to_play.gd" id="1_a8y4h"]
 [ext_resource type="Texture2D" uid="uid://bflsl6qcwy43f" path="res://assets/HUD/Strip And GIF/space6_4-frames.png" id="1_k0b32"]
@@ -10,8 +10,11 @@ Label/font_sizes/font_size = 29
 Label/fonts/font = ExtResource("2_eebq2")
 
 [sub_resource type="Theme" id="Theme_gkf3o"]
-Label/font_sizes/font_size = 12
+Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("2_eebq2")
+
+[sub_resource type="Theme" id="Theme_175vu"]
+default_font = ExtResource("2_eebq2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j7xhl"]
 texture = ExtResource("3_l8dbn")
@@ -2888,7 +2891,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_sgvtg")
-text = "How to Play this amazing game!!"
+text = "How to Play This Amazing Game!!"
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -2911,11 +2914,13 @@ Spacebar: Dash
 Left Click: Shoot 
 
 "
+horizontal_alignment = 1
 
 [node name="back_menu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+theme = SubResource("Theme_175vu")
 text = "Back
 "
 
