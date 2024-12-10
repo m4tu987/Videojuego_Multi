@@ -79,7 +79,6 @@ func fire() -> void:
 	if ammo <= 0:
 		AudioManager.play_stream(no_ammo_sound.pick_random())
 		return
-	AudioManager.play_stream(shoot_sound.pick_random())
 	ammo -= 1
 	var bullet_inst = bullet_scene.instantiate()
 	bullet_inst.shooter_role = Game.get_player(get_parent().id).role
@@ -89,6 +88,10 @@ func fire() -> void:
 
 @rpc("reliable", "call_local")
 func fire_fx() -> void:
+	if ammo <= 0:
+		AudioManager.play_stream(no_ammo_sound.pick_random())
+	else:
+		AudioManager.play_stream(shoot_sound.pick_random())
 	var tween = create_tween()
 	tween.tween_property(upward_sprite, "position:x", 2, 0.05).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(upward_sprite, "position:x", 12, 0.15)
@@ -98,14 +101,11 @@ func reload() -> void:
 	if not multiplayer.is_server():
 		return
 	is_reloading = true
-	if max_total_ammo > 0:
-		AudioManager.play_stream(reload_sound.pick_random())
-	else:
-		AudioManager.play_stream(no_ammo_sound.pick_random())
 	reload_fx.rpc()
 	
 @rpc("any_peer","reliable", "call_local")
 func reload_fx() -> void:
+	AudioManager.play_stream(reload_sound.pick_random())
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(upward_sprite, "position:y", -4, 0.5)
 	tween.tween_property(upward_sprite, "position:y", 10, 0.5)
