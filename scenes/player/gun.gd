@@ -77,7 +77,6 @@ func fire() -> void:
 	if is_reloading:
 		return
 	if ammo <= 0:
-		AudioManager.play_stream(no_ammo_sound.pick_random())
 		return
 	ammo -= 1
 	var bullet_inst = bullet_scene.instantiate()

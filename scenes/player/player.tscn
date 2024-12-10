@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://caw1el4bn0p5c" path="res://assets/Alien Escape!/Daño Player Var.4.wav" id="5_kn016"]
 [ext_resource type="PackedScene" uid="uid://ck7ih0cydbkcb" path="res://scenes/stats.tscn" id="6_haq3c"]
 [ext_resource type="PackedScene" uid="uid://dentogqnrpfgu" path="res://ui/hud.tscn" id="7_2xb5s"]
-[ext_resource type="Theme" uid="uid://bevplhdm85o2i" path="res://resources/lobby_theme.tres" id="7_d5xi5"]
+[ext_resource type="Theme" path="res://resources/lobby_theme.tres" id="7_d5xi5"]
 [ext_resource type="Script" path="res://scenes/player/win_condition.gd" id="8_7uh48"]
 [ext_resource type="Script" path="res://scenes/player/lose_condition.gd" id="9_knyi1"]
 [ext_resource type="Texture2D" uid="uid://cv2np082tdl1v" path="res://assets/HUD/circulo1.png" id="10_balfx"]

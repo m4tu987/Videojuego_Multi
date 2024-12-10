@@ -125,8 +125,12 @@ func getcolor2(player_data):
 #se puede tambien hacer notify_take_damage.rpc(get_multiplayer_autorithy(), damage) para que llegue solo al que tiene autoridad
 func take_damage(damage: int) -> void:
 	if !dead:
-		AudioManager.play_stream(damage_sound.pick_random())
+		oof.rpc()
 	stats.health -= damage
+
+@rpc("any_peer","reliable", "call_local")
+func oof():
+	AudioManager.play_stream(damage_sound.pick_random())
 
 func get_healed_local(heal: int) -> void:
 	get_healed.rpc(heal)
