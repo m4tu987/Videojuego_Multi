@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://8d2ip3vepasa"]
+[gd_scene load_steps=26 format=4 uid="uid://8d2ip3vepasa"]
 
 [ext_resource type="Script" path="res://scenes/map/win_section.gd" id="1_abk83"]
 [ext_resource type="TileSet" uid="uid://c46m43rsog1eh" path="res://scenes/map/map.tres" id="1_deqeg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cer4cgvirvl32" path="res://assets/map/SciFi_DungeonTileset16x16_0x72Like.png" id="2_mc3oj"]
 [ext_resource type="Shader" path="res://scenes/player/color_swap.gdshader" id="2_nqfxl"]
 [ext_resource type="PackedScene" uid="uid://d1nkf2iut684" path="res://scenes/map/screenWin.tscn" id="4_467om"]
+[ext_resource type="FontFile" uid="uid://bqe585bi4f3ik" path="res://assets/80s-retro-future.ttf" id="7_jlrdh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vbyxv"]
 shader = ExtResource("2_nqfxl")
@@ -348,6 +349,9 @@ properties/2/path = NodePath(".:C_condition")
 properties/2/spawn = true
 properties/2/replication_mode = 2
 
+[sub_resource type="Theme" id="Theme_8clkv"]
+default_font = ExtResource("7_jlrdh")
+
 [node name="WinSection" type="Node2D"]
 script = ExtResource("1_abk83")
 sound = ExtResource("2_e2u7l")
@@ -376,6 +380,15 @@ role = 3
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_gevmo")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 218.0
+offset_top = 46.0
+offset_right = 572.0
+offset_bottom = 69.0
+scale = Vector2(1.25, 1.25)
+theme = SubResource("Theme_8clkv")
+text = "Confirm Base Self-Destrucction? (y/n)_"
 
 [connection signal="playerAready" from="ScreenWinA" to="." method="Aready"]
 [connection signal="playerBready" from="ScreenWinB" to="." method="Bready"]
