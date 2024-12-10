@@ -2880,10 +2880,11 @@ script = ExtResource("1_jl3kk")
 sfx = ExtResource("2_xwngp")
 
 [node name="back" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-offset_left = 486.0
+offset_left = 469.0
 offset_top = 346.0
-offset_right = 534.0
+offset_right = 549.0
 offset_bottom = 373.0
 size_flags_horizontal = 4
 theme = SubResource("Theme_t3cfw")

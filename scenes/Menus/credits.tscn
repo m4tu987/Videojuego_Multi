@@ -2892,10 +2892,11 @@ theme = SubResource("Theme_obskb")
 text = "                         Credits"
 
 [node name="Button" type="Button" parent="Credits/PanelContainer/MarginContainer/VBoxContainer/credits"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-offset_left = 856.0
+offset_left = 840.0
 offset_top = 362.194
-offset_right = 936.0
+offset_right = 960.0
 offset_bottom = 404.194
 scale = Vector2(0.8, 0.8)
 size_flags_horizontal = 8
