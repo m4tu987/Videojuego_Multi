@@ -91,3 +91,7 @@ func ammo_players():
 
 func _on_timer_timeout():
 	effect_area.set_deferred("monitoring",true)
+
+
+func _on_despawn_timeout():
+	queue_free()
